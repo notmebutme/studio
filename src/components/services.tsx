@@ -8,10 +8,10 @@ import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
 import { ChevronDown } from "lucide-react";
 import { GlowingEffect } from "./ui/glowing-effect";
+import React from "react";
 
 export function Services() {
   const [showAll, setShowAll] = useState(false);
-  const servicesToShow = showAll ? servicesData : servicesData.slice(0, 4);
 
   return (
     <section className="w-full py-20 md:py-32">
@@ -25,8 +25,10 @@ export function Services() {
           </ScrollTriggeredText>
         </div>
         <ul className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-12">
-            {servicesToShow.map((service) => (
-                <ServiceCard key={service.slug} {...service} />
+            {servicesData.map((service, index) => (
+              <React.Fragment key={service.slug}>
+                {(index < 4 || showAll) && <ServiceCard {...service} />}
+              </React.Fragment>
             ))}
         </ul>
         {!showAll && servicesData.length > 4 && (
