@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from "next/link";
@@ -7,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
 import { ChevronDown } from "lucide-react";
+import { CursorCard, CursorCardsContainer } from "./ui/cursor-cards";
 
 export function Services() {
   const [showAll, setShowAll] = useState(false);
@@ -24,14 +26,14 @@ export function Services() {
             Cutting-edge AI solutions tailored to supercharge your brand's content strategy. Click a service to learn more.
           </ScrollTriggeredText>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
+        <CursorCardsContainer className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
           {initialServices.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
           {showAll && additionalServices.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
-        </div>
+        </CursorCardsContainer>
         {!showAll && (
           <div className="mt-12 text-center">
             <Button
@@ -51,15 +53,23 @@ export function Services() {
 
 function ServiceCard(service: Service) {
     return (
-        <Link href={`/services/${service.slug}`} className="group block">
-            <Card className="h-full flex flex-col text-center bg-card/80 border-2 border-primary/10 group-hover:border-primary/30 transition-all duration-300 glow-shadow p-6 justify-center items-center">
-                <CardHeader className="flex flex-col items-center gap-4">
-                  <div className="text-primary group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
-                  </div>
-                  <CardTitle className="font-headline text-2xl group-hover:text-primary transition-colors duration-300">{service.title}</CardTitle>
-                </CardHeader>
-            </Card>
+        <Link href={`/services/${service.slug}`} className="group block h-full">
+            <CursorCard 
+                className="h-full rounded-lg"
+                borderColor="hsl(var(--border))"
+                primaryHue="hsl(var(--primary))"
+                secondaryHue="hsl(var(--accent))"
+                illuminationColor="hsl(var(--primary) / 0.1)"
+            >
+                <Card className="h-full flex flex-col text-center bg-card/90 transition-all duration-300 p-6 justify-center items-center">
+                    <CardHeader className="flex flex-col items-center gap-4">
+                      <div className="text-primary group-hover:scale-110 transition-transform duration-300">
+                        {service.icon}
+                      </div>
+                      <CardTitle className="font-headline text-2xl group-hover:text-primary transition-colors duration-300">{service.title}</CardTitle>
+                    </CardHeader>
+                </Card>
+            </CursorCard>
         </Link>
     )
 }
