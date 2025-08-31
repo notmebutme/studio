@@ -1,12 +1,18 @@
 import Link from "next/link"
-import { Rocket } from "lucide-react"
+import Image from "next/image";
 
 export function Footer() {
   return (
     <footer className="w-full py-6 px-4 md:px-6 border-t border-primary/10 bg-background">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <Rocket className="h-6 w-6 text-primary icon-glow" />
+        <div className="flex items-center gap-3">
+          <Image 
+            src="/logo.png" 
+            alt="Intrix AI Logo" 
+            width={28} 
+            height={28} 
+            className="rounded-md icon-glow"
+          />
           <span className="text-lg font-semibold font-headline">Intrix AI</span>
         </div>
         <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Intrix AI. All rights reserved.</p>
