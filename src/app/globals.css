@@ -86,18 +86,3 @@
 .icon-glow {
     filter: drop-shadow(0 0 6px hsl(var(--primary)/0.8));
 }
-
-.wavy-bg {
-    background:
-        radial-gradient(ellipse 50% 40% at 20% 40%, hsl(var(--primary) / 0.2), transparent),
-        radial-gradient(ellipse 50% 40% at 80% 60%, hsl(var(--accent) / 0.2), transparent);
-    background-size: 200% 200%;
-    animation: wave 15s ease-in-out infinite;
-    opacity: 0.5;
-}
-
-@keyframes wave {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
