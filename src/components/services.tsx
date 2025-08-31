@@ -2,7 +2,7 @@
 "use client"
 
 import Link from "next/link";
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
@@ -11,10 +11,7 @@ import { GlowingEffect } from "./ui/glowing-effect";
 
 export function Services() {
   const [showAll, setShowAll] = useState(false);
-  const initialServices = servicesData.slice(0, 4);
-  const additionalServices = servicesData.slice(4);
-
-  const servicesToShow = showAll ? servicesData : initialServices;
+  const servicesToShow = showAll ? servicesData : servicesData.slice(0, 4);
 
   return (
     <section className="w-full py-20 md:py-32">
@@ -29,7 +26,7 @@ export function Services() {
         </div>
         <ul className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-12">
             {servicesToShow.map((service) => (
-                <ServiceCard key={service.title} {...service} />
+                <ServiceCard key={service.slug} {...service} />
             ))}
         </ul>
         {!showAll && servicesData.length > 4 && (
