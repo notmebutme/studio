@@ -2,9 +2,9 @@ import type { Service } from "@/lib/services-data";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Zap, Bot, MessageCircle } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { ComparisonTable } from "./comparison-table";
 import { Pricing } from "./blocks/pricing";
 
@@ -100,6 +100,13 @@ export function ServiceDetails({ service }: { service: Service }) {
                         </div>
                     </div>
                 </section>
+                
+                {/* Pricing Section - Conditional */}
+                {showPricing && (
+                    <section className="w-full py-20 md:py-24 bg-secondary/20">
+                         <Pricing plans={pricingPlans} />
+                    </section>
+                )}
 
                 {/* Key Features Section */}
                 <section className="w-full py-20 md:py-24 bg-background">
@@ -155,14 +162,6 @@ export function ServiceDetails({ service }: { service: Service }) {
                         </div>
                     </section>
                 )}
-
-                {/* Pricing Section - Conditional */}
-                {showPricing && (
-                    <section className="w-full py-20 md:py-24 bg-secondary/20">
-                         <Pricing plans={pricingPlans} />
-                    </section>
-                )}
-
 
                 {/* CTA Section */}
                 <section className="w-full py-20 md:py-32 bg-primary/5">
