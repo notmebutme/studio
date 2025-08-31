@@ -55,7 +55,7 @@ function ServiceCard(service: Service) {
     return (
         <Link href={`/services/${service.slug}`} className="group block h-full">
             <CursorCard 
-                className="h-full rounded-lg"
+                className="h-full rounded-lg p-px"
                 borderColor="hsl(var(--border))"
                 primaryHue="hsl(var(--primary))"
                 secondaryHue="hsl(var(--accent))"

@@ -6,7 +6,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-sm">
       <div className="container flex h-20 items-center justify-between mx-auto px-4 md:px-6">
-        <Link href="#" className="flex items-center gap-3" prefetch={false}>
+        <Link href="/" className="flex items-center gap-3" prefetch={false}>
           <Image 
             src="/logo.png" 
             alt="Intrix AI Logo" 

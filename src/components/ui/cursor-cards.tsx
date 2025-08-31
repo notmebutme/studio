@@ -1,8 +1,7 @@
-
 "use client"
 
 import React, { useCallback, useEffect, useRef } from "react"
-import { motion, useMotionTemplate, useMotionValue } from "motion/react"
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -126,7 +125,7 @@ export function CursorCardsContainer({
   const { wrapperRef, mouseState } = useMousePosition(proximityRange)
 
   const enhancedChildren = React.Children.map(children, (child) => {
-    if (React.isValidElement(child) && child.type === ServiceCardFromServices) {
+    if (React.isValidElement(child) && child.type === CursorCard) {
       return React.cloneElement(
         child as React.ReactElement<InternalCursorCardProps>,
         {
@@ -150,11 +149,11 @@ export function CursorCard({
   children,
   className,
   illuminationRadius = 200,
-  illuminationColor = "#FFFFFF10",
+  illuminationColor = "hsl(var(--primary) / 0.1)",
   illuminationOpacity = 0.8,
-  primaryHue = "#93C5FD",
-  secondaryHue = "#2563EB",
-  borderColor = "#E5E5E5",
+  primaryHue = "hsl(var(--primary))",
+  secondaryHue = "hsl(var(--accent))",
+  borderColor = "hsl(var(--border))",
   globalMouseX = 0,
   globalMouseY = 0,
   isWithinRange = false,
@@ -190,7 +189,7 @@ export function CursorCard({
         className="pointer-events-none absolute inset-0 rounded-[inherit]"
         style={{ background: gradientBackground }}
       />
-      <div className="absolute inset-px rounded-[inherit] bg-white dark:bg-black" />
+      <div className="absolute inset-px rounded-[inherit] bg-background" />
       <motion.div
         className={cn(
           "pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300",
@@ -205,6 +204,3 @@ export function CursorCard({
     </div>
   )
 }
-
-// A helper component to ensure type matching in React.Children.map
-const ServiceCardFromServices: React.FC<any> = () => null;
