@@ -4,27 +4,6 @@ import React, { useRef, useEffect, useState } from 'react';
 const FluidCursorEffect = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationIdRef = useRef<number | null>(null);
-  const [isInitialized, setIsInitialized] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  // Configuration
-  const config = {
-    SIM_RESOLUTION: 128,
-    DYE_RESOLUTION: 1440,
-    CAPTURE_RESOLUTION: 512,
-    DENSITY_DISSIPATION: 3.5,
-    VELOCITY_DISSIPATION: 2,
-    PRESSURE: 0.1,
-    PRESSURE_ITERATIONS: 20,
-    CURL: 3,
-    SPLAT_RADIUS: 0.2,
-    SPLAT_FORCE: 6000,
-    SHADING: true,
-    COLOR_UPDATE_SPEED: 10,
-    PAUSED: false,
-    BACK_COLOR: { r: 0.5, g: 0, b: 0 },
-    TRANSPARENT: true
-  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -52,6 +31,25 @@ const FluidCursorEffect = () => {
     let divergenceProgram: any, curlProgram: any, vorticityProgram: any, pressureProgram: any;
     let gradienSubtractProgram: any, displayMaterial: any;
     let blit: (target: any, doClear?: boolean) => void;
+
+    // Configuration
+    const config = {
+        SIM_RESOLUTION: 128,
+        DYE_RESOLUTION: 1440,
+        CAPTURE_RESOLUTION: 512,
+        DENSITY_DISSIPATION: 3.5,
+        VELOCITY_DISSIPATION: 2,
+        PRESSURE: 0.1,
+        PRESSURE_ITERATIONS: 20,
+        CURL: 3,
+        SPLAT_RADIUS: 0.2,
+        SPLAT_FORCE: 6000,
+        SHADING: true,
+        COLOR_UPDATE_SPEED: 10,
+        PAUSED: false,
+        BACK_COLOR: { r: 0.5, g: 0, b: 0 },
+        TRANSPARENT: true
+    };
 
     const initializeWebGL = () => {
       const params = {
@@ -1201,11 +1199,11 @@ const FluidCursorEffect = () => {
         initFramebuffers();
         const cleanup = setupEventListeners();
         updateFrame();
-        setIsInitialized(true);
+        // setIsInitialized(true);
         return cleanup;
-      } catch (e: any) {
-        console.error("Failed to initialize fluid simulation:", e);
-        setError(e.message);
+      } catch (error) {
+        console.error("Failed to initialize fluid simulation:", error);
+        // setError(error.message);
         return null;
       }
     };
@@ -1221,79 +1219,14 @@ const FluidCursorEffect = () => {
 
   }, []);
 
-  const resetSimulation = () => {
-    window.location.reload();
-  };
-
-  if (error) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
-        <div className="text-center p-8">
-          <h1 className="text-2xl font-bold mb-4">WebGL not supported</h1>
-          <p className="text-gray-300">{error}</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden bg-gray-900 cursor-none justify-center item-center">
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-            background: `
-              linear-gradient(90deg, rgba(255,255,255,0.08) 1px, rgba(3,6,24,0.14) 1px),
-              linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px'
-          }}
-      />
-      
-      <div className="fixed inset-0 z-50 pointer-events-none">
+    <div className="fixed inset-0 z-0 pointer-events-none">
         <canvas
-          ref={canvasRef}
-          id="fluid"
-          className="w-full h-full block"
+        ref={canvasRef}
+        id="fluid"
+        className="w-full h-full block"
         />
-      </div>
-
-      <div className="relative z-10 p-6 sm:p-12 lg:p-20 text-white font-sans pointer-events-auto w-full">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 lg:mb-8">
-            Smokey Cursor Effect
-          </h1>
-          
-          <p className="text-base sm:text-lg lg:text-xl leading-relaxed mb-8 lg:mb-12 text-gray-300 max-w-3xl mx-auto">
-            Move your mouse around to create beautiful fluid smoke effects. The simulation uses WebGL shaders to create realistic fluid dynamics in real-time.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <button
-              onClick={resetSimulation}
-              className="bg-white/10 border border-white/30 text-white px-6 py-3 rounded-lg 
-                       hover:bg-white/20 transition-all duration-300 text-sm sm:text-base
-                       focus:outline-none focus:ring-2 focus:ring-white/50"
-            >
-              Reset Simulation
-            </button>
-            
-            <button
-              onClick={() => window.location.reload()}
-              className="bg-white/10 border border-white/30 text-white px-6 py-3 rounded-lg 
-                       hover:bg-white/20 transition-all duration-300 text-sm sm:text-base
-                       focus:outline-none focus:ring-2 focus:ring-white/50"
-            >
-              Restart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {!isInitialized && (
-        <div className="fixed top-4 right-4 z-50 bg-blue-500/20 text-blue-200 px-4 py-2 rounded-lg border border-blue-500/30">
-          Initializing WebGL...
-        </div>
-      )}
     </div>
   );
 };
