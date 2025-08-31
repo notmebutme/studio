@@ -16,7 +16,7 @@ export function Header() {
           />
           <span className="text-lg md:text-xl font-bold font-headline">Intrix AI</span>
         </Link>
-        <RainbowButton asChild className="h-9 px-4 text-xs md:h-11 md:px-8 md:text-sm">
+        <RainbowButton asChild href="#booking" className="h-9 px-4 text-xs md:h-11 md:px-8 md:text-sm">
           <Link href="#booking">Book an Appointment</Link>
         </RainbowButton>
       </div>
