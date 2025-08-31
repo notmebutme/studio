@@ -443,14 +443,30 @@ const FluidCursorEffect = () => {
     const init = () => {
       const isWebGL2 = gl instanceof WebGL2RenderingContext;
 
+      let halfFloat, supportLinearFiltering;
+      if (isWebGL2) {
+          gl.getExtension('EXT_color_buffer_float');
+          supportLinearFiltering = gl.getExtension('OES_texture_float_linear');
+          halfFloat = gl.HALF_FLOAT;
+      } else {
+          const OES_texture_half_float = gl.getExtension('OES_texture_half_float');
+          supportLinearFiltering = gl.getExtension('OES_texture_half_float_linear');
+          halfFloat = OES_texture_half_float ? OES_texture_half_float.HALF_FLOAT_OES : 0;
+      }
+
       ext = {
           isWebGL2,
-          supportLinearFiltering: isWebGL2 ? (gl as WebGL2RenderingContext).getExtension('OES_texture_float_linear') : null,
-          halfFloat: isWebGL2 ? (gl as WebGL2RenderingContext).HALF_FLOAT : ((gl as WebGLRenderingContext).getExtension('OES_texture_half_float')?.HALF_FLOAT_OES ?? 0),
-          formatRGBA: getSupportedFormat(gl!, isWebGL2 ? (gl as WebGL2RenderingContext).RGBA16F : gl!.RGBA, gl!.RGBA, isWebGL2 ? (gl as WebGL2RenderingContext).HALF_FLOAT : ((gl as WebGLRenderingContext).getExtension('OES_texture_half_float')?.HALF_FLOAT_OES ?? 0))!,
-          formatRG: getSupportedFormat(gl!, isWebGL2 ? (gl as WebGL2RenderingContext).RG16F : gl!.RGBA, isWebGL2 ? (gl as WebGL2RenderingContext).RG : gl!.RGBA, isWebGL2 ? (gl as WebGL2RenderingContext).HALF_FLOAT : ((gl as WebGLRenderingContext).getExtension('OES_texture_half_float')?.HALF_FLOAT_OES ?? 0))!,
-          formatR: getSupportedFormat(gl!, isWebGL2 ? (gl as WebGL2RenderingContext).R16F : gl!.RGBA, isWebGL2 ? (gl as WebGL2RenderingContext).RED : gl!.RGBA, isWebGL2 ? (gl as WebGL2RenderingContext).HALF_FLOAT : ((gl as WebGLRenderingContext).getExtension('OES_texture_half_float')?.HALF_FLOAT_OES ?? 0))!
+          supportLinearFiltering,
+          halfFloat,
+          formatRGBA: getSupportedFormat(gl!, isWebGL2 ? (gl as WebGL2RenderingContext).RGBA16F : gl!.RGBA, gl!.RGBA, halfFloat)!,
+          formatRG: getSupportedFormat(gl!, isWebGL2 ? (gl as WebGL2RenderingContext).RG16F : gl!.RGBA, isWebGL2 ? (gl as WebGL2RenderingContext).RG : gl!.RGBA, halfFloat)!,
+          formatR: getSupportedFormat(gl!, isWebGL2 ? (gl as WebGL2RenderingContext).R16F : gl!.RGBA, isWebGL2 ? (gl as WebGL2RenderingContext).RED : gl!.RGBA, halfFloat)!
       };
+      
+      if (!ext.formatRGBA) {
+        console.error("WebGL format RGBA not supported");
+        return;
+      }
 
       const buffer = gl!.createBuffer();
       gl!.bindBuffer(gl!.ARRAY_BUFFER, buffer);
