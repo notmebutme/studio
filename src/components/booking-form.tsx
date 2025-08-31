@@ -31,11 +31,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { Textarea } from "./ui/textarea";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email." }),
   service: z.string({ required_error: "Please select a service." }),
+  description: z.string().optional(),
   date: z.date({ required_error: "A date is required." }),
   time: z.string({ required_error: "Please select a time slot." }),
 });
@@ -47,6 +49,7 @@ export function BookingForm() {
     defaultValues: {
       name: "",
       email: "",
+      description: "",
     },
   });
 
@@ -116,6 +119,23 @@ export function BookingForm() {
                   <SelectItem value="ai-chatbot">AI Chatbot</SelectItem>
                 </SelectContent>
               </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Description (Optional)</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Tell us a little bit about your project or what you'd like to discuss."
+                  className="resize-none"
+                  {...field}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
