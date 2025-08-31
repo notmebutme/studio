@@ -10,15 +10,15 @@ const FluidCursorEffect = () => {
   // Configuration
   const config = {
     SIM_RESOLUTION: 128,
-    DYE_RESOLUTION: 1024,
+    DYE_RESOLUTION: 1440,
     CAPTURE_RESOLUTION: 512,
-    DENSITY_DISSIPATION: 0.9,
-    VELOCITY_DISSIPATION: 0.8,
-    PRESSURE: 0.8,
+    DENSITY_DISSIPATION: 3.5,
+    VELOCITY_DISSIPATION: 2,
+    PRESSURE: 0.1,
     PRESSURE_ITERATIONS: 20,
-    CURL: 50,
-    SPLAT_RADIUS: 0.3,
-    SPLAT_FORCE: 7000,
+    CURL: 3,
+    SPLAT_RADIUS: 0.2,
+    SPLAT_FORCE: 6000,
     SHADING: true,
     COLOR_UPDATE_SPEED: 10,
     PAUSED: false,
@@ -243,9 +243,11 @@ const FluidCursorEffect = () => {
           this.programs[hash] = program;
         }
         if (program === this.activeProgram) return;
-
-        this.uniforms = program.uniforms;
+        
         this.activeProgram = program;
+        if (program && program.program) {
+            this.uniforms = program.uniforms;
+        }
       }
 
       hashCode(s) {
@@ -260,7 +262,7 @@ const FluidCursorEffect = () => {
 
       bind() {
         if (this.activeProgram) {
-          this.activeProgram.bind();
+            this.activeProgram.bind()
         }
       }
     }
@@ -701,15 +703,10 @@ const FluidCursorEffect = () => {
       const rgba = ext.formatRGBA;
       const rg = ext.formatRG;
       const r = ext.formatR;
-
-      if (!rgba || !rg || !r) {
-        return;
-      }
-
       const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST;
       gl.disable(gl.BLEND);
 
-      if (!dye) {
+      if (rgba && !dye) {
         dye = createDoubleFBO(
           dyeRes.width,
           dyeRes.height,
@@ -720,7 +717,7 @@ const FluidCursorEffect = () => {
         );
       }
 
-      if (!velocity) {
+      if (rg && !velocity) {
         velocity = createDoubleFBO(
           simRes.width,
           simRes.height,
@@ -731,30 +728,32 @@ const FluidCursorEffect = () => {
         );
       }
 
-      divergence = createFBO(
-        simRes.width,
-        simRes.height,
-        r.internalFormat,
-        r.format,
-        texType,
-        gl.NEAREST
-      );
-      curlFBO = createFBO(
-        simRes.width,
-        simRes.height,
-        r.internalFormat,
-        r.format,
-        texType,
-        gl.NEAREST
-      );
-      pressureFBO = createDoubleFBO(
-        simRes.width,
-        simRes.height,
-        r.internalFormat,
-        r.format,
-        texType,
-        gl.NEAREST
-      );
+      if (r) {
+        divergence = createFBO(
+            simRes.width,
+            simRes.height,
+            r.internalFormat,
+            r.format,
+            texType,
+            gl.NEAREST
+        );
+        curlFBO = createFBO(
+            simRes.width,
+            simRes.height,
+            r.internalFormat,
+            r.format,
+            texType,
+            gl.NEAREST
+        );
+        pressureFBO = createDoubleFBO(
+            simRes.width,
+            simRes.height,
+            r.internalFormat,
+            r.format,
+            texType,
+            gl.NEAREST
+        );
+      }
     };
 
     const updateKeywords = () => {
@@ -837,111 +836,171 @@ const FluidCursorEffect = () => {
     const step = (dt) => {
       gl.disable(gl.BLEND);
 
+      // Curl
       curlProgram.bind();
-      gl.uniform2f(
-        curlProgram.uniforms.texelSize,
-        velocity.texelSizeX,
-        velocity.texelSizeY
-      );
-      gl.uniform1i(curlProgram.uniforms.uVelocity, velocity.read.attach(0));
+      if (curlProgram.uniforms.texelSize) {
+        gl.uniform2f(
+          curlProgram.uniforms.texelSize,
+          velocity.texelSizeX,
+          velocity.texelSizeY
+        );
+      }
+      if (curlProgram.uniforms.uVelocity) {
+        gl.uniform1i(curlProgram.uniforms.uVelocity, velocity.read.attach(0));
+      }
       blit(curlFBO);
 
+      // Vorticity
       vorticityProgram.bind();
-      gl.uniform2f(
-        vorticityProgram.uniforms.texelSize,
-        velocity.texelSizeX,
-        velocity.texelSizeY
-      );
-      gl.uniform1i(vorticityProgram.uniforms.uVelocity, velocity.read.attach(0));
-      gl.uniform1i(vorticityProgram.uniforms.uCurl, curlFBO.attach(1));
-      gl.uniform1f(vorticityProgram.uniforms.curl, config.CURL);
-      gl.uniform1f(vorticityProgram.uniforms.dt, dt);
+      if (vorticityProgram.uniforms.texelSize) {
+        gl.uniform2f(
+          vorticityProgram.uniforms.texelSize,
+          velocity.texelSizeX,
+          velocity.texelSizeY
+        );
+      }
+      if (vorticityProgram.uniforms.uVelocity) {
+        gl.uniform1i(vorticityProgram.uniforms.uVelocity, velocity.read.attach(0));
+      }
+      if (vorticityProgram.uniforms.uCurl) {
+        gl.uniform1i(vorticityProgram.uniforms.uCurl, curlFBO.attach(1));
+      }
+      if (vorticityProgram.uniforms.curl) {
+        gl.uniform1f(vorticityProgram.uniforms.curl, config.CURL);
+      }
+      if (vorticityProgram.uniforms.dt) {
+        gl.uniform1f(vorticityProgram.uniforms.dt, dt);
+      }
       blit(velocity.write);
       velocity.swap();
 
+      // Divergence
       divergenceProgram.bind();
-      gl.uniform2f(
-        divergenceProgram.uniforms.texelSize,
-        velocity.texelSizeX,
-        velocity.texelSizeY
-      );
-      gl.uniform1i(divergenceProgram.uniforms.uVelocity, velocity.read.attach(0));
+      if (divergenceProgram.uniforms.texelSize) {
+        gl.uniform2f(
+          divergenceProgram.uniforms.texelSize,
+          velocity.texelSizeX,
+          velocity.texelSizeY
+        );
+      }
+      if (divergenceProgram.uniforms.uVelocity) {
+        gl.uniform1i(divergenceProgram.uniforms.uVelocity, velocity.read.attach(0));
+      }
       blit(divergence);
 
+      // Clear pressure
       clearProgram.bind();
-      gl.uniform1i(clearProgram.uniforms.uTexture, pressureFBO.read.attach(0));
-      gl.uniform1f(clearProgram.uniforms.value, config.PRESSURE);
+      if (clearProgram.uniforms.uTexture) {
+        gl.uniform1i(clearProgram.uniforms.uTexture, pressureFBO.read.attach(0));
+      }
+      if (clearProgram.uniforms.value) {
+        gl.uniform1f(clearProgram.uniforms.value, config.PRESSURE);
+      }
       blit(pressureFBO.write);
       pressureFBO.swap();
 
+      // Pressure
       pressureProgram.bind();
-      gl.uniform2f(
-        pressureProgram.uniforms.texelSize,
-        velocity.texelSizeX,
-        velocity.texelSizeY
-      );
-      gl.uniform1i(pressureProgram.uniforms.uDivergence, divergence.attach(0));
-      for (let i = 0; i < config.PRESSURE_ITERATIONS; i++) {
-        gl.uniform1i(
-          pressureProgram.uniforms.uPressure,
-          pressureFBO.read.attach(1)
+      if (pressureProgram.uniforms.texelSize) {
+        gl.uniform2f(
+          pressureProgram.uniforms.texelSize,
+          velocity.texelSizeX,
+          velocity.texelSizeY
         );
+      }
+      if (pressureProgram.uniforms.uDivergence) {
+        gl.uniform1i(pressureProgram.uniforms.uDivergence, divergence.attach(0));
+      }
+      for (let i = 0; i < config.PRESSURE_ITERATIONS; i++) {
+        if (pressureProgram.uniforms.uPressure) {
+          gl.uniform1i(
+            pressureProgram.uniforms.uPressure,
+            pressureFBO.read.attach(1)
+          );
+        }
         blit(pressureFBO.write);
         pressureFBO.swap();
       }
 
+      // Gradient Subtract
       gradienSubtractProgram.bind();
-      gl.uniform2f(
-        gradienSubtractProgram.uniforms.texelSize,
-        velocity.texelSizeX,
-        velocity.texelSizeY
-      );
-      gl.uniform1i(
-        gradienSubtractProgram.uniforms.uPressure,
-        pressureFBO.read.attach(0)
-      );
-      gl.uniform1i(
-        gradienSubtractProgram.uniforms.uVelocity,
-        velocity.read.attach(1)
-      );
+      if (gradienSubtractProgram.uniforms.texelSize) {
+        gl.uniform2f(
+          gradienSubtractProgram.uniforms.texelSize,
+          velocity.texelSizeX,
+          velocity.texelSizeY
+        );
+      }
+      if (gradienSubtractProgram.uniforms.uPressure) {
+        gl.uniform1i(
+          gradienSubtractProgram.uniforms.uPressure,
+          pressureFBO.read.attach(0)
+        );
+      }
+      if (gradienSubtractProgram.uniforms.uVelocity) {
+        gl.uniform1i(
+          gradienSubtractProgram.uniforms.uVelocity,
+          velocity.read.attach(1)
+        );
+      }
       blit(velocity.write);
       velocity.swap();
 
+      // Advection - velocity
       advectionProgram.bind();
-      gl.uniform2f(
-        advectionProgram.uniforms.texelSize,
-        velocity.texelSizeX,
-        velocity.texelSizeY
-      );
-      if (!ext.supportLinearFiltering)
+      if (advectionProgram.uniforms.texelSize) {
+        gl.uniform2f(
+          advectionProgram.uniforms.texelSize,
+          velocity.texelSizeX,
+          velocity.texelSizeY
+        );
+      }
+      if (!ext.supportLinearFiltering && advectionProgram.uniforms.dyeTexelSize) {
         gl.uniform2f(
           advectionProgram.uniforms.dyeTexelSize,
           velocity.texelSizeX,
           velocity.texelSizeY
         );
+      }
       const velocityId = velocity.read.attach(0);
-      gl.uniform1i(advectionProgram.uniforms.uVelocity, velocityId);
-      gl.uniform1i(advectionProgram.uniforms.uSource, velocityId);
-      gl.uniform1f(advectionProgram.uniforms.dt, dt);
-      gl.uniform1f(
-        advectionProgram.uniforms.dissipation,
-        config.VELOCITY_DISSIPATION
-      );
+      if (advectionProgram.uniforms.uVelocity) {
+        gl.uniform1i(advectionProgram.uniforms.uVelocity, velocityId);
+      }
+      if (advectionProgram.uniforms.uSource) {
+        gl.uniform1i(advectionProgram.uniforms.uSource, velocityId);
+      }
+      if (advectionProgram.uniforms.dt) {
+        gl.uniform1f(advectionProgram.uniforms.dt, dt);
+      }
+      if (advectionProgram.uniforms.dissipation) {
+        gl.uniform1f(
+          advectionProgram.uniforms.dissipation,
+          config.VELOCITY_DISSIPATION
+        );
+      }
       blit(velocity.write);
       velocity.swap();
 
-      if (!ext.supportLinearFiltering)
+      // Advection - dye
+      if (!ext.supportLinearFiltering && advectionProgram.uniforms.dyeTexelSize) {
         gl.uniform2f(
           advectionProgram.uniforms.dyeTexelSize,
           dye.texelSizeX,
           dye.texelSizeY
         );
-      gl.uniform1i(advectionProgram.uniforms.uVelocity, velocity.read.attach(0));
-      gl.uniform1i(advectionProgram.uniforms.uSource, dye.read.attach(1));
-      gl.uniform1f(
-        advectionProgram.uniforms.dissipation,
-        config.DENSITY_DISSIPATION
-      );
+      }
+      if (advectionProgram.uniforms.uVelocity) {
+        gl.uniform1i(advectionProgram.uniforms.uVelocity, velocity.read.attach(0));
+      }
+      if (advectionProgram.uniforms.uSource) {
+        gl.uniform1i(advectionProgram.uniforms.uSource, dye.read.attach(1));
+      }
+      if (advectionProgram.uniforms.dissipation) {
+        gl.uniform1f(
+          advectionProgram.uniforms.dissipation,
+          config.DENSITY_DISSIPATION
+        );
+      }
       blit(dye.write);
       dye.swap();
     };
@@ -956,10 +1015,12 @@ const FluidCursorEffect = () => {
       const width = target ? target.width : gl.drawingBufferWidth;
       const height = target ? target.height : gl.drawingBufferHeight;
       displayMaterial.bind();
-      if (config.SHADING) {
+      if (config.SHADING && displayMaterial.uniforms.texelSize) {
         gl.uniform2f(displayMaterial.uniforms.texelSize, 1 / width, 1 / height);
       }
-      gl.uniform1i(displayMaterial.uniforms.uTexture, dye.read.attach(0));
+      if (displayMaterial.uniforms.uTexture) {
+        gl.uniform1i(displayMaterial.uniforms.uTexture, dye.read.attach(0));
+      }
       blit(target, false);
     };
 
@@ -981,22 +1042,36 @@ const FluidCursorEffect = () => {
 
     const splat = (x, y, dx, dy, color) => {
       splatProgram.bind();
-      gl.uniform1i(splatProgram.uniforms.uTarget, velocity.read.attach(0));
-      gl.uniform1f(
-        splatProgram.uniforms.aspectRatio,
-        canvas.width / canvas.height
-      );
-      gl.uniform2f(splatProgram.uniforms.point, x, y);
-      gl.uniform3f(splatProgram.uniforms.color, dx, dy, 0);
-      gl.uniform1f(
-        splatProgram.uniforms.radius,
-        correctRadius(config.SPLAT_RADIUS / 100)
-      );
+      if (splatProgram.uniforms.uTarget) {
+        gl.uniform1i(splatProgram.uniforms.uTarget, velocity.read.attach(0));
+      }
+      if (splatProgram.uniforms.aspectRatio) {
+        gl.uniform1f(
+          splatProgram.uniforms.aspectRatio,
+          canvas.width / canvas.height
+        );
+      }
+      if (splatProgram.uniforms.point) {
+        gl.uniform2f(splatProgram.uniforms.point, x, y);
+      }
+      if (splatProgram.uniforms.color) {
+        gl.uniform3f(splatProgram.uniforms.color, dx, dy, 0);
+      }
+      if (splatProgram.uniforms.radius) {
+        gl.uniform1f(
+          splatProgram.uniforms.radius,
+          correctRadius(config.SPLAT_RADIUS / 100)
+        );
+      }
       blit(velocity.write);
       velocity.swap();
 
-      gl.uniform1i(splatProgram.uniforms.uTarget, dye.read.attach(0));
-      gl.uniform3f(splatProgram.uniforms.color, color.r, color.g, color.b);
+      if (splatProgram.uniforms.uTarget) {
+        gl.uniform1i(splatProgram.uniforms.uTarget, dye.read.attach(0));
+      }
+      if (splatProgram.uniforms.color) {
+        gl.uniform3f(splatProgram.uniforms.color, color.r, color.g, color.b);
+      }
       blit(dye.write);
       dye.swap();
     };
@@ -1112,7 +1187,7 @@ const FluidCursorEffect = () => {
 
     const init = () => {
       try {
-        initializeWebGL();
+        if (!initializeWebGL()) return;
         initializeShaders();
         initializeBlit();
         updateKeywords();
@@ -1139,6 +1214,8 @@ const FluidCursorEffect = () => {
   }, []);
 
   const resetSimulation = () => {
+    // This would need access to the internal functions
+    // For now, we'll just reload the component
     window.location.reload();
   };
 
@@ -1154,10 +1231,74 @@ const FluidCursorEffect = () => {
   }
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
-       <canvas ref={canvasRef} className="w-full h-full" />
+    <div className="relative w-full min-h-screen overflow-hidden bg-gray-900 cursor-none justify-center item-center">
+      {/* Grid background */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          background: `
+            linear-gradient(90deg, rgba(255,255,255,0.08) 1px, rgba(3,6,24,0.14) 1px),
+            linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }}
+      />
+      
+      {/* Fluid Canvas */}
+      <div className="fixed inset-0 z-50 pointer-events-none">
+        <canvas
+          ref={canvasRef}
+          id="fluid"
+          className="w-full h-full block"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 p-6 sm:p-12 lg:p-20 text-white font-sans pointer-events-auto w-full">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 lg:mb-8">
+            Smokey Cursor Effect
+          </h1>
+          
+          <p className="text-base sm:text-lg lg:text-xl leading-relaxed mb-8 lg:mb-12 text-gray-300 max-w-3xl mx-auto">
+            Move your mouse around to create beautiful fluid smoke effects. The simulation uses WebGL shaders to create realistic fluid dynamics in real-time.
+          </p>
+
+          {/* Demo Controls */}
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <button
+              onClick={resetSimulation}
+              className="bg-white/10 border border-white/30 text-white px-6 py-3 rounded-lg 
+                       hover:bg-white/20 transition-all duration-300 text-sm sm:text-base
+                       focus:outline-none focus:ring-2 focus:ring-white/50"
+            >
+              Reset Simulation
+            </button>
+            
+            <button
+              onClick={() => window.location.reload()}
+              className="bg-white/10 border border-white/30 text-white px-6 py-3 rounded-lg 
+                       hover:bg-white/20 transition-all duration-300 text-sm sm:text-base
+                       focus:outline-none focus:ring-2 focus:ring-white/50"
+            >
+              Restart
+            </button>
+          </div>
+
+        
+        </div>
+      </div>
+
+      {/* Status indicator */}
+      {!isInitialized && (
+        <div className="fixed top-4 right-4 z-50 bg-blue-500/20 text-blue-200 px-4 py-2 rounded-lg border border-blue-500/30">
+          Initializing WebGL...
+        </div>
+      )}
     </div>
   );
 };
 
 export default FluidCursorEffect;
+
+    
