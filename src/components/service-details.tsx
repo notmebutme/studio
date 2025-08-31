@@ -103,20 +103,20 @@ export function ServiceDetails({ service }: { service: Service }) {
                 
                 {/* Pricing Section - Conditional */}
                 {showPricing && (
-                    <section className="w-full py-20 md:py-24 bg-secondary/20">
+                    <section className="w-full py-20 md:py-24 bg-background">
                          <Pricing plans={pricingPlans} />
                     </section>
                 )}
 
                 {/* Key Features Section */}
-                <section className="w-full py-20 md:py-24 bg-background">
+                <section className="w-full py-20 md:py-24 bg-secondary/20">
                     <div className="container mx-auto px-4 md:px-6 text-center">
                         <h2 className="text-3xl sm:text-4xl font-bold font-headline mb-12">
                             Key Features
                         </h2>
-                        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                             {service.keyFeatures.map((feature, index) => (
-                                <Card key={index} className="text-left p-6 border-2 hover:border-primary/50 transition-all">
+                                <Card key={index} className="text-left p-6 border-2 hover:border-primary/50 transition-all bg-background">
                                     <div className="flex items-center gap-4 mb-4">
                                         <div className="bg-primary/10 text-primary p-3 rounded-full">
                                             {feature.icon}
@@ -131,7 +131,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                 </section>
 
                 {/* How It Works Section */}
-                <section className="w-full py-20 md:py-24 bg-secondary/20">
+                <section className="w-full py-20 md:py-24 bg-background">
                     <div className="container mx-auto px-4 md:px-6 text-center">
                         <h2 className="text-3xl sm:text-4xl font-bold font-headline mb-12">
                             How It Works
@@ -153,7 +153,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                 
                 {/* Comparison Section */}
                 {service.comparison && (
-                    <section className="w-full py-20 md:py-24 bg-background">
+                    <section className="w-full py-20 md:py-24 bg-secondary/20">
                         <div className="container mx-auto px-4 md:px-6">
                             <h2 className="text-3xl sm:text-4xl font-bold font-headline text-center mb-12">
                                 Traditional vs. Intrix AI

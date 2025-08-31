@@ -1,4 +1,4 @@
-import { Bot, Clapperboard, MonitorSmartphone, Voicemail, MessageCircle, Film, Sparkles, Target, Palette, Scale, Users, BrainCircuit, Repeat, Clock, Database } from "lucide-react";
+import { Bot, Clapperboard, MonitorSmartphone, Voicemail, MessageCircle, Film, Sparkles, Target, Palette, Scale, Users, BrainCircuit, Repeat, Clock, Database, LineChart } from "lucide-react";
 import { ReactNode } from "react";
 import { ComparisonData } from "@/components/comparison-table";
 
@@ -39,6 +39,7 @@ export const servicesData: Service[] = [
         { icon: <Sparkles className="h-8 w-8" />, title: "Brand Voice Alignment", description: "Our AI learns your unique brand tone, style, and messaging to ensure all generated content is perfectly on-brand." },
         { icon: <Target className="h-8 w-8" />, title: "SEO Optimization", description: "Integrated keyword research and optimization tools help your content rank higher in search engine results." },
         { icon: <Scale className="h-8 w-8" />, title: "Infinite Scalability", description: "Produce vast amounts of high-quality content in minutes, not weeks. Perfect for large-scale content strategies." },
+        { icon: <LineChart className="h-8 w-8" />, title: "Data-Driven Insights", description: "Analyze content performance to understand what resonates with your audience and refine your strategy." },
     ],
     howItWorks: [
         { title: "Define Goals", description: "You provide a content brief, including topics, keywords, and target audience." },
@@ -72,6 +73,7 @@ export const servicesData: Service[] = [
         { icon: <Palette className="h-8 w-8" />, title: "Multi-Platform Creatives", description: "Get ad variants perfectly formatted for Facebook, Instagram, TikTok, Google Ads, and more." },
         { icon: <BrainCircuit className="h-8 w-8" />, title: "Performance Prediction", description: "Our AI scores creative variations to predict performance before you spend a dime on ad buys." },
         { icon: <Repeat className="h-8 w-8" />, title: "Rapid Iteration", description: "Instantly generate new ad concepts and variations based on performance data from active campaigns." },
+        { icon: <Users className="h-8 w-8" />, title: "Audience Targeting", description: "Generates ad copy specifically tailored to different audience segments for maximum relevance." },
     ],
     howItWorks: [
         { title: "Input Product Info", description: "Provide your product details, target audience, and campaign objectives." },
@@ -105,6 +107,7 @@ export const servicesData: Service[] = [
         { icon: <Sparkles className="h-8 w-8" />, title: "Virtual Photoshoots", description: "Generate photorealistic images of your product in any setting without a physical camera." },
         { icon: <Palette className="h-8 w-8" />, title: "Contextual Backgrounds", description: "Place your product in a city, on a mountain, in a kitchen—anywhere you can imagine." },
         { icon: <Users className="h-8 w-8" />, title: "AI-Generated Models", description: "Include diverse, AI-generated human models to create relatable lifestyle scenes for your product." },
+        { icon: <Repeat className="h-8 w-8" />, title: "Style Consistency", description: "Maintain a consistent look and feel across all your product imagery for a strong brand identity." },
     ],
     howItWorks: [
         { title: "Upload Product Image", description: "Provide a few clean images of your product from different angles." },
@@ -138,6 +141,7 @@ export const servicesData: Service[] = [
         { icon: <Sparkles className="h-8 w-8" />, title: "Photorealistic Visuals", description: "Our AI rendering engine produces jaw-dropping, hyper-realistic visuals that capture attention." },
         { icon: <BrainCircuit className="h-8 w-8" />, title: "Physics-Defying Scenes", description: "Break free from the laws of physics and create any scene you can imagine to tell your story." },
         { icon: <Clock className="h-8 w-8" />, title: "Reduced Production Time", description: "Cut production costs and timelines by eliminating the need for physical sets, crews, and locations." },
+        { icon: <Palette className="h-8 w-8" />, title: "On-Brand Asset Creation", description: "Generate custom 3D models and assets that perfectly align with your brand's aesthetic and guidelines." },
     ],
     howItWorks: [
         { title: "Storyboard & Script", description: "You provide the creative concept, script, and storyboard for the ad." },
@@ -171,6 +175,7 @@ export const servicesData: Service[] = [
         { icon: <Users className="h-8 w-8" />, title: "Human-like Conversation", description: "Our agents understand context, handle interruptions, and use natural intonation." },
         { icon: <BrainCircuit className="h-8 w-8" />, title: "Complex Task Handling", description: "Integrates with your existing systems to perform tasks like booking, ordering, and account management." },
         { icon: <Database className="h-8 w-8" />, title: "CRM Integration", description: "Automatically logs call details, transcripts, and outcomes into your CRM (e.g., Salesforce, HubSpot)." },
+        { icon: <Repeat className="h-8 w-8" />, title: "Continuous Learning", description: "The agent improves over time by learning from every interaction, increasing its accuracy and effectiveness." },
     ],
     howItWorks: [
         { title: "Define Tasks", description: "We work with you to define the goals and conversation flows for your voice agent." },
@@ -204,6 +209,7 @@ export const servicesData: Service[] = [
         { icon: <BrainCircuit className="h-8 w-8" />, title: "Knowledge Base Integration", description: "Train your chatbot on your own documents, websites, and databases for accurate answers." },
         { icon: <Users className="h-8 w-8" />, title: "Seamless Handoff", description: "Intelligently routes conversations to the correct human agent when a query requires a personal touch." },
         { icon: <Sparkles className="h-8 w-8" />, title: "Proactive Engagement", description: "Initiates conversations with website visitors based on their behavior to increase engagement and leads." },
+        { icon: <LineChart className="h-8 w-8" />, title: "Analytics Dashboard", description: "Track conversation metrics, user satisfaction, and common queries to improve your support." },
     ],
     howItWorks: [
         { title: "Connect Data", description: "You provide your knowledge base (documents, website link) for the chatbot to learn." },
