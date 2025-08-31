@@ -66,7 +66,7 @@ function ServiceCard(service: Service) {
                     />
                     <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-lg border-[0.75px] bg-background p-4 md:p-6 shadow-sm">
                         <div className="relative flex flex-1 flex-col justify-between gap-3">
-                            <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+                            <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2 md:p-3">
                                 {service.icon}
                             </div>
                             <div className="space-y-2">
