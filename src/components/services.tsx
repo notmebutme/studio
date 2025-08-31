@@ -38,7 +38,7 @@ export function Services() {
             <Button
               onClick={() => setShowAll(true)}
               variant="outline"
-              className="glow-shadow font-bold text-lg py-7 px-8 border-2 border-primary/50"
+              className="glow-shadow font-bold border-2 border-primary/50"
             >
               View More Services <ChevronDown className="ml-2 h-5 w-5" />
             </Button>
