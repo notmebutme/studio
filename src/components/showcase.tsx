@@ -67,10 +67,10 @@ function ShowcaseItem({ title, traditionalImg, aiImg, traditionalHint, aiHint }:
   return (
     <Card className="mt-6 border-2 border-primary/20 bg-card/80 glow-shadow">
       <CardContent className="p-4 md:p-6">
-        <h3 className="text-xl md:text-2xl font-semibold mb-4 text-center font-headline">{title}</h3>
-        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+        <h3 className="text-lg md:text-2xl font-semibold mb-4 text-center font-headline">{title}</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <div className="space-y-2">
-            <h4 className="text-base md:text-lg font-semibold text-center text-muted-foreground">Traditional Content</h4>
+            <h4 className="text-sm md:text-lg font-semibold text-center text-muted-foreground">Traditional Content</h4>
             <div className="relative">
                 <Image
                     src={traditionalImg}
@@ -83,7 +83,7 @@ function ShowcaseItem({ title, traditionalImg, aiImg, traditionalHint, aiHint }:
             </div>
           </div>
           <div className="space-y-2">
-            <h4 className="text-base md:text-lg font-semibold text-center text-primary text-glow">Intrix AI Content</h4>
+            <h4 className="text-sm md:text-lg font-semibold text-center text-primary text-glow">Intrix AI Content</h4>
             <div className="relative border-2 border-primary/50 rounded-lg p-1 shadow-[0_0_15px_0px_hsl(var(--primary)/0.4)]">
                 <Image
                     src={aiImg}

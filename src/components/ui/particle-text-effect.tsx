@@ -62,8 +62,8 @@ class Particle {
     // Move particle
     this.vel.x += this.acc.x
     this.vel.y += this.acc.y
-    this.pos.x += this.vel.x
-    this.pos.y += this.vel.y
+    this.pos.x += this.pos.x
+    this.pos.y += this.pos.y
     this.acc.x = 0
     this.acc.y = 0
   }

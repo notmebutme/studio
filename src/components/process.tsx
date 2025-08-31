@@ -34,7 +34,7 @@ export function Process() {
         </div>
         <div className="grid gap-4 md:gap-8 grid-cols-3 mt-12">
           {processSteps.map((step, index) => (
-            <Card key={index} className="text-center bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow p-2 md:p-6">
+            <Card key={index} className="text-center bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow p-2 md:p-6 aspect-square flex flex-col justify-center">
               <CardHeader className="flex flex-col items-center gap-2 md:gap-4">
                 {step.icon}
                 <CardTitle className="font-headline text-base md:text-2xl">{step.title}</CardTitle>
