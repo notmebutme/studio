@@ -1,3 +1,5 @@
+"use client";
+
 import type { Service } from "@/lib/services-data";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -8,6 +10,8 @@ import { Card } from "@/components/ui/card";
 import { ComparisonTable } from "./comparison-table";
 import { Pricing } from "./blocks/pricing";
 import { RainbowButton } from "./ui/rainbow-button";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const pricingPlans = [
     {
@@ -63,13 +67,22 @@ const pricingPlans = [
 ];
 
 export function ServiceDetails({ service }: { service: Service }) {
+    const router = useRouter();
+
+    useEffect(() => {
+        router.replace('/');
+    }, [router]);
+    
     const showPricing = service.slug === 'ai-voice-agent' || service.slug === 'ai-chatbot';
 
+    // Return a loader or null while redirecting to prevent flashing of content
+    return null;
+
+    /*
     return (
         <div className="flex flex-col min-h-screen bg-background">
             <Header />
             <main className="flex-1">
-                {/* Hero Section */}
                 <section className="w-full py-20 md:py-32 bg-secondary/20">
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="grid gap-12 md:grid-cols-2 items-center">
@@ -102,14 +115,12 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
                 
-                {/* Pricing Section - Conditional */}
                 {showPricing && (
                     <section className="w-full py-20 md:py-24 bg-background">
                          <Pricing plans={pricingPlans} />
                     </section>
                 )}
 
-                {/* Key Features Section */}
                 <section className="w-full py-20 md:py-24 bg-secondary/20">
                     <div className="container mx-auto px-4 md:px-6 text-center">
                         <h2 className="text-3xl sm:text-4xl font-bold font-headline mb-12">
@@ -131,7 +142,6 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
 
-                {/* How It Works Section */}
                 <section className="w-full py-20 md:py-24 bg-background">
                     <div className="container mx-auto px-4 md:px-6 text-center">
                         <h2 className="text-3xl sm:text-4xl font-bold font-headline mb-12">
@@ -152,7 +162,6 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
                 
-                {/* Comparison Section */}
                 {service.comparison && (
                     <section className="w-full py-20 md:py-24 bg-secondary/20">
                         <div className="container mx-auto px-4 md:px-6">
@@ -164,7 +173,6 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </section>
                 )}
 
-                {/* CTA Section */}
                 <section className="w-full py-20 md:py-32 bg-primary/5">
                     <div className="container mx-auto text-center">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">Ready to revolutionize your content?</h2>
@@ -182,4 +190,5 @@ export function ServiceDetails({ service }: { service: Service }) {
             <Footer />
         </div>
     );
+    */
 }
