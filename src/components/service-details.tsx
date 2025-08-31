@@ -162,7 +162,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                     <div className="container mx-auto px-4 md:px-6">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline mb-6">Ready to get started?</h2>
                         <RainbowButton asChild href="/#booking" size="lg">
-                           <Link href="/#booking">Book a Free Consultation</Link>
+                           Book a Free Consultation
                         </RainbowButton>
                     </div>
                 </section>
