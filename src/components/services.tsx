@@ -1,4 +1,3 @@
-
 "use client"
 
 import Link from "next/link";
@@ -8,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
 import { ChevronDown } from "lucide-react";
+import { GlowingEffect } from "./ui/glowing-effect";
 
 export function Services() {
   const [showAll, setShowAll] = useState(false);
@@ -38,6 +38,7 @@ export function Services() {
             <Button
               onClick={() => setShowAll(true)}
               variant="outline"
+              size="default"
               className="glow-shadow font-bold border-2 border-primary/50"
             >
               View More Services <ChevronDown className="ml-2 h-5 w-5" />
@@ -51,15 +52,24 @@ export function Services() {
 
 function ServiceCard(service: Service) {
     return (
-      <Link href={`/services/${service.slug}`} className="group">
-        <Card className="h-full flex flex-col text-center bg-card/80 border-2 border-primary/10 group-hover:border-primary/30 transition-all duration-300 glow-shadow p-6 justify-center items-center">
-            <CardHeader className="flex flex-col items-center gap-4">
-              <div className="text-primary group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
-              <CardTitle className="font-headline text-2xl group-hover:text-primary transition-colors duration-300">{service.title}</CardTitle>
-            </CardHeader>
-        </Card>
-      </Link>
+        <Link href={`/services/${service.slug}`} className="group relative block h-full">
+            <GlowingEffect
+              spread={15}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={1}
+              className="group-hover:opacity-100 opacity-0 transition-opacity duration-300"
+            />
+            <Card className="relative h-full flex flex-col text-center bg-card/80 border border-primary/20 group-hover:border-primary/40 transition-all duration-300 p-6 justify-center items-center">
+                <CardHeader className="flex flex-col items-center gap-4">
+                  <div className="text-primary group-hover:scale-110 transition-transform duration-300">
+                    {service.icon}
+                  </div>
+                  <CardTitle className="font-headline text-2xl group-hover:text-primary transition-colors duration-300">{service.title}</CardTitle>
+                </CardHeader>
+            </Card>
+        </Link>
     )
 }
