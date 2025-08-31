@@ -10,9 +10,9 @@ export function Header() {
           <Image 
             src="/logo.png" 
             alt="Intrix AI Logo" 
-            width={24} 
-            height={24}
-            className="rounded-md md:w-7 md:h-7"
+            width={28} 
+            height={28}
+            className="rounded-md md:w-8 md:h-8"
           />
           <span className="text-lg md:text-xl font-bold font-headline">Intrix AI</span>
         </Link>
