@@ -31,7 +31,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Textarea } from "./ui/textarea";
+import { AnimatedGlowingTextArea } from "./ui/animated-glowing-text-area";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -193,9 +193,8 @@ export function BookingForm() {
             <FormItem>
               <FormLabel>Description (Optional)</FormLabel>
               <FormControl>
-                <Textarea
+                <AnimatedGlowingTextArea
                   placeholder="Tell us a little bit about your project or what you'd like to discuss."
-                  className="resize-none"
                   {...field}
                 />
               </FormControl>
