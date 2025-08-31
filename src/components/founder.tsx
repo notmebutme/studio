@@ -9,11 +9,11 @@ export function Founder() {
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <Image
-              src="https://picsum.photos/600/600"
+              src="/p1653139369-0.jpg"
               alt="Veer Shah, Founder of Intrix AI"
               width={600}
               height={600}
-              className="rounded-lg relative"
+              className="rounded-lg relative object-cover aspect-square"
               data-ai-hint="founder portrait"
             />
           </div>
