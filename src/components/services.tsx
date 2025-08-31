@@ -64,10 +64,10 @@ function ServiceCard(service: Service) {
                                 {service.icon}
                             </div>
                             <div className="space-y-2">
-                                <h3 className="text-sm md:text-xl font-semibold font-sans text-foreground">
+                                <h3 className="text-base md:text-xl font-semibold font-sans text-foreground">
                                     {service.title}
                                 </h3>
-                                <p className="text-xs md:text-sm text-muted-foreground hidden md:block">
+                                <p className="text-sm text-muted-foreground hidden md:block">
                                     {service.description}
                                 </p>
                             </div>
