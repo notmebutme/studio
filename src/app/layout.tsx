@@ -22,17 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [loading, setLoading] = useState(true);
-  const [currentWord, setCurrentWord] = useState("WELCOME");
-  const words = ["WELCOME", "TO", "INTRIX AI"];
 
   useEffect(() => {
-    const timers = [
-      setTimeout(() => setCurrentWord("TO"), 4000), 
-      setTimeout(() => setCurrentWord("INTRIX AI"), 6000), 
-      setTimeout(() => setLoading(false), 10000) 
-    ];
-
-    return () => timers.forEach(clearTimeout);
+    const timer = setTimeout(() => setLoading(false), 10000); // Total duration for the preloader
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -46,9 +39,7 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased", "min-h-screen bg-background font-sans")}>
         {loading ? (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black">
-            <ParticleTextEffect word={currentWord} />
-          </div>
+            <ParticleTextEffect words={["WELCOME", "TO", "INTRIX AI"]} />
         ) : (
           <>
             <DemoOne />

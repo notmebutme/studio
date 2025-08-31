@@ -82,7 +82,7 @@ function ShowcaseItem({ title, traditionalImg, aiImg, traditionalHint, aiHint }:
                 />
             </div>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 mt-4 md:mt-0">
             <h4 className="text-sm md:text-lg font-semibold text-center text-primary text-glow">Intrix AI Content</h4>
             <div className="relative border-2 border-primary/50 rounded-lg p-1 shadow-[0_0_15px_0px_hsl(var(--primary)/0.4)]">
                 <Image

@@ -62,8 +62,8 @@ class Particle {
     // Move particle
     this.vel.x += this.acc.x
     this.vel.y += this.acc.y
-    this.pos.x += this.pos.x
-    this.pos.y += this.pos.y
+    this.pos.x += this.vel.x
+    this.pos.y += this.vel.y
     this.acc.x = 0
     this.acc.y = 0
   }
@@ -135,13 +135,17 @@ class Particle {
 }
 
 interface ParticleTextEffectProps {
-  word: string;
+  words?: string[]
 }
 
-export function ParticleTextEffect({ word }: ParticleTextEffectProps) {
+const DEFAULT_WORDS = ["WELCOME", "TO", "INTRIX AI"]
+
+export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number>()
   const particlesRef = useRef<Particle[]>([])
+  const frameCountRef = useRef(0)
+  const wordIndexRef = useRef(0)
 
   const pixelSteps = 6
   const drawAsPoints = true
@@ -168,6 +172,7 @@ export function ParticleTextEffect({ word }: ParticleTextEffectProps) {
   }
 
   const nextWord = (word: string, canvas: HTMLCanvasElement) => {
+    // Create off-screen canvas for text rendering
     const offscreenCanvas = document.createElement("canvas")
     offscreenCanvas.width = canvas.width
     offscreenCanvas.height = canvas.height
@@ -278,6 +283,22 @@ export function ParticleTextEffect({ word }: ParticleTextEffectProps) {
         }
       }
     }
+    
+    frameCountRef.current++
+    let changeTime;
+    switch(wordIndexRef.current) {
+        case 0: changeTime = 240; break; // WELCOME: 4 seconds
+        case 1: changeTime = 120; break; // TO: 2 seconds
+        case 2: changeTime = 240; break; // INTRIX AI: 4 seconds
+        default: changeTime = 240;
+    }
+
+
+    if (frameCountRef.current % changeTime === 0 && wordIndexRef.current < words.length -1) {
+      wordIndexRef.current = (wordIndexRef.current + 1)
+      nextWord(words[wordIndexRef.current], canvas)
+    }
+
     animationRef.current = requestAnimationFrame(animate)
   }
 
@@ -288,7 +309,7 @@ export function ParticleTextEffect({ word }: ParticleTextEffectProps) {
     canvas.width = 1000
     canvas.height = 500
     
-    nextWord(word, canvas)
+    nextWord(words[0], canvas)
 
     if (!animationRef.current) {
         animationRef.current = requestAnimationFrame(animate)
@@ -300,7 +321,7 @@ export function ParticleTextEffect({ word }: ParticleTextEffectProps) {
         animationRef.current = undefined;
       }
     }
-  }, [word])
+  }, [words])
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen w-screen bg-black p-4">
