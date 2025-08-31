@@ -18,13 +18,13 @@ export function Founder() {
                         <Image 
                             src="/founder.jpg" 
                             alt="Veer Shah, Founder of Intrix AI"
-                            width={250}
-                            height={250}
-                            className="rounded-full aspect-square object-cover border-4 border-primary/20 shadow-lg"
+                            width={200}
+                            height={200}
+                            className="rounded-full aspect-square object-cover border-4 border-primary/20 shadow-lg md:w-[250px] md:h-[250px]"
                             data-ai-hint="founder portrait"
                         />
                     </div>
-                    <div className="md:col-span-2 space-y-4">
+                    <div className="md:col-span-2 space-y-4 text-center md:text-left">
                         <blockquote className="text-base md:text-lg italic text-foreground/90">
                         “We're not just building tools; we're building the next generation of creators. For too long, brilliant ideas have been trapped by the limitations of budget and time. We're breaking those barriers. Intrix AI is more than software—it's a partner that amplifies your team's creative potential, turning 'what if' into 'what's next' at the speed of thought. We're here to usher in an era where your imagination is the only bottleneck.”
                         </blockquote>

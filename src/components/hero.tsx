@@ -5,9 +5,12 @@ export function Hero() {
   return (
     <section 
       className="w-full bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/hero-bg.png')" }}
     >
-      <div className="container px-4 md:px-6 z-10 py-20 md:py-32 lg:py-40">
+      <div 
+        className="absolute inset-0 z-0"
+        style={{ backgroundImage: "url('/hero-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+      />
+      <div className="container relative px-4 md:px-6 z-10 py-20 md:py-32 lg:py-40">
         <div className="grid gap-6 items-center">
           <div className="flex flex-col justify-center space-y-4 text-center">
             <div className="space-y-4">

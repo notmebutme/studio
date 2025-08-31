@@ -4,17 +4,17 @@ import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 
 const processSteps = [
   {
-    icon: <Calendar className="h-8 w-8 md:h-10 md:w-10 text-primary icon-glow" />,
+    icon: <Calendar className="h-8 w-8 text-primary icon-glow" />,
     title: "1. Book Appointment",
     description: "Choose a time that works for you. We'll discuss your goals and how Intrix can help.",
   },
   {
-    icon: <WandSparkles className="h-8 w-8 md:h-10 md:w-10 text-primary icon-glow" />,
+    icon: <WandSparkles className="h-8 w-8 text-primary icon-glow" />,
     title: "2. We Create Your Content",
     description: "Our team, powered by cutting-edge AI, gets to work crafting your custom content.",
   },
   {
-    icon: <Upload className="h-8 w-8 md:h-10 md:w-10 text-primary icon-glow" />,
+    icon: <Upload className="h-8 w-8 text-primary icon-glow" />,
     title: "3. Upload & Review Results",
     description: "Receive your content instantly. Review, request revisions, and deploy with ease.",
   },

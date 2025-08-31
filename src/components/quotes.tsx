@@ -54,7 +54,7 @@ export function Quotes() {
             <div className="flex w-full overflow-hidden p-2 [--gap:1.5rem] [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
                 <div className="flex w-max shrink-0 animate-marquee [gap:var(--gap)]">
                     {[...aiQuotes, ...aiQuotes].map((item, index) => (
-                        <Card key={index} className="flex flex-col justify-between bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow w-[320px] sm:w-[380px] shrink-0">
+                        <Card key={index} className="flex flex-col justify-between bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow w-[280px] sm:w-[380px] shrink-0">
                             <CardContent className="p-6">
                                 <blockquote className="text-base md:text-lg italic text-glow">“{item.quote}”</blockquote>
                             </CardContent>
