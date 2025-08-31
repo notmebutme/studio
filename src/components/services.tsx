@@ -8,7 +8,6 @@ import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
 import { ChevronDown } from "lucide-react";
 import { GlowingEffect } from "./ui/glowing-effect";
-import { cn } from "@/lib/utils";
 
 export function Services() {
   const [showAll, setShowAll] = useState(false);
@@ -57,7 +56,6 @@ function ServiceCard(service: Service) {
             <Link href={`/services/${service.slug}`} className="group block h-full">
                 <div className="relative h-full rounded-[1rem] border-[0.75px] border-border p-2">
                     <GlowingEffect
-                        spread={40}
                         glow={true}
                         disabled={false}
                         proximity={64}
