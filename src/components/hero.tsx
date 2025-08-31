@@ -4,13 +4,13 @@ import { RainbowButton } from "./ui/rainbow-button";
 export function Hero() {
   return (
     <section 
-      className="w-full bg-cover bg-center bg-no-repeat"
+      className="w-full bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center"
     >
       <div 
         className="absolute inset-0 z-0"
         style={{ backgroundImage: "url('/hero-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
       />
-      <div className="container relative px-4 md:px-6 z-10 py-20 md:py-32 lg:py-40">
+      <div className="container relative px-4 md:px-6 z-10">
         <div className="grid gap-6 items-center">
           <div className="flex flex-col justify-center space-y-4 text-center">
             <div className="space-y-4">
@@ -22,7 +22,7 @@ export function Hero() {
               </p>
             </div>
             <div className="flex justify-center">
-              <RainbowButton asChild>
+              <RainbowButton asChild href="#booking">
                 <Link href="#booking">Book an Appointment</Link>
               </RainbowButton>
             </div>
