@@ -1,0 +1,50 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Calendar, WandSparkles, Upload } from "lucide-react";
+
+const processSteps = [
+  {
+    icon: <Calendar className="h-10 w-10 text-primary icon-glow" />,
+    title: "1. Book Appointment",
+    description: "Choose a time that works for you. We'll discuss your goals and how Intrix can help.",
+  },
+  {
+    icon: <WandSparkles className="h-10 w-10 text-primary icon-glow" />,
+    title: "2. We Create Your Content",
+    description: "Our team, powered by cutting-edge AI, gets to work crafting your custom content.",
+  },
+  {
+    icon: <Upload className="h-10 w-10 text-primary icon-glow" />,
+    title: "3. Upload & Review Results",
+    description: "Receive your content instantly. Review, request revisions, and deploy with ease.",
+  },
+];
+
+export function Process() {
+  return (
+    <section className="w-full py-20 md:py-32 bg-secondary/20">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
+            Our 3-Step Flow
+          </h2>
+          <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
+            From booking to delivery, our process is designed for speed and efficiency.
+          </p>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3 mt-12">
+          {processSteps.map((step, index) => (
+            <Card key={index} className="text-center bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow">
+              <CardHeader className="flex flex-col items-center gap-4">
+                {step.icon}
+                <CardTitle className="font-headline text-2xl">{step.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{step.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
