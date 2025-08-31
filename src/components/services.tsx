@@ -2,7 +2,7 @@
 "use client"
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
@@ -13,6 +13,8 @@ export function Services() {
   const [showAll, setShowAll] = useState(false);
   const initialServices = servicesData.slice(0, 4);
   const additionalServices = servicesData.slice(4);
+
+  const servicesToShow = showAll ? servicesData : initialServices;
 
   return (
     <section className="w-full py-20 md:py-32">
@@ -26,12 +28,9 @@ export function Services() {
           </ScrollTriggeredText>
         </div>
         <ul className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-12">
-          {initialServices.map((service) => (
-            <ServiceCard key={service.title} {...service} />
-          ))}
-          {showAll && additionalServices.map((service) => (
-            <ServiceCard key={service.title} {...service} />
-          ))}
+            {servicesToShow.map((service) => (
+                <ServiceCard key={service.title} {...service} />
+            ))}
         </ul>
         {!showAll && servicesData.length > 4 && (
           <div className="mt-12 text-center">
