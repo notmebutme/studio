@@ -12,9 +12,6 @@ import { Footer } from "@/components/footer";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-background" />
-      </div>
       <Header />
       <main className="flex-1">
         <Hero />
