@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { TextEffect } from "./ui/text-effect";
 
 export function Hero() {
   return (
@@ -9,7 +10,9 @@ export function Hero() {
         <div className="container relative px-4 md:px-6 z-10">
             <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl font-headline text-glow bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary">
-                What if AI could create your content faster, smarter, and at a fraction of the cost?
+                <TextEffect per="char" preset="slide">
+                    What if AI could create your content faster, smarter, and at a fraction of the cost?
+                </TextEffect>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground md:text-xl max-w-2xl mx-auto">
                 Intrix AI helps you scale ads, content, and product visuals with cutting-edge AI tools.
