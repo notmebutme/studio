@@ -545,7 +545,7 @@ const FluidCursorEffect = () => {
       vorticityProgram = new Program(baseVertexShader!, vorticityShader!);
       pressureProgram = new Program(baseVertexShader!, pressureShader!);
       gradienSubtractProgram = new Program(baseVertexShader!, gradientSubtractShader!);
-      displayMaterial = new Material(baseVertexShader!, displayShaderSource!);
+      displayMaterial = new Material(baseVertexShader!, displayShaderSource);
     };
 
     const initializeBlit = () => {
@@ -619,18 +619,18 @@ const FluidCursorEffect = () => {
     };
 
     const createDoubleFBO = (w: number, h: number, internalFormat: number, format: number, type: number, param: number) => {
-      const fbo1 = createFBO(w, h, internalFormat, format, type, param);
-      const fbo2 = createFBO(w, h, internalFormat, format, type, param);
+      let fbo1 = createFBO(w, h, internalFormat, format, type, param);
+      let fbo2 = createFBO(w, h, internalFormat, format, type, param);
       return {
         width: w, height: h, texelSizeX: fbo1.texelSizeX, texelSizeY: fbo1.texelSizeY,
         get read() { return fbo1; },
-        set read(value) { this.read = value; },
+        set read(value) { fbo1 = value; },
         get write() { return fbo2; },
-        set write(value) { this.write = value; },
+        set write(value) { fbo2 = value; },
         swap() {
           const tmp = this.read;
-          (this as any).read = this.write;
-          (this as any).write = tmp;
+          this.read = this.write;
+          this.write = tmp;
         }
       };
     };
