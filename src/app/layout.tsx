@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import { useState, useEffect } from 'react';
 import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
+import DemoOne from '@/components/ui/demo';
 
 
 // Since we're using a client component for the preloader, we can't export metadata directly.
@@ -45,6 +46,7 @@ export default function RootLayout({
               {children}
             </div>
             <Toaster />
+            <DemoOne />
           </>
         )}
       </body>
