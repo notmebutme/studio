@@ -164,8 +164,7 @@ segmentWrapperClassName,
 let segments: string[];
 
 if (per === 'line') {
-segments = children.split('
-');
+segments = children.split('\n');
 } else if (per === 'word') {
 segments = children.split(/(\s+)/);
 } else {
