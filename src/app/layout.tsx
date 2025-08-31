@@ -24,7 +24,9 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased", "min-h-screen bg-background font-sans")}>
         <SmokeyCursor />
-        {children}
+        <div className="relative z-10">
+          {children}
+        </div>
         <Toaster />
       </body>
     </html>
