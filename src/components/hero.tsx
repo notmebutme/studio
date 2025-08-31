@@ -23,7 +23,7 @@ export function Hero() {
             </div>
             <div className="flex justify-center">
               <RainbowButton asChild href="#booking">
-                <Link href="#booking">Book an Appointment</Link>
+                Book an Appointment
               </RainbowButton>
             </div>
           </div>
