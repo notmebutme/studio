@@ -26,7 +26,7 @@ export function Services() {
             Cutting-edge AI solutions tailored to supercharge your brand's content strategy. Click a service to learn more.
           </ScrollTriggeredText>
         </div>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <ul className="grid grid-cols-2 gap-4 md:gap-8 mt-12">
           {initialServices.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
@@ -34,7 +34,7 @@ export function Services() {
             <ServiceCard key={service.title} {...service} />
           ))}
         </ul>
-        {!showAll && (
+        {!showAll && servicesData.length > 4 && (
           <div className="mt-12 text-center">
             <Button
               onClick={() => setShowAll(true)}
@@ -55,7 +55,7 @@ function ServiceCard(service: Service) {
     return (
         <li className="list-none">
             <Link href={`/services/${service.slug}`} className="group block h-full">
-                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                <div className="relative h-full rounded-[1rem] border-[0.75px] border-border p-1 md:rounded-[1.5rem] md:p-3">
                     <GlowingEffect
                         spread={40}
                         glow={true}
@@ -64,16 +64,16 @@ function ServiceCard(service: Service) {
                         inactiveZone={0.01}
                         borderWidth={3}
                     />
-                    <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-4 md:p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]">
-                        <div className="relative flex flex-1 flex-col justify-between gap-3">
+                    <div className="relative flex h-full flex-col justify-between gap-3 md:gap-6 overflow-hidden rounded-lg md:rounded-xl border-[0.75px] bg-background p-3 md:p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]">
+                        <div className="relative flex flex-1 flex-col justify-between gap-2 md:gap-3">
                             <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2 text-primary">
                                 {service.icon}
                             </div>
-                            <div className="space-y-3">
-                                <h3 className="pt-0.5 text-lg md:text-xl leading-[1.375rem] font-semibold font-headline tracking-[-0.04em] md:leading-[1.875rem] text-balance text-foreground group-hover:text-primary transition-colors">
+                            <div className="space-y-1 md:space-y-3">
+                                <h3 className="pt-0.5 text-base md:text-xl leading-tight font-semibold font-headline tracking-tighter md:tracking-[-0.04em] text-balance text-foreground group-hover:text-primary transition-colors">
                                     {service.title}
                                 </h3>
-                                <p className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                                <p className="font-sans text-xs md:text-base leading-snug md:leading-[1.375rem] text-muted-foreground">
                                     {service.description}
                                 </p>
                             </div>

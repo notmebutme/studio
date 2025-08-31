@@ -51,15 +51,15 @@ export function Quotes() {
         </div>
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-            <div className="flex w-full overflow-hidden p-2 [--gap:1.5rem] [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+            <div className="flex w-full overflow-hidden p-2 [--gap:1rem] md:[--gap:1.5rem] [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)]">
                 <div className="flex w-max shrink-0 animate-marquee [gap:var(--gap)]">
                     {[...aiQuotes, ...aiQuotes].map((item, index) => (
                         <Card key={index} className="flex flex-col justify-between bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow w-[280px] sm:w-[380px] shrink-0">
-                            <CardContent className="p-6">
-                                <blockquote className="text-base md:text-lg italic text-glow">“{item.quote}”</blockquote>
+                            <CardContent className="p-4 md:p-6">
+                                <blockquote className="text-sm md:text-lg italic text-glow">“{item.quote}”</blockquote>
                             </CardContent>
-                            <footer className="p-6 pt-0 text-right">
-                                <p className="font-semibold text-primary/80">- {item.author}</p>
+                            <footer className="p-4 pt-0 md:p-6 md:pt-0 text-right">
+                                <p className="font-semibold text-sm md:text-base text-primary/80">- {item.author}</p>
                             </footer>
                         </Card>
                     ))}

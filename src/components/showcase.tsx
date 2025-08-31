@@ -18,9 +18,9 @@ export function Showcase() {
         </div>
         <Tabs defaultValue="ads" className="w-full max-w-5xl mx-auto mt-12">
           <TabsList className="grid w-full grid-cols-3 bg-muted/50">
-            <TabsTrigger value="ads">AI-Generated Ads</TabsTrigger>
-            <TabsTrigger value="ugc">UGC Content</TabsTrigger>
-            <TabsTrigger value="mockups">Product Mockups</TabsTrigger>
+            <TabsTrigger value="ads" className="text-xs sm:text-sm">AI-Generated Ads</TabsTrigger>
+            <TabsTrigger value="ugc" className="text-xs sm:text-sm">UGC Content</TabsTrigger>
+            <TabsTrigger value="mockups" className="text-xs sm:text-sm">Product Mockups</TabsTrigger>
           </TabsList>
           <TabsContent value="ads">
             <ShowcaseItem
@@ -66,11 +66,11 @@ interface ShowcaseItemProps {
 function ShowcaseItem({ title, traditionalImg, aiImg, traditionalHint, aiHint }: ShowcaseItemProps) {
   return (
     <Card className="mt-6 border-2 border-primary/20 bg-card/80 glow-shadow">
-      <CardContent className="p-6">
-        <h3 className="text-2xl font-semibold mb-4 text-center font-headline">{title}</h3>
-        <div className="grid md:grid-cols-2 gap-6">
+      <CardContent className="p-4 md:p-6">
+        <h3 className="text-xl md:text-2xl font-semibold mb-4 text-center font-headline">{title}</h3>
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
           <div className="space-y-2">
-            <h4 className="text-lg font-semibold text-center text-muted-foreground">Traditional Content</h4>
+            <h4 className="text-base md:text-lg font-semibold text-center text-muted-foreground">Traditional Content</h4>
             <div className="relative">
                 <Image
                     src={traditionalImg}
@@ -83,7 +83,7 @@ function ShowcaseItem({ title, traditionalImg, aiImg, traditionalHint, aiHint }:
             </div>
           </div>
           <div className="space-y-2">
-            <h4 className="text-lg font-semibold text-center text-primary text-glow">Intrix AI Content</h4>
+            <h4 className="text-base md:text-lg font-semibold text-center text-primary text-glow">Intrix AI Content</h4>
             <div className="relative border-2 border-primary/50 rounded-lg p-1 shadow-[0_0_15px_0px_hsl(var(--primary)/0.4)]">
                 <Image
                     src={aiImg}
