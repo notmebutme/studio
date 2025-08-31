@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Check, Bot, Clapperboard, MonitorSmartphone, Voicemail, MessageCircle } from "lucide-react";
+import { Check, Bot, Clapperboard, MonitorSmartphone, Voicemail, MessageCircle, Film } from "lucide-react";
 
 const servicesList = [
   {
@@ -21,15 +21,22 @@ const servicesList = [
     plans: { starter: "$799/mo", growth: "$1499/mo", enterprise: "Custom" }
   },
   {
-    icon: <MonitorSmartphone className="h-8 w-8 text-primary" />,
-    title: "AI Product Mockups",
-    description: "Visualize your products in any setting without expensive photoshoots.",
-    benefits: ["Realistic Environments", "Infinite Customization", "Lifestyle Imagery"],
-    plans: { starter: "$399/mo", growth: "$899/mo", enterprise: "Custom" }
+    icon: <Film className="h-8 w-8 text-primary" />,
+    title: "AI CGI Ads",
+    description: "Produce stunning, photorealistic CGI video ads without physical shoots.",
+    benefits: ["Hyper-Realistic Visuals", "Limitless Creative Freedom", "Drastically Reduced Costs"],
+    plans: { starter: "$1599/mo", growth: "$2999/mo", enterprise: "Custom" }
   }
 ];
 
 const moreServicesList = [
+    {
+      icon: <MonitorSmartphone className="h-8 w-8 text-primary" />,
+      title: "AI Product Mockups",
+      description: "Visualize your products in any setting without expensive photoshoots.",
+      benefits: ["Realistic Environments", "Infinite Customization", "Lifestyle Imagery"],
+      plans: { starter: "$399/mo", growth: "$899/mo", enterprise: "Custom" }
+    },
     {
       icon: <Voicemail className="h-8 w-8 text-primary" />,
       title: "AI Voice Agent",
@@ -80,7 +87,7 @@ export function Services() {
   );
 }
 
-function ServiceCard({ icon, title, description, benefits, plans }: typeof servicesList[0]) {
+function ServiceCard({ icon, title, description, benefits, plans }: typeof servicesList[0] | typeof moreServicesList[0]) {
     return (
         <Card className="flex flex-col bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow">
             <CardHeader className="flex-row items-start gap-4 space-y-0">

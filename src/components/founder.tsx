@@ -9,7 +9,7 @@ export function Founder() {
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <Image
-              src="/p1653139369-0.jpg"
+              src="https://picsum.photos/600/600"
               alt="Veer Shah, Founder of Intrix AI"
               width={600}
               height={600}
