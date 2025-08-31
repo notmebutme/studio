@@ -25,7 +25,7 @@ export interface Service {
 export const servicesData: Service[] = [
   {
     slug: "ai-generated-content",
-    icon: <Bot className="h-12 w-12" />,
+    icon: <Bot className="h-6 w-6 md:h-8 md:w-8" />,
     title: "AI-Generated Content",
     description: "Go beyond generic blog posts. We produce high-quality, SEO-optimized articles, social media updates, and website copy that resonates with your audience and establishes your brand as an authority. Scale your content engine without scaling your team.",
     detailedDescription: "Harness the power of advanced AI to produce high-quality, SEO-optimized articles, social media updates, and website copy. Our system understands your brand voice to create content that resonates with your target audience, establishing you as an industry authority.",
@@ -59,7 +59,7 @@ export const servicesData: Service[] = [
   },
   {
     slug: "ai-generated-ads",
-    icon: <Clapperboard className="h-12 w-12" />,
+    icon: <Clapperboard className="h-6 w-6 md:h-8 md:w-8" />,
     title: "AI-Generated Ads",
     description: "Stop the guesswork. Our AI analyzes market trends to create a multitude of high-performing ad creatives tailored for any platform. Test hundreds of variations to find the perfect message that converts, all in a fraction of the time.",
     detailedDescription: "Move beyond guesswork. Our AI analyzes market trends and your performance data to generate a multitude of high-performing ad creatives. We produce visuals and copy tailored for any platform, enabling you to test hundreds of variations to find the perfect message that converts.",
@@ -93,7 +93,7 @@ export const servicesData: Service[] = [
   },
   {
     slug: "ai-product-mockups",
-    icon: <MonitorSmartphone className="h-12 w-12" />,
+    icon: <MonitorSmartphone className="h-6 w-6 md:h-8 md:w-8" />,
     title: "AI Product Mockups",
     description: "Say goodbye to expensive and time-consuming photoshoots. We can place your product in any environment or context imaginable, creating a library of stunning, realistic lifestyle images and mockups that drive sales.",
     detailedDescription: "Eliminate expensive and time-consuming photoshoots. Our AI can place your product in any environment or context imaginable, generating a massive library of stunning, realistic lifestyle images and professional mockups that are proven to drive sales.",
@@ -127,7 +127,7 @@ export const servicesData: Service[] = [
   },
   {
     slug: "ai-cgi-ads",
-    icon: <Film className="h-12 w-12" />,
+    icon: <Film className="h-6 w-6 md:h-8 md:w-8" />,
     title: "AI CGI Ads",
     description: "Unleash limitless creativity with photorealistic CGI video ads. From creating fantastical worlds to showcasing complex products in impossible ways, our AI-powered CGI removes the constraints of physical shoots, at a significantly lower cost.",
     detailedDescription: "Unleash limitless creativity with photorealistic CGI video ads. Our AI-powered workflow allows for the creation of fantastical worlds and impossible scenarios, perfect for showcasing complex products or building unforgettable brand narratives without the high cost of traditional production.",
@@ -161,7 +161,7 @@ export const servicesData: Service[] = [
   },
   {
     slug: "ai-voice-agent",
-    icon: <Voicemail className="h-12 w-12" />,
+    icon: <Voicemail className="h-6 w-6 md:h-8 md:w-8" />,
     title: "AI Voice Agent",
     description: "Transform your customer service with a human-like AI voice agent. Our agents can handle inbound and outbound calls 24/7, providing support, answering queries, and even closing sales with natural, conversational language.",
     detailedDescription: "Elevate your customer service with a sophisticated, human-like AI voice agent. Our agents handle inbound and outbound calls 24/7, providing world-class support, answering complex queries, and even closing sales with natural, emotionally-aware conversational language.",
@@ -195,7 +195,7 @@ export const servicesData: Service[] = [
   },
   {
     slug: "ai-chatbot",
-    icon: <MessageCircle className="h-12 w-12" />,
+    icon: <MessageCircle className="h-6 w-6 md:h-8 md:w-8" />,
     title: "AI Chatbot",
     description: "Deploy an intelligent, context-aware chatbot on your website to engage visitors, answer questions, and capture leads. Our chatbots provide instant, accurate responses and can seamlessly hand off complex inquiries to your human team.",
     detailedDescription: "Deploy an intelligent, context-aware chatbot on your website, Slack, or Discord to engage visitors, answer questions, and capture leads. Our chatbots provide instant, accurate responses and can seamlessly hand off complex inquiries to your human team when necessary.",

@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
 import { ChevronDown } from "lucide-react";
-import { CursorCard } from "./ui/cursor-cards";
+import { GlowingEffect } from "./ui/glowing-effect";
+import { cn } from "@/lib/utils";
 
 export function Services() {
   const [showAll, setShowAll] = useState(false);
@@ -25,7 +26,7 @@ export function Services() {
             Cutting-edge AI solutions tailored to supercharge your brand's content strategy. Click a service to learn more.
           </ScrollTriggeredText>
         </div>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <ul className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 mt-12">
           {initialServices.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
@@ -52,17 +53,33 @@ export function Services() {
 
 function ServiceCard(service: Service) {
     return (
-        <li className="list-none">
+        <li className="list-none h-full">
             <Link href={`/services/${service.slug}`} className="group block h-full">
-                <CursorCard className="h-full rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:border-primary/30 glow-shadow">
-                    <div className="flex flex-col items-center text-center gap-4">
-                        <div className="bg-primary/10 text-primary p-4 rounded-full">
-                            {service.icon}
+                <div className="relative h-full rounded-[1rem] border-[0.75px] border-border p-2">
+                    <GlowingEffect
+                        spread={40}
+                        glow={true}
+                        disabled={false}
+                        proximity={64}
+                        inactiveZone={0.01}
+                        borderWidth={3}
+                    />
+                    <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-lg border-[0.75px] bg-background p-4 md:p-6 shadow-sm">
+                        <div className="relative flex flex-1 flex-col justify-between gap-3">
+                            <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+                                {service.icon}
+                            </div>
+                            <div className="space-y-2">
+                                <h3 className="text-base md:text-xl font-semibold font-sans text-foreground">
+                                    {service.title}
+                                </h3>
+                                <p className="text-xs md:text-sm text-muted-foreground hidden md:block">
+                                    {service.description}
+                                </p>
+                            </div>
                         </div>
-                        <h3 className="text-xl font-bold font-headline text-primary">{service.title}</h3>
-                        <p className="text-muted-foreground">{service.description}</p>
                     </div>
-                </CursorCard>
+                </div>
             </Link>
         </li>
     )
