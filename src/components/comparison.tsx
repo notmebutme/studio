@@ -1,19 +1,12 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { CheckCircle2, XCircle } from "lucide-react";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
-import { ComparisonTable, ComparisonData } from "./comparison-table";
+import { CheckCircle2 } from "lucide-react";
 
-const comparisonData: ComparisonData = {
-  headers: ["Feature", "Traditional Content", "Intrix AI"],
-  rows: [
-    { feature: "Speed", traditional: "Days to Weeks", intrix: "Minutes to Hours" },
-    { feature: "Cost", traditional: "High", intrix: "Fraction of the cost" },
-    { feature: "Scalability", traditional: "Limited", intrix: "Infinite Variations" },
-    { feature: "Revisions", traditional: "Slow & Costly", intrix: "Instant & Affordable" },
-    { feature: "Performance", traditional: "Hit or Miss", intrix: "Data-Driven Optimization" },
-  ]
-};
+const advantages = [
+  "Stop wasting weeks on content that might not even work.",
+  "Launch campaigns in hours, not months.",
+  "Get infinite variations, not just one 'final' version.",
+  "Focus on strategy while AI handles the execution."
+];
 
 export function Comparison() {
   return (
@@ -21,14 +14,19 @@ export function Comparison() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto">
           <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
-            The Intrix AI Advantage
+            The Cost of "Organic" Isn't Just Money
           </ScrollTriggeredText>
           <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
-            See how our AI-powered platform stacks up against traditional content creation methods.
+            Your most valuable asset is time. While you're manually creating content, your competition is already launching, learning, and iterating with AI. Don't get left behind.
           </ScrollTriggeredText>
         </div>
-        <div className="mt-12">
-            <ComparisonTable data={comparisonData} />
+        <div className="max-w-2xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+            {advantages.map((advantage, index) => (
+                <div key={index} className="flex items-start gap-4">
+                    <CheckCircle2 className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                    <p className="text-lg text-foreground/90">{advantage}</p>
+                </div>
+            ))}
         </div>
       </div>
     </section>

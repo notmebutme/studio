@@ -26,7 +26,7 @@ export function Founder() {
                     </div>
                     <div className="md:col-span-2 space-y-4">
                         <blockquote className="text-lg italic text-foreground/90">
-                        “I started Intrix AI with a simple vision: to democratize creativity. For too long, high-quality content has been the exclusive domain of those with deep pockets and extensive resources. We're changing that. By harnessing the power of generative AI, we empower businesses of all sizes to produce stunning visuals, compelling ads, and engaging content at scale. Our goal is not to replace human creativity, but to amplify it, making it faster, smarter, and more accessible than ever before.”
+                        “We're not just building tools; we're building the next generation of creators. For too long, brilliant ideas have been trapped by the limitations of budget and time. We're breaking those barriers. Intrix AI is more than software—it's a partner that amplifies your team's creative potential, turning 'what if' into 'what's next' at the speed of thought. We're here to usher in an era where your imagination is the only bottleneck.”
                         </blockquote>
                         <div>
                             <p className="font-bold text-lg text-primary">Veer Shah</p>
