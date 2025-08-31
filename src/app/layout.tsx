@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
-import DemoOne from '@/components/ui/demo';
 import { useState, useEffect } from 'react';
 import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 
@@ -42,7 +41,6 @@ export default function RootLayout({
             <ParticleTextEffect words={["WELCOME", "TO", "INTRIX AI"]} />
         ) : (
           <>
-            <DemoOne />
             <div className="relative z-0 animate-fade-in-zoom">
               {children}
             </div>
