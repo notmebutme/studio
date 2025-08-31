@@ -60,8 +60,14 @@ const FluidCursorEffect = () => {
         preserveDrawingBuffer: false
       };
 
-      gl = canvas.getContext("webgl2", params) ||
-           canvas.getContext("webgl", params);
+      try {
+        gl = canvas.getContext("webgl2", params) ||
+             canvas.getContext("webgl", params);
+      } catch (e) {
+        // Fallback for some environments that might throw
+        gl = canvas.getContext("webgl", params);
+      }
+
 
       if (!gl) {
         throw new Error("Unable to initialize WebGL.");
