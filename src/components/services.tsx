@@ -2,11 +2,18 @@
 "use client"
 
 import Link from "next/link";
+import { useState } from "react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
+import { ChevronDown } from "lucide-react";
 
 export function Services() {
+  const [showAll, setShowAll] = useState(false);
+  const initialServices = servicesData.slice(0, 4);
+  const additionalServices = servicesData.slice(4);
+
   return (
     <section className="w-full py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6">
@@ -19,10 +26,24 @@ export function Services() {
           </ScrollTriggeredText>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
-          {servicesData.map((service) => (
+          {initialServices.map((service) => (
+            <ServiceCard key={service.title} {...service} />
+          ))}
+          {showAll && additionalServices.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
         </div>
+        {!showAll && (
+          <div className="mt-12 text-center">
+            <Button
+              onClick={() => setShowAll(true)}
+              variant="outline"
+              className="glow-shadow font-bold text-lg py-7 px-8 border-2 border-primary/50"
+            >
+              View More Services <ChevronDown className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
