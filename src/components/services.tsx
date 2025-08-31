@@ -26,17 +26,17 @@ const servicesList = [
     description: "Visualize your products in any setting without expensive photoshoots.",
     benefits: ["Realistic Environments", "Infinite Customization", "Lifestyle Imagery"],
     plans: { starter: "$399/mo", growth: "$899/mo", enterprise: "Custom" }
-  }
+  },
+  {
+    icon: <Film className="h-8 w-8 text-primary" />,
+    title: "AI CGI Ads",
+    description: "Produce stunning, photorealistic CGI video ads without physical shoots.",
+    benefits: ["Hyper-Realistic Visuals", "Limitless Creative Freedom", "Drastically Reduced Costs"],
+    plans: { starter: "$1599/mo", growth: "$2999/mo", enterprise: "Custom" }
+  },
 ];
 
 const moreServicesList = [
-    {
-      icon: <Film className="h-8 w-8 text-primary" />,
-      title: "AI CGI Ads",
-      description: "Produce stunning, photorealistic CGI video ads without physical shoots.",
-      benefits: ["Hyper-Realistic Visuals", "Limitless Creative Freedom", "Drastically Reduced Costs"],
-      plans: { starter: "$1599/mo", growth: "$2999/mo", enterprise: "Custom" }
-    },
     {
       icon: <Voicemail className="h-8 w-8 text-primary" />,
       title: "AI Voice Agent",
@@ -67,7 +67,7 @@ export function Services() {
             Cutting-edge AI solutions tailored to supercharge your brand's content strategy.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
           {servicesList.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
@@ -75,7 +75,7 @@ export function Services() {
              <ServiceCard key={service.title} {...service} />
           ))}
         </div>
-        {!showMore && (
+        {!showMore && moreServicesList.length > 0 && (
             <div className="mt-12 text-center">
                 <Button size="lg" variant="outline" className="glow-shadow border-2" onClick={() => setShowMore(true)}>
                     View More Services
