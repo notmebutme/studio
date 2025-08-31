@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
-import SmokeyCursor from '@/components/ui/smokey-cursor';
+import DemoOne from '@/components/ui/demo';
 
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
       </head>
       <body className={cn("font-body antialiased", "min-h-screen bg-background font-sans")}>
-        <SmokeyCursor />
+        <DemoOne />
         <div className="relative z-10">
           {children}
         </div>
