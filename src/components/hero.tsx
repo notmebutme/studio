@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { RainbowButton } from "./ui/rainbow-button";
 
 export function Hero() {
   return (
@@ -20,9 +21,9 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row justify-start gap-4">
-            <Button asChild size="lg" className="glow-shadow font-bold text-lg py-7 px-8 bg-primary hover:bg-primary/90">
+            <RainbowButton asChild>
               <Link href="#booking">Book an Appointment</Link>
-            </Button>
+            </RainbowButton>
             <Button asChild size="lg" variant="outline" className="glow-shadow font-bold text-lg py-7 px-8 border-2 border-primary/50">
               <Link href="#showcase">See a Demo</Link>
             </Button>

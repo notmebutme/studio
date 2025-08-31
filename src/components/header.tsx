@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { RainbowButton } from "./ui/rainbow-button";
 
 export function Header() {
   return (
@@ -16,9 +16,9 @@ export function Header() {
           />
           <span className="text-2xl font-bold font-headline">Intrix AI</span>
         </Link>
-        <Button asChild className="rounded-full font-bold bg-primary text-primary-foreground hover:bg-primary/90 glow-shadow">
+        <RainbowButton asChild>
           <Link href="#booking">Book an Appointment</Link>
-        </Button>
+        </RainbowButton>
       </div>
     </header>
   );

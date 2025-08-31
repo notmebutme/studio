@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { AnimatedGlowingTextArea } from "./ui/animated-glowing-text-area";
+import { RainbowButton } from "./ui/rainbow-button";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -202,7 +203,7 @@ export function BookingForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" size="lg" className="w-full glow-shadow font-bold">Book Appointment + Get Invite</Button>
+        <RainbowButton type="submit" className="w-full">Book Appointment + Get Invite</RainbowButton>
       </form>
     </Form>
   );

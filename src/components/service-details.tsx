@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { ComparisonTable } from "./comparison-table";
 import { Pricing } from "./blocks/pricing";
+import { RainbowButton } from "./ui/rainbow-button";
 
 const pricingPlans = [
     {
@@ -82,9 +83,9 @@ export function ServiceDetails({ service }: { service: Service }) {
                                 <p className="text-lg text-muted-foreground">
                                     {service.detailedDescription}
                                 </p>
-                                <Button asChild size="lg" className="font-bold">
+                                <RainbowButton asChild>
                                     <Link href="/#booking">Get Started <ArrowRight className="ml-2" /></Link>
-                                </Button>
+                                </RainbowButton>
                             </div>
                             <div className="bg-muted p-8 rounded-lg">
                                 <h3 className="text-2xl font-bold mb-4">Key Use Cases</h3>
@@ -137,7 +138,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                             How It Works
                         </h2>
                         <div className="relative grid gap-8 md:grid-cols-3">
-                            <div className="absolute top-1/2 left-0 w-full h-0.5 bg-border -translate-y-1/2 hidden md:block" />
+                            <div className="absolute top-12 left-0 w-full h-0.5 bg-border hidden md:block" />
                             {service.howItWorks.map((step, index) => (
                                 <div key={index} className="relative flex flex-col items-center text-center p-6">
                                     <div className="bg-background border-2 border-primary rounded-full h-16 w-16 flex items-center justify-center mb-4 z-10">
@@ -171,9 +172,9 @@ export function ServiceDetails({ service }: { service: Service }) {
                             Let's discuss how our {service.title} solution can be tailored to your specific needs.
                         </p>
                         <div className="mt-8">
-                            <Button asChild size="lg" className="font-bold text-lg py-7 px-8">
+                            <RainbowButton asChild>
                                 <Link href="/#booking">Book an Appointment</Link>
-                            </Button>
+                            </RainbowButton>
                         </div>
                     </div>
                 </section>
