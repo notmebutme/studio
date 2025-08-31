@@ -11,6 +11,7 @@ import React from "react";
 
 export function Services() {
   const [showAll, setShowAll] = useState(false);
+
   const displayedServices = showAll ? servicesData : servicesData.slice(0, 4);
 
   return (
