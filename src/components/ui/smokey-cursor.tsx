@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from 'react';
+import { animate } from "motion";
 
 const FluidCursorEffect = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
