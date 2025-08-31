@@ -123,23 +123,6 @@ export function BookingForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Description (Optional)</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Tell us a little bit about your project or what you'd like to discuss."
-                  className="resize-none"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <div className="grid md:grid-cols-2 gap-8">
             <FormField
             control={form.control}
@@ -203,6 +186,23 @@ export function BookingForm() {
               )}
             />
         </div>
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Description (Optional)</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Tell us a little bit about your project or what you'd like to discuss."
+                  className="resize-none"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <Button type="submit" size="lg" className="w-full glow-shadow font-bold">Book Appointment + Get Invite</Button>
       </form>
     </Form>
