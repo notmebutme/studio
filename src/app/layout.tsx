@@ -26,7 +26,7 @@ export default function RootLayout({
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4000); // Show preloader for 4 seconds
+    }, 6000); // Show preloader for 6 seconds
 
     return () => clearTimeout(timer);
   }, []);

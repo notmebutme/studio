@@ -304,9 +304,9 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
 
     // Auto-advance words
     frameCountRef.current++
-    if (frameCountRef.current > 0 && frameCountRef.current % 80 === 0) { // Change word every ~1.3 seconds
-        if (wordIndexRef.current < words.length -1) {
-            wordIndexRef.current = (wordIndexRef.current + 1);
+    if (frameCountRef.current > 0 && frameCountRef.current % 120 === 0) { // Change word every ~2 seconds
+        if (wordIndexRef.current < words.length - 1) {
+            wordIndexRef.current++;
             nextWord(words[wordIndexRef.current], canvas);
         }
     }
