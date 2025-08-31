@@ -95,7 +95,7 @@ export default {
         },
         marquee: {
           from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(calc(-100% - var(--gap)))' }
+          to: { transform: 'translateX(calc(-50% - var(--gap)/2))' }
         },
         rainbow: {
           "0%": { "background-position": "0%" },
@@ -109,7 +109,7 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        marquee: 'marquee var(--duration) linear infinite',
+        marquee: 'marquee 60s linear infinite',
         rainbow: "rainbow var(--speed, 2s) infinite linear",
         'fade-in': 'fade-in 1s ease-in-out',
       },

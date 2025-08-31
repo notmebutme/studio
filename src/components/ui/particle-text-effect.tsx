@@ -138,7 +138,7 @@ interface ParticleTextEffectProps {
   words?: string[]
 }
 
-const DEFAULT_WORDS = ["HELLO", "21st.dev", "ParticleTextEffect", "BY", "KAINXU"]
+const DEFAULT_WORDS = ["WELCOME", "TO", "INTRIX AI"]
 
 export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -173,8 +173,6 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
   }
 
   const nextWord = (word: string, canvas: HTMLCanvasElement) => {
-    // const ctx = canvas.getContext("2d")!
-
     // Create off-screen canvas for text rendering
     const offscreenCanvas = document.createElement("canvas")
     offscreenCanvas.width = canvas.width
@@ -306,9 +304,11 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
 
     // Auto-advance words
     frameCountRef.current++
-    if (frameCountRef.current % 240 === 0) {
-      wordIndexRef.current = (wordIndexRef.current + 1) % words.length
-      nextWord(words[wordIndexRef.current], canvas)
+    if (frameCountRef.current > 0 && frameCountRef.current % 80 === 0) { // Change word every ~1.3 seconds
+        if (wordIndexRef.current < words.length -1) {
+            wordIndexRef.current = (wordIndexRef.current + 1);
+            nextWord(words[wordIndexRef.current], canvas);
+        }
     }
 
     animationRef.current = requestAnimationFrame(animate)

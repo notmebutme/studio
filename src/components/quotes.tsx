@@ -51,10 +51,10 @@ export function Quotes() {
         </div>
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-            <div className="flex overflow-hidden p-2 [--gap:1.5rem] [gap:var(--gap)] flex-row [--duration:60s]">
-                <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row">
+            <div className="flex w-full overflow-hidden p-2 [--gap:1.5rem] [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                <div className="flex w-max shrink-0 animate-marquee [gap:var(--gap)]">
                     {[...aiQuotes, ...aiQuotes].map((item, index) => (
-                        <Card key={index} className="flex flex-col justify-between bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow max-w-[320px] sm:max-w-[380px]">
+                        <Card key={index} className="flex flex-col justify-between bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow w-[320px] sm:w-[380px] shrink-0">
                             <CardContent className="p-6">
                                 <blockquote className="text-lg italic text-glow">“{item.quote}”</blockquote>
                             </CardContent>
@@ -65,8 +65,6 @@ export function Quotes() {
                     ))}
                 </div>
             </div>
-            <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-secondary/20 sm:block" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-secondary/20 sm:block" />
         </div>
       </div>
     </section>

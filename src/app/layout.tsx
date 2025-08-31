@@ -43,7 +43,7 @@ export default function RootLayout({
       <body className={cn("font-body antialiased", "min-h-screen bg-background font-sans")}>
         {loading ? (
           <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black">
-            <ParticleTextEffect words={["WELCOME TO", "INTRIX AI"]} />
+            <ParticleTextEffect words={["WELCOME", "TO", "INTRIX AI"]} />
           </div>
         ) : (
           <>
