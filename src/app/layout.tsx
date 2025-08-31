@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { useState, useEffect } from 'react';
 import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 import DemoOne from '@/components/ui/demo';
+import { useRouter } from 'next/navigation';
 
 
 // Since we're using a client component for the preloader, we can't export metadata directly.
@@ -22,6 +23,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [loading, setLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsClient(true);
+    const navigationEntries = performance.getEntriesByType('navigation');
+    if (navigationEntries.length > 0 && (navigationEntries[0] as PerformanceNavigationTiming).type === 'reload') {
+      if (window.location.pathname !== '/') {
+        router.replace('/');
+      }
+    }
+  }, [router]);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 10000); // Total duration for the preloader
@@ -38,7 +51,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
       </head>
       <body className={cn("font-body antialiased", "min-h-screen bg-background font-sans")}>
-        {loading ? (
+        {isClient && loading && window.location.pathname === '/' ? (
             <ParticleTextEffect words={["WELCOME", "TO", "INTRIX AI"]} />
         ) : (
           <>
