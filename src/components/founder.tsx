@@ -8,7 +8,7 @@ export function Founder() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
-            From the Founder
+            Meet the Founder
           </ScrollTriggeredText>
         </div>
         <Card className="max-w-4xl mx-auto bg-card/80 border-2 border-primary/10 glow-shadow">
@@ -30,7 +30,7 @@ export function Founder() {
                         </blockquote>
                         <div>
                             <p className="font-bold text-lg text-primary">Veer Shah</p>
-                            <p className="text-muted-foreground">Founder, Intrix AI</p>
+                            <p className="text-muted-foreground">Founder & CEO, Intrix AI</p>
                         </div>
                     </div>
                 </div>

@@ -14,10 +14,10 @@ export function Comparison() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto">
           <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
-            The Cost of "Organic" Isn't Just Money
+            Your most valuable asset is time.
           </ScrollTriggeredText>
           <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
-            Your most valuable asset is time. While you're manually creating content, your competition is already launching, learning, and iterating with AI. Don't get left behind.
+            While you're manually creating content, your competition is already launching, learning, and iterating with AI. Don't get left behind.
           </ScrollTriggeredText>
         </div>
         <div className="max-w-2xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
