@@ -27,7 +27,7 @@ export default function RootLayout({
 
   useEffect(() => {
     const timers = [
-      setTimeout(() => setCurrentWord("TO"), 3000), 
+      setTimeout(() => setCurrentWord("TO"), 4000), 
       setTimeout(() => setCurrentWord("INTRIX AI"), 6000), 
       setTimeout(() => setLoading(false), 10000) 
     ];

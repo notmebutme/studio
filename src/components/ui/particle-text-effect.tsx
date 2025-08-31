@@ -303,11 +303,10 @@ export function ParticleTextEffect({ word }: ParticleTextEffectProps) {
   }, [word])
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen w-screen bg-black p-4">
       <canvas
         ref={canvasRef}
-        className="border-none rounded-lg"
-        style={{ maxWidth: "100%", height: "auto" }}
+        className="border-none rounded-lg w-full h-full"
       />
     </div>
   )

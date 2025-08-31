@@ -73,7 +73,7 @@ function ServiceCard(service: Service) {
                                 <h3 className="pt-0.5 text-base md:text-xl leading-tight font-semibold font-headline tracking-tighter md:tracking-[-0.04em] text-balance text-foreground group-hover:text-primary transition-colors">
                                     {service.title}
                                 </h3>
-                                <p className="font-sans text-xs md:text-base leading-snug md:leading-[1.375rem] text-muted-foreground">
+                                <p className="font-sans text-xs md:text-base leading-snug md:leading-[1.375rem] text-muted-foreground hidden md:block">
                                     {service.description}
                                 </p>
                             </div>

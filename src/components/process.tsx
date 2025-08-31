@@ -40,7 +40,7 @@ export function Process() {
                 <CardTitle className="font-headline text-base md:text-2xl">{step.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-xs md:text-base">{step.description}</p>
+                <p className="text-muted-foreground text-xs md:text-base hidden md:block">{step.description}</p>
               </CardContent>
             </Card>
           ))}
