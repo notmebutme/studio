@@ -21,24 +21,24 @@ export function ComparisonTable({ data }: { data: ComparisonData }) {
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/30">
-              <TableHead className="font-bold w-[34%] text-lg">{data.headers[0]}</TableHead>
-              <TableHead className="font-bold text-center text-lg w-[33%]">{data.headers[1]}</TableHead>
-              <TableHead className="font-bold text-center text-lg text-primary w-[33%]">{data.headers[2]}</TableHead>
+              <TableHead className="font-bold w-[34%] text-sm md:text-lg">{data.headers[0]}</TableHead>
+              <TableHead className="font-bold text-center text-sm md:text-lg w-[33%]">{data.headers[1]}</TableHead>
+              <TableHead className="font-bold text-center text-sm md:text-lg text-primary w-[33%]">{data.headers[2]}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {data.rows.map((item) => (
-              <TableRow key={item.feature} className="text-base">
+              <TableRow key={item.feature} className="text-sm md:text-base">
                 <TableCell className="font-medium">{item.feature}</TableCell>
                 <TableCell className="text-center text-muted-foreground">
-                  <div className="flex items-center justify-center gap-2">
-                    <XCircle className="h-5 w-5 text-destructive/80" />
+                  <div className="flex items-center justify-center gap-1 md:gap-2">
+                    <XCircle className="h-4 w-4 md:h-5 md:w-5 text-destructive/80 flex-shrink-0" />
                     <span>{item.traditional}</span>
                   </div>
                 </TableCell>
                 <TableCell className="text-center font-semibold text-primary">
-                  <div className="flex items-center justify-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
+                  <div className="flex items-center justify-center gap-1 md:gap-2">
+                    <CheckCircle2 className="h-4 w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
                     <span>{item.intrix}</span>
                   </div>
                 </TableCell>
