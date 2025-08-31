@@ -7,7 +7,6 @@ export function Hero() {
   return (
     <section className="relative w-full h-screen min-h-[700px] flex items-center justify-center text-center overflow-hidden">
       <div className="absolute inset-0 z-0 wavy-bg" />
-      <div className="absolute inset-0 z-10" />
       <div className="container relative px-4 md:px-6 z-20">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl font-headline text-foreground">
