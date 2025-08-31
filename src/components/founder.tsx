@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 
 export function Founder() {
   return (
@@ -18,13 +19,15 @@ export function Founder() {
             />
           </div>
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
+            <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
               From the Founder
-            </h2>
-            <h3 className="text-2xl font-semibold font-headline">Veer Shah</h3>
-            <p className="text-muted-foreground md:text-lg">
+            </ScrollTriggeredText>
+            <ScrollTriggeredText as="h3" per="word" preset="slide" delay={0.2} className="text-2xl font-semibold font-headline">
+              Veer Shah
+            </ScrollTriggeredText>
+            <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.4} className="text-muted-foreground md:text-lg">
               "I started Intrix AI with a simple vision: to democratize creativity. For too long, high-quality content has been the exclusive domain of those with deep pockets and extensive resources. We're changing that. By harnessing the power of generative AI, we empower businesses of all sizes to produce stunning visuals, compelling ads, and engaging content at scale. Our goal is not to replace human creativity, but to amplify it, making it faster, smarter, and more accessible than ever before."
-            </p>
+            </ScrollTriggeredText>
           </div>
         </div>
       </div>

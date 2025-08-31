@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TextEffect } from "./ui/text-effect";
+import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 
 export function Hero() {
   return (
@@ -14,9 +15,9 @@ export function Hero() {
                     What if AI could create your content faster, smarter, and at a fraction of the cost?
                 </TextEffect>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground md:text-xl max-w-2xl mx-auto">
+            <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.5} className="mt-6 text-lg text-muted-foreground md:text-xl max-w-2xl mx-auto">
                 Intrix AI helps you scale ads, content, and product visuals with cutting-edge AI tools.
-            </p>
+            </ScrollTriggeredText>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
                 <Button asChild size="lg" className="glow-shadow font-bold text-lg py-7 px-8">
                 <Link href="#booking">Book an Appointment</Link>

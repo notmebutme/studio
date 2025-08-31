@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { CheckCircle2, XCircle } from "lucide-react";
+import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 
 const comparisonData = [
   { feature: "Speed", traditional: "Days to Weeks", intrix: "Minutes to Hours" },
@@ -15,12 +16,12 @@ export function Comparison() {
     <section className="w-full py-20 md:py-32 bg-secondary/20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
+          <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
             The Intrix AI Advantage
-          </h2>
-          <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
+          </ScrollTriggeredText>
+          <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
             See how our AI-powered platform stacks up against traditional content creation methods.
-          </p>
+          </ScrollTriggeredText>
         </div>
         <Card className="mt-12 overflow-hidden border-2 border-primary/20 shadow-lg">
             <CardContent className="p-0">

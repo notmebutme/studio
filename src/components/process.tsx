@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, WandSparkles, Upload } from "lucide-react";
+import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 
 const processSteps = [
   {
@@ -24,12 +25,12 @@ export function Process() {
     <section className="w-full py-20 md:py-32 bg-secondary/20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
+          <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
             Our 3-Step Flow
-          </h2>
-          <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
+          </ScrollTriggeredText>
+          <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
             From booking to delivery, our process is designed for speed and efficiency.
-          </p>
+          </ScrollTriggeredText>
         </div>
         <div className="grid gap-8 md:grid-cols-3 mt-12">
           {processSteps.map((step, index) => (
