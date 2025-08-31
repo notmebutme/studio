@@ -31,7 +31,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { AnimatedGlowingTextArea } from "./ui/animated-glowing-search-bar";
+import { AnimatedGlowingTextArea } from "./ui/animated-glowing-text-area";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),

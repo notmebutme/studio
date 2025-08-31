@@ -16,7 +16,7 @@ export function Founder() {
                 <div className="grid md:grid-cols-3 gap-8 items-center">
                     <div className="md:col-span-1">
                         <Image 
-                            src="https://picsum.photos/400/400" 
+                            src="/founder.jpg" 
                             alt="Veer Shah, Founder of Intrix AI"
                             width={400}
                             height={400}
