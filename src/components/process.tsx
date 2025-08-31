@@ -4,17 +4,17 @@ import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 
 const processSteps = [
   {
-    icon: <Calendar className="h-6 w-6 md:h-8 md:w-8 text-primary icon-glow" />,
+    icon: <Calendar className="h-8 w-8 text-primary icon-glow" />,
     title: "1. Book Appointment",
     description: "Choose a time that works for you. We'll discuss your goals and how Intrix can help.",
   },
   {
-    icon: <WandSparkles className="h-6 w-6 md:h-8 md:w-8 text-primary icon-glow" />,
+    icon: <WandSparkles className="h-8 w-8 text-primary icon-glow" />,
     title: "2. We Create Your Content",
     description: "Our team, powered by cutting-edge AI, gets to work crafting your custom content.",
   },
   {
-    icon: <Upload className="h-6 w-6 md:h-8 md:w-8 text-primary icon-glow" />,
+    icon: <Upload className="h-8 w-8 text-primary icon-glow" />,
     title: "3. Upload & Review Results",
     description: "Receive your content instantly. Review, request revisions, and deploy with ease.",
   },
@@ -32,15 +32,15 @@ export function Process() {
             From booking to delivery, our process is designed for speed and efficiency.
           </ScrollTriggeredText>
         </div>
-        <div className="grid gap-4 md:gap-8 grid-cols-3 mt-12">
+        <div className="grid gap-8 md:grid-cols-3 mt-12">
           {processSteps.map((step, index) => (
-            <Card key={index} className="text-center bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow p-2 md:p-6">
-              <CardHeader className="flex flex-col items-center gap-2 md:gap-4">
+            <Card key={index} className="text-center bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow p-6">
+              <CardHeader className="flex flex-col items-center gap-4">
                 {step.icon}
-                <CardTitle className="font-headline text-base md:text-2xl">{step.title}</CardTitle>
+                <CardTitle className="font-headline text-2xl">{step.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-xs md:text-base hidden md:block">{step.description}</p>
+                <p className="text-muted-foreground">{step.description}</p>
               </CardContent>
             </Card>
           ))}
