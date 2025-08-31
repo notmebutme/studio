@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
-import SmokeyCursor from '@/components/ui/smokey-cursor-effect';
+import SmokeyCursor from '@/components/ui/smokey-cursor';
 
 
 export const metadata: Metadata = {

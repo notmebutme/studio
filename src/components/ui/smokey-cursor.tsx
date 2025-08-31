@@ -871,16 +871,15 @@ const FluidCursorEffect = () => {
     }
 
     const handleMouseMove = (e: MouseEvent) => {
-        let posX = scaleByPixelRatio(e.offsetX);
-        let posY = scaleByPixelRatio(e.offsetY);
+        let posX = scaleByPixelRatio(e.clientX);
+        let posY = scaleByPixelRatio(e.clientY);
         let pointer = pointers[0];
-        if (!pointer.down) return;
         updatePointerMoveData(pointer, posX, posY);
     };
 
     const handleMouseDown = (e: MouseEvent) => {
-        let posX = scaleByPixelRatio(e.offsetX);
-        let posY = scaleByPixelRatio(e.offsetY);
+        let posX = scaleByPixelRatio(e.clientX);
+        let posY = scaleByPixelRatio(e.clientY);
         let pointer = pointers[0];
         pointer.down = true;
         pointer.color = generateColor();
@@ -893,8 +892,8 @@ const FluidCursorEffect = () => {
     
     init();
 
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousedown', handleMouseDown);
     
     return () => {
         isMounted.current = false;
@@ -902,8 +901,8 @@ const FluidCursorEffect = () => {
             cancelAnimationFrame(animationIdRef.current);
         }
         // Cleanup event listeners
-        canvas.removeEventListener('mousemove', handleMouseMove);
-        canvas.removeEventListener('mousedown', handleMouseDown);
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mousedown', handleMouseDown);
     };
   }, []);
 
