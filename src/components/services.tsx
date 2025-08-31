@@ -3,12 +3,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
 import { ChevronDown } from "lucide-react";
-import { CursorCard, CursorCardsContainer } from "./ui/cursor-cards";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { cn } from "@/lib/utils";
 
 export function Services() {
   const [showAll, setShowAll] = useState(false);
@@ -26,20 +26,20 @@ export function Services() {
             Cutting-edge AI solutions tailored to supercharge your brand's content strategy. Click a service to learn more.
           </ScrollTriggeredText>
         </div>
-        <CursorCardsContainer className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
           {initialServices.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
           {showAll && additionalServices.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
-        </CursorCardsContainer>
+        </ul>
         {!showAll && (
           <div className="mt-12 text-center">
             <Button
               onClick={() => setShowAll(true)}
               variant="outline"
-              size="default"
+              size="lg"
               className="glow-shadow font-bold border-2 border-primary/50"
             >
               View More Services <ChevronDown className="ml-2 h-5 w-5" />
@@ -53,23 +53,34 @@ export function Services() {
 
 function ServiceCard(service: Service) {
     return (
-        <Link href={`/services/${service.slug}`} className="group block h-full">
-            <CursorCard 
-                className="h-full rounded-lg p-px"
-                borderColor="hsl(var(--border))"
-                primaryHue="hsl(var(--primary))"
-                secondaryHue="hsl(var(--accent))"
-                illuminationColor="hsl(var(--primary) / 0.1)"
-            >
-                <Card className="h-full flex flex-col text-center bg-card/90 transition-all duration-300 p-6 justify-center items-center">
-                    <CardHeader className="flex flex-col items-center gap-4">
-                      <div className="text-primary group-hover:scale-110 transition-transform duration-300">
-                        {service.icon}
-                      </div>
-                      <CardTitle className="font-headline text-2xl group-hover:text-primary transition-colors duration-300">{service.title}</CardTitle>
-                    </CardHeader>
-                </Card>
-            </CursorCard>
-        </Link>
+        <li className="list-none">
+            <Link href={`/services/${service.slug}`} className="group block h-full">
+                <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                    <GlowingEffect
+                        spread={40}
+                        glow={true}
+                        disabled={false}
+                        proximity={64}
+                        inactiveZone={0.01}
+                        borderWidth={3}
+                    />
+                    <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
+                        <div className="relative flex flex-1 flex-col justify-between gap-3">
+                            <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2 text-primary">
+                                {service.icon}
+                            </div>
+                            <div className="space-y-3">
+                                <h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-headline tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground group-hover:text-primary transition-colors">
+                                    {service.title}
+                                </h3>
+                                <p className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                                    {service.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Link>
+        </li>
     )
 }

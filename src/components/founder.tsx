@@ -12,20 +12,20 @@ export function Founder() {
           </ScrollTriggeredText>
         </div>
         <Card className="max-w-4xl mx-auto bg-card/80 border-2 border-primary/10 glow-shadow">
-            <CardContent className="p-8 md:p-12">
+            <CardContent className="p-6 md:p-8 lg:p-12">
                 <div className="grid md:grid-cols-3 gap-8 items-center">
-                    <div className="md:col-span-1">
+                    <div className="md:col-span-1 mx-auto">
                         <Image 
                             src="/founder.jpg" 
                             alt="Veer Shah, Founder of Intrix AI"
-                            width={400}
-                            height={400}
+                            width={250}
+                            height={250}
                             className="rounded-full aspect-square object-cover border-4 border-primary/20 shadow-lg"
                             data-ai-hint="founder portrait"
                         />
                     </div>
                     <div className="md:col-span-2 space-y-4">
-                        <blockquote className="text-lg italic text-foreground/90">
+                        <blockquote className="text-base md:text-lg italic text-foreground/90">
                         “We're not just building tools; we're building the next generation of creators. For too long, brilliant ideas have been trapped by the limitations of budget and time. We're breaking those barriers. Intrix AI is more than software—it's a partner that amplifies your team's creative potential, turning 'what if' into 'what's next' at the speed of thought. We're here to usher in an era where your imagination is the only bottleneck.”
                         </blockquote>
                         <div>

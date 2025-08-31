@@ -56,7 +56,7 @@ export function Quotes() {
                     {[...aiQuotes, ...aiQuotes].map((item, index) => (
                         <Card key={index} className="flex flex-col justify-between bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow w-[320px] sm:w-[380px] shrink-0">
                             <CardContent className="p-6">
-                                <blockquote className="text-lg italic text-glow">“{item.quote}”</blockquote>
+                                <blockquote className="text-base md:text-lg italic text-glow">“{item.quote}”</blockquote>
                             </CardContent>
                             <footer className="p-6 pt-0 text-right">
                                 <p className="font-semibold text-primary/80">- {item.author}</p>
