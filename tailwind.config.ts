@@ -104,6 +104,10 @@ export default {
         'fade-in': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        'fade-in-zoom': {
+            '0%': { opacity: '0', transform: 'scale(0.95)' },
+            '100%': { opacity: '1', transform: 'scale(1)' },
         }
       },
       animation: {
@@ -112,6 +116,7 @@ export default {
         marquee: 'marquee 60s linear infinite',
         rainbow: "rainbow var(--speed, 2s) infinite linear",
         'fade-in': 'fade-in 1s ease-in-out',
+        'fade-in-zoom': 'fade-in-zoom 0.7s ease-out',
       },
     },
   },

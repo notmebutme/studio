@@ -52,7 +52,7 @@ export default function RootLayout({
         ) : (
           <>
             <DemoOne />
-            <div className="relative z-10 animate-fade-in">
+            <div className="relative z-10 animate-fade-in-zoom">
               {children}
             </div>
             <Toaster />
