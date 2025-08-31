@@ -21,21 +21,21 @@ const servicesList = [
     plans: { starter: "$799/mo", growth: "$1499/mo", enterprise: "Custom" }
   },
   {
-    icon: <Film className="h-8 w-8 text-primary" />,
-    title: "AI CGI Ads",
-    description: "Produce stunning, photorealistic CGI video ads without physical shoots.",
-    benefits: ["Hyper-Realistic Visuals", "Limitless Creative Freedom", "Drastically Reduced Costs"],
-    plans: { starter: "$1599/mo", growth: "$2999/mo", enterprise: "Custom" }
+    icon: <MonitorSmartphone className="h-8 w-8 text-primary" />,
+    title: "AI Product Mockups",
+    description: "Visualize your products in any setting without expensive photoshoots.",
+    benefits: ["Realistic Environments", "Infinite Customization", "Lifestyle Imagery"],
+    plans: { starter: "$399/mo", growth: "$899/mo", enterprise: "Custom" }
   }
 ];
 
 const moreServicesList = [
     {
-      icon: <MonitorSmartphone className="h-8 w-8 text-primary" />,
-      title: "AI Product Mockups",
-      description: "Visualize your products in any setting without expensive photoshoots.",
-      benefits: ["Realistic Environments", "Infinite Customization", "Lifestyle Imagery"],
-      plans: { starter: "$399/mo", growth: "$899/mo", enterprise: "Custom" }
+      icon: <Film className="h-8 w-8 text-primary" />,
+      title: "AI CGI Ads",
+      description: "Produce stunning, photorealistic CGI video ads without physical shoots.",
+      benefits: ["Hyper-Realistic Visuals", "Limitless Creative Freedom", "Drastically Reduced Costs"],
+      plans: { starter: "$1599/mo", growth: "$2999/mo", enterprise: "Custom" }
     },
     {
       icon: <Voicemail className="h-8 w-8 text-primary" />,
