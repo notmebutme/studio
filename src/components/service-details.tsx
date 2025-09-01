@@ -117,7 +117,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                 {showPricing && (
                     <section id="pricing" className="w-full py-20 md:py-24">
                         <Pricing 
-                            plans={service.pricingPlans} 
+                            plans={service.pricingPlans!} 
                             title="Find the Perfect Plan"
                             description={`Choose the right tier for your needs. All our ${service.title} plans are backed by our dedicated support team.`}
                         />
