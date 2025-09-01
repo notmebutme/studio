@@ -15,33 +15,6 @@ interface PricingPlan {
   isPopular: boolean;
 }
 
-export interface Service {
-    slug: string;
-    icon: ReactNode;
-    title: string;
-    description: string;
-    detailedDescription: string;
-    useCases: string[];
-    keyFeatures: {
-        icon: ReactNode;
-        title: string;
-        description: string;
-    }[];
-    howItWorks: {
-        title: string;
-        description: string;
-    }[];
-    comparison: ComparisonData;
-    demo: {
-      title: string;
-      traditionalImg: string;
-      aiImg: string;
-      traditionalHint: string;
-      aiHint: string;
-    };
-    pricingPlans?: PricingPlan[];
-}
-
 const defaultPricingPlans: PricingPlan[] = [
     {
         name: "STARTER",
@@ -94,6 +67,33 @@ const defaultPricingPlans: PricingPlan[] = [
         isPopular: false,
     },
 ];
+
+export interface Service {
+    slug: string;
+    icon: ReactNode;
+    title: string;
+    description: string;
+    detailedDescription: string;
+    useCases: string[];
+    keyFeatures: {
+        icon: ReactNode;
+        title: string;
+        description: string;
+    }[];
+    howItWorks: {
+        title: string;
+        description: string;
+    }[];
+    comparison: ComparisonData;
+    demo: {
+      title: string;
+      traditionalImg: string;
+      aiImg: string;
+      traditionalHint: string;
+      aiHint: string;
+    };
+    pricingPlans?: PricingPlan[];
+}
 
 export const servicesData: Service[] = [
   {
