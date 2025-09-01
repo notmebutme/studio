@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { useState, useEffect } from 'react';
 import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 import { useRouter } from 'next/navigation';
+import { CursorProvider } from '@/components/cursor-provider';
 
 
 // Since we're using a client component for the preloader, we can't export metadata directly.
@@ -78,6 +79,7 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased", "min-h-screen bg-background font-sans")}>
           <>
+            <CursorProvider />
             <div className="relative z-0 animate-fade-in-zoom">
               {children}
             </div>
