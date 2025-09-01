@@ -28,7 +28,7 @@ function BentoGrid({ items }: BentoGridProps) {
     return (
         <div className="grid grid-cols-2 gap-4 max-w-7xl mx-auto">
             {items.map((item, index) => (
-                 <GlowCard key={index} className={cn("p-0", `md:col-span-${item.colSpan}`)} glowColor="purple" customSize={true}>
+                 <GlowCard key={index} className={cn("p-0", `col-span-2`)} glowColor="purple" customSize={true}>
                     <Link
                         href={item.href || '#'}
                         className={cn(
@@ -61,7 +61,7 @@ function BentoGrid({ items }: BentoGridProps) {
                                 <h3 className="pt-0.5 text-lg font-semibold font-sans tracking-tight md:text-xl text-balance text-foreground">
                                     {item.title}
                                 </h3>
-                                <p className="font-sans text-sm leading-normal text-muted-foreground">
+                                <p className="hidden md:block font-sans text-sm leading-normal text-muted-foreground">
                                     {item.description}
                                 </p>
                             </div>
