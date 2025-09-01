@@ -6,6 +6,7 @@ import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
 import React from "react";
 import { Card } from "@/components/ui/card";
+import { GlowCard } from "./ui/spotlight-card";
 
 export function Services() {
   return (
@@ -33,13 +34,13 @@ function ServiceCard(service: Service) {
     return (
         <li className="list-none h-full">
             <Link href={`/services/${service.slug}`} className="group block h-full">
-                 <Card className="h-full p-6 flex flex-col items-start text-left bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow">
+                 <GlowCard glowColor="blue" className="h-full p-6 flex flex-col items-start text-left">
                     <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-3 mb-4 text-primary">
                         {service.icon}
                     </div>
                     <h3 className="text-xl font-semibold font-headline text-foreground mb-2">{service.title}</h3>
                     <p className="text-sm text-muted-foreground">{service.description}</p>
-                </Card>
+                </GlowCard>
             </Link>
         </li>
     )

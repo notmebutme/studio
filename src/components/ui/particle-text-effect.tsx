@@ -94,12 +94,10 @@ class Particle {
 
   kill(width: number, height: number) {
     if (!this.isKilled) {
-      // Set target outside the scene
       const randomPos = this.generateRandomPos(width / 2, height / 2, (width + height) / 2)
       this.target.x = randomPos.x
       this.target.y = randomPos.y
 
-      // Begin blending color to black
       this.startColor = {
         r: this.startColor.r + (this.targetColor.r - this.startColor.r) * this.colorWeight,
         g: this.startColor.g + (this.targetColor.g - this.startColor.g) * this.colorWeight,
@@ -113,24 +111,11 @@ class Particle {
   }
 
   private generateRandomPos(x: number, y: number, mag: number): Vector2D {
-    const randomX = Math.random() * 1000
-    const randomY = Math.random() * 500
-
-    const direction = {
-      x: randomX - x,
-      y: randomY - y,
-    }
-
-    const magnitude = Math.sqrt(direction.x * direction.x + direction.y * direction.y)
-    if (magnitude > 0) {
-      direction.x = (direction.x / magnitude) * mag
-      direction.y = (direction.y / magnitude) * mag
-    }
-
+    const randomAngle = Math.random() * 2 * Math.PI;
     return {
-      x: x + direction.x,
-      y: y + direction.y,
-    }
+        x: x + Math.cos(randomAngle) * mag,
+        y: y + Math.sin(randomAngle) * mag
+    };
   }
 }
 
@@ -146,40 +131,26 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
   const particlesRef = useRef<Particle[]>([])
   const frameCountRef = useRef(0)
   const wordIndexRef = useRef(0)
+  const animationStateRef = useRef<'forming' | 'holding' | 'dispersing'>('forming');
 
   const pixelSteps = 6
   const drawAsPoints = true
 
   const generateRandomPos = (x: number, y: number, mag: number): Vector2D => {
-    const randomX = Math.random() * 1000
-    const randomY = Math.random() * 500
-
-    const direction = {
-      x: randomX - x,
-      y: randomY - y,
-    }
-
-    const magnitude = Math.sqrt(direction.x * direction.x + direction.y * direction.y)
-    if (magnitude > 0) {
-      direction.x = (direction.x / magnitude) * mag
-      direction.y = (direction.y / magnitude) * mag
-    }
-
+    const randomAngle = Math.random() * 2 * Math.PI;
     return {
-      x: x + direction.x,
-      y: y + direction.y,
-    }
+        x: x + Math.cos(randomAngle) * mag,
+        y: y + Math.sin(randomAngle) * mag
+    };
   }
 
   const nextWord = (word: string, canvas: HTMLCanvasElement) => {
-    // Create off-screen canvas for text rendering
     const offscreenCanvas = document.createElement("canvas")
     offscreenCanvas.width = canvas.width
     offscreenCanvas.height = canvas.height
     const offscreenCtx = offscreenCanvas.getContext("2d")
     if (!offscreenCtx) return;
 
-    // Draw text
     offscreenCtx.fillStyle = "white"
     offscreenCtx.font = "bold 100px Arial"
     offscreenCtx.textAlign = "center"
@@ -224,24 +195,15 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
           particleIndex++
         } else {
           particle = new Particle()
-
           const randomPos = generateRandomPos(canvas.width / 2, canvas.height / 2, (canvas.width + canvas.height) / 2)
           particle.pos.x = randomPos.x
           particle.pos.y = randomPos.y
-
-          particle.maxSpeed = Math.random() * 6 + 4
-          particle.maxForce = particle.maxSpeed * 0.05
-          particle.particleSize = Math.random() * 6 + 6
-          particle.colorBlendRate = Math.random() * 0.0275 + 0.0025
-
+          particle.vel.x = 0;
+          particle.vel.y = 0;
           particles.push(particle)
         }
 
-        particle.startColor = {
-          r: particle.startColor.r + (particle.targetColor.r - particle.startColor.r) * particle.colorWeight,
-          g: particle.startColor.g + (particle.targetColor.g - particle.startColor.g) * particle.colorWeight,
-          b: particle.startColor.b + (particle.targetColor.b - particle.startColor.b) * particle.colorWeight,
-        }
+        particle.startColor = { ...particle.targetColor }
         particle.targetColor = newColor
         particle.colorWeight = 0
 
@@ -285,13 +247,18 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
     }
     
     frameCountRef.current++
-    let changeTime = 240;
-
-
-    if (frameCountRef.current % changeTime === 0 && wordIndexRef.current < words.length -1) {
-      wordIndexRef.current = (wordIndexRef.current + 1)
-      nextWord(words[wordIndexRef.current], canvas)
+    const formingTime = 180;
+    const holdingTime = 120;
+    
+    if (animationStateRef.current === 'forming' && frameCountRef.current >= formingTime) {
+      animationStateRef.current = 'holding';
+      frameCountRef.current = 0;
+    } else if (animationStateRef.current === 'holding' && frameCountRef.current >= holdingTime) {
+      animationStateRef.current = 'dispersing';
+      frameCountRef.current = 0;
+      particles.forEach(p => p.kill(canvas.width, canvas.height));
     }
+
 
     animationRef.current = requestAnimationFrame(animate)
   }
