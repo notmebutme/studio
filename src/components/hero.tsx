@@ -2,6 +2,10 @@
 'use client';
 import { RainbowButton } from "./ui/rainbow-button";
 import { InteractiveRobotSpline } from "./ui/interactive-3d-robot";
+import dynamic from 'next/dynamic';
+
+// The HeroClient logic is now directly in Hero, which is a client component.
+const Spline = dynamic(() => import('@splinetool/react-spline'), { ssr: false });
 
 export function Hero() {
   const ROBOT_SCENE_URL = "https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode";
