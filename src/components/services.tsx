@@ -15,7 +15,8 @@ export function Services() {
     description: service.description,
     icon: service.icon,
     cta: "Learn More",
-    href: `/services/${service.slug}`
+    href: `/services/${service.slug}`,
+    colSpan: 1
   }));
 
 

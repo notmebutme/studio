@@ -24,7 +24,7 @@ interface BentoGridProps {
 
 function BentoGrid({ items }: BentoGridProps) {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
             {items.map((item, index) => (
                 <Link
                     href={item.href || '#'}
@@ -34,7 +34,7 @@ function BentoGrid({ items }: BentoGridProps) {
                         "border border-gray-100/80 dark:border-white/10 bg-white dark:bg-black",
                         "hover:shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:hover:shadow-[0_2px_12px_rgba(255,255,255,0.03)]",
                         "hover:-translate-y-0.5 will-change-transform",
-                        item.colSpan ? `md:col-span-${item.colSpan}` : "md:col-span-2",
+                        item.colSpan ? `md:col-span-${item.colSpan}` : "",
                         {
                             "shadow-[0_2px_12px_rgba(0,0,0,0.03)] -translate-y-0.5":
                                 item.hasPersistentHover,
