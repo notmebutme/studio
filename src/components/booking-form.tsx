@@ -48,10 +48,10 @@ const formSchema = z.object({
 
 const countryCodes = [
   { value: "+91", label: "India (+91)" },
-  { value: "+1", label: "USA (+1)" },
+  { value: "+1-US", label: "USA (+1)" },
   { value: "+44", label: "UK (+44)" },
   { value: "+61", label: "Australia (+61)" },
-  { value: "+1", label: "Canada (+1)" },
+  { value: "+1-CA", label: "Canada (+1)" },
 ];
 
 
@@ -71,7 +71,7 @@ export function BookingForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log({
         ...values,
-        fullPhoneNumber: `${values.countryCode}${values.phoneNumber}`
+        fullPhoneNumber: `${values.countryCode.split('-')[0]}${values.phoneNumber}`
     });
     toast({
         title: "Appointment booked",
@@ -131,7 +131,7 @@ export function BookingForm() {
                         </FormControl>
                         <SelectContent>
                         {countryCodes.map(country => (
-                            <SelectItem key={country.label} value={country.value}>
+                            <SelectItem key={country.value} value={country.value}>
                                 {country.label}
                             </SelectItem>
                         ))}
