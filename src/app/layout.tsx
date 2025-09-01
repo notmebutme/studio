@@ -40,9 +40,36 @@ export default function RootLayout({
     const timer = setTimeout(() => setLoading(false), 5000); // Total duration for the preloader
     return () => clearTimeout(timer);
   }, []);
+  
+  const [showPreloader, setShowPreloader] = useState(true);
+  useEffect(() => {
+    if (isClient) {
+      if (window.location.pathname !== '/') {
+        setShowPreloader(false);
+        setLoading(false);
+      }
+    }
+  }, [isClient]);
+
+  if (isClient && loading && showPreloader) {
+    return (
+      <html lang="en" className="dark">
+        <head>
+          <title>Intrix AI</title>
+          <meta name="description" content="Create your content faster, smarter, and at a fraction of the cost." />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+        </head>
+        <body className={cn("font-body antialiased", "min-h-screen bg-background font-sans")}>
+           <ParticleTextEffect words={["INTRIX AI"]} />
+        </body>
+      </html>
+    );
+  }
 
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <title>Intrix AI</title>
         <meta name="description" content="Create your content faster, smarter, and at a fraction of the cost." />
@@ -51,9 +78,6 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
       </head>
       <body className={cn("font-body antialiased", "min-h-screen bg-background font-sans")}>
-        {isClient && loading && window.location.pathname === '/' ? (
-            <ParticleTextEffect words={["INTRIX AI"]} />
-        ) : (
           <>
             <div className="relative z-0 animate-fade-in-zoom">
               {children}
@@ -61,7 +85,6 @@ export default function RootLayout({
             <Toaster />
             <DemoOne />
           </>
-        )}
       </body>
     </html>
   );
