@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
+import { GlowCard } from "./ui/spotlight-card";
 
 export function Founder() {
   return (
@@ -14,11 +15,8 @@ export function Founder() {
         <Card className="max-w-4xl mx-auto bg-transparent border-none shadow-none">
           <CardContent className="p-0">
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-              <div className="relative w-full max-w-sm mx-auto">
-                <div className="absolute inset-0 bg-secondary/30 rounded-3xl transform -rotate-12" />
-                <div className="absolute inset-0 bg-primary/20 rounded-3xl transform rotate-12" />
-                <div className="absolute inset-0 bg-accent/20 rounded-3xl transform" />
-                <div className="relative w-full h-auto bg-card rounded-3xl shadow-lg overflow-hidden">
+              <GlowCard className="w-full max-w-sm mx-auto p-0" glowColor="blue" customSize={true}>
+                <div className="relative w-full h-auto bg-card rounded-2xl shadow-lg overflow-hidden">
                   <Image
                     src="/founder.jpg"
                     alt="Veer Shah, Founder of Intrix AI"
@@ -28,7 +26,7 @@ export function Founder() {
                     data-ai-hint="founder portrait"
                   />
                 </div>
-              </div>
+              </GlowCard>
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h3 className="text-3xl font-bold font-headline text-foreground">Veer Shah</h3>
