@@ -121,7 +121,7 @@ export function BookingForm() {
             control={form.control}
             name="countryCode"
             render={({ field }) => (
-                <FormItem>
+                <FormItem className="md:col-span-1">
                     <FormLabel>Country Code</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
@@ -131,7 +131,7 @@ export function BookingForm() {
                         </FormControl>
                         <SelectContent>
                         {countryCodes.map(country => (
-                            <SelectItem key={country.value} value={country.value}>
+                            <SelectItem key={country.label} value={country.value}>
                                 {country.label}
                             </SelectItem>
                         ))}
