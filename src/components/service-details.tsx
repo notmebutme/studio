@@ -23,7 +23,7 @@ export function ServiceDetails({ service }: { service: Service }) {
         <div className="flex flex-col min-h-screen bg-background">
             <Header />
             <main className="flex-1">
-                <section className="w-full py-20 md:py-32 bg-secondary/20">
+                <section className="w-full py-16 md:py-24 bg-secondary/20">
                     <div className="container mx-auto px-4 md:px-6 text-center">
                         <ScrollTriggeredText as="h1" per="word" preset="slide" className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary text-glow">
                             {service.title}
@@ -35,7 +35,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                 </section>
 
                 {showGlassyPricing ? (
-                    <section className="relative py-20 md:py-24 overflow-hidden rounded-lg bg-secondary/40 backdrop-blur-3xl">
+                    <section className="relative py-16 md:py-20 overflow-hidden bg-secondary/40 backdrop-blur-3xl">
                         <BorderBeam colorFrom="hsl(var(--primary))" colorTo="hsl(var(--accent))" />
                         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/20 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
                         <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-accent/20 rounded-full filter blur-3xl opacity-50 animate-pulse animation-delay-4000"></div>
@@ -49,7 +49,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                         </div>
                     </section>
                 ) : showPricing && (
-                    <section id="pricing" className="w-full py-20 md:py-24">
+                    <section id="pricing" className="w-full py-16 md:py-20">
                         <Pricing 
                             plans={service.pricingPlans!} 
                             title="Find the Perfect Plan"
@@ -58,7 +58,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </section>
                 )}
                 
-                <section className="w-full py-20 md:py-24 bg-secondary/20">
+                <section className="w-full py-16 md:py-24 bg-secondary/20">
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="grid md:grid-cols-2 gap-12 items-center">
                             <div>
@@ -92,7 +92,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
 
-                <section className="w-full py-20 md:py-24">
+                <section className="w-full py-16 md:py-24">
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="text-center max-w-3xl mx-auto mb-12">
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary text-glow">Key Features</h2>
@@ -112,7 +112,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
 
-                <section className="w-full py-20 md:py-24 bg-secondary/20">
+                <section className="w-full py-16 md:py-24 bg-secondary/20">
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="text-center max-w-3xl mx-auto mb-12">
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary text-glow">Comparison</h2>
@@ -122,7 +122,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
 
-                <section className="w-full py-20 md:py-32 text-center">
+                <section className="w-full py-16 md:py-24 text-center">
                     <div className="container mx-auto px-4 md:px-6">
                         <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl font-headline mb-6">Ready to get started?</h2>
                         <RainbowButton href="/#booking" size="lg">

@@ -10,21 +10,21 @@ const advantages = [
 
 export function Comparison() {
   return (
-    <section className="w-full py-20 md:py-32 bg-secondary/20">
+    <section className="w-full py-16 md:py-24 bg-secondary/20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto">
-          <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
+          <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary text-glow">
             Your most valuable asset is time.
           </ScrollTriggeredText>
           <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
             While you're manually creating content, your competition is already launching, learning, and iterating with AI. Don't get left behind.
           </ScrollTriggeredText>
         </div>
-        <div className="max-w-4xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="max-w-4xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             {advantages.map((advantage, index) => (
                 <div key={index} className="flex items-start gap-4">
-                    <CheckCircle2 className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                    <p className="text-lg text-foreground/90">{advantage}</p>
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <p className="text-base text-foreground/90">{advantage}</p>
                 </div>
             ))}
         </div>

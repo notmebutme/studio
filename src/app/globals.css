@@ -68,12 +68,17 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  img, video, canvas, svg {
+    @apply block max-w-full h-auto;
   }
 }
 

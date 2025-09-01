@@ -10,13 +10,13 @@ export function Header() {
           <Image 
             src="/logo.png" 
             alt="Intrix AI Logo" 
-            width={40} 
-            height={40}
-            className="rounded-md md:w-12 md:h-12"
+            width={32} 
+            height={32}
+            className="rounded-md w-8 h-8 md:w-10 md:h-10"
           />
           <span className="text-lg md:text-xl font-bold font-headline">Intrix AI</span>
         </Link>
-        <RainbowButton asChild href="#booking" className="h-9 px-4 text-xs md:h-11 md:px-8 md:text-sm">
+        <RainbowButton asChild href="#booking" className="h-9 px-4 text-xs md:h-10 md:px-6 md:text-sm">
           Book an Appointment
         </RainbowButton>
       </div>

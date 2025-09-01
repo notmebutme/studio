@@ -12,7 +12,7 @@ export function Services() {
     icon: service.icon,
     cta: "Learn More",
     href: `/services/${service.slug}`,
-    colSpan: 2
+    colSpan: 1, // Change to 1 to stack on mobile, grid handles responsiveness
   }));
 
   const additionalServiceItems: BentoItem[] = servicesData.slice(4).map(service => ({
@@ -21,14 +21,14 @@ export function Services() {
     icon: service.icon,
     cta: "Learn More",
     href: `/services/${service.slug}`,
-    colSpan: 2
+    colSpan: 1, // Change to 1 to stack on mobile
   }));
 
   return (
     <section>
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-32">
+      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
         <div className="text-center max-w-3xl mx-auto">
-          <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
+          <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary text-glow">
             Our Services
           </ScrollTriggeredText>
           <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
@@ -41,8 +41,8 @@ export function Services() {
         
         {additionalServiceItems.length > 0 && (
           <>
-            <div className="text-center max-w-3xl mx-auto mt-20">
-              <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
+            <div className="text-center max-w-3xl mx-auto mt-16 md:mt-20">
+              <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary text-glow">
                 We also provide
               </ScrollTriggeredText>
             </div>

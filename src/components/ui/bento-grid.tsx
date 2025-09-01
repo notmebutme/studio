@@ -26,13 +26,13 @@ interface BentoGridProps {
 
 function BentoGrid({ items }: BentoGridProps) {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl mx-auto">
             {items.map((item, index) => (
-                 <GlowCard key={index} className={cn("p-0", `md:col-span-2`)} glowColor="purple" customSize={true}>
+                 <GlowCard key={index} className={cn("p-0", `md:col-span-${item.colSpan}`)} glowColor="purple" customSize={true}>
                     <Link
                         href={item.href || '#'}
                         className={cn(
-                            "group relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl p-6 shadow-sm md:p-6",
+                            "group relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl p-4 shadow-sm md:p-6",
                             "hover:-translate-y-0.5 will-change-transform transition-transform duration-300",
                             {
                                 "shadow-[0_2px_12px_rgba(0,0,0,0.03)] -translate-y-0.5":
@@ -57,11 +57,11 @@ function BentoGrid({ items }: BentoGridProps) {
                                     {item.status}
                                 </span>}
                             </div>
-                            <div className="space-y-3">
-                                <h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
+                            <div className="space-y-2">
+                                <h3 className="pt-0.5 text-lg font-semibold font-sans tracking-tight md:text-xl text-balance text-foreground">
                                     {item.title}
                                 </h3>
-                                <p className="[&_b]:md:font-semibold [&_strong]:md:font-semibold font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                                <p className="font-sans text-sm leading-normal text-muted-foreground">
                                     {item.description}
                                 </p>
                             </div>

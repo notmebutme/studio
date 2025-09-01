@@ -87,8 +87,8 @@ export function BookingForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 md:space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             <FormField
             control={form.control}
             name="name"
@@ -116,7 +116,7 @@ export function BookingForm() {
             )}
             />
         </div>
-        <div className="grid grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-3 gap-2 md:gap-4">
             <FormField
             control={form.control}
             name="countryCode"
@@ -180,7 +180,7 @@ export function BookingForm() {
             </FormItem>
           )}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             <FormField
             control={form.control}
             name="date"
