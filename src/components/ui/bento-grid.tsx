@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { GlowingEffect } from "./glowing-effect";
 
 
 export interface BentoItem {
@@ -28,17 +27,9 @@ function BentoGrid({ items }: BentoGridProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
             {items.map((item, index) => (
                 <div key={index} className={cn(
-                    "relative rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3",
+                    "relative rounded-[1.25rem] p-2 md:rounded-[1.5rem] md:p-3",
                     item.colSpan ? `md:col-span-${item.colSpan}` : "",
                 )}>
-                    <GlowingEffect
-                        spread={40}
-                        glow={true}
-                        disabled={false}
-                        proximity={64}
-                        inactiveZone={0.01}
-                        borderWidth={3}
-                    />
                     <Link
                         href={item.href || '#'}
                         className={cn(
