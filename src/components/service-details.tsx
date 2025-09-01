@@ -34,12 +34,17 @@ export function ServiceDetails({ service }: { service: Service }) {
                 </section>
 
                 {showGlassyPricing ? (
-                    <ModernPricingPage
-                        title={<>Find the <span className="text-cyan-400">Perfect Plan</span> for Your Business</>}
-                        subtitle="Start for free, then grow with us. Flexible plans for projects of all sizes."
-                        plans={service.pricingPlans!}
-                        showAnimatedBackground={false}
-                    />
+                    <section className="relative py-20 md:py-24 overflow-hidden">
+                        <div className="absolute inset-0 bg-secondary/10 backdrop-blur-sm z-0"></div>
+                        <div className="relative z-10">
+                            <ModernPricingPage
+                                title={<>Find the <span className="text-cyan-400">Perfect Plan</span> for Your Business</>}
+                                subtitle="Start for free, then grow with us. Flexible plans for projects of all sizes."
+                                plans={service.pricingPlans!}
+                                showAnimatedBackground={false}
+                            />
+                        </div>
+                    </section>
                 ) : showPricing && (
                     <section id="pricing" className="w-full py-20 md:py-24">
                         <Pricing 
