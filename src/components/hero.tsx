@@ -13,7 +13,7 @@ export function Hero() {
       />
       <div className="container relative px-4 md:px-6 z-10">
         <div className="flex flex-col justify-center items-center space-y-8 text-center">
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col items-center">
             <h1 className="text-6xl font-bold tracking-tighter md:text-7xl lg:text-8xl font-headline text-white">
               What if AI could create your content faster, smarter, and at a fraction of the cost?
             </h1>

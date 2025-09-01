@@ -29,7 +29,7 @@ function BentoGrid({ items }: BentoGridProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
             {items.map((item, index) => (
                 <div key={index} className={cn(
-                    "relative rounded-[1.25rem] p-2 md:rounded-[1.5rem] md:p-3",
+                    "relative rounded-[1.25rem] p-0.5 md:rounded-[1.5rem]", // Adjusted padding for border
                     item.colSpan ? `md:col-span-${item.colSpan}` : "",
                 )}>
                     <GlowingEffect
@@ -38,13 +38,13 @@ function BentoGrid({ items }: BentoGridProps) {
                         disabled={false}
                         proximity={64}
                         inactiveZone={0.01}
-                        borderWidth={3}
+                        borderWidth={1} // Use a smaller border width for the effect
                     />
                     <Link
                         href={item.href || '#'}
                         className={cn(
                             "group relative p-6 rounded-xl overflow-hidden transition-all duration-300 h-full flex flex-col",
-                            "border border-gray-100/80 dark:border-white/10 bg-white dark:bg-black",
+                            "bg-white/95 dark:bg-black/95", // Slightly less transparent
                             "hover:shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:hover:shadow-[0_2px_12px_rgba(255,255,255,0.03)]",
                             "hover:-translate-y-0.5 will-change-transform",
                             {
@@ -109,14 +109,6 @@ function BentoGrid({ items }: BentoGridProps) {
                                 </span>
                             </div>
                         </div>
-
-                        <div
-                            className={`absolute inset-0 -z-10 rounded-xl p-px bg-gradient-to-br from-transparent via-gray-100/50 to-transparent dark:via-white/10 ${
-                                item.hasPersistentHover
-                                    ? "opacity-100"
-                                    : "opacity-0 group-hover:opacity-100"
-                            } transition-opacity duration-300`}
-                        />
                     </Link>
                 </div>
             ))}

@@ -4,36 +4,36 @@ import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 
 const aiQuotes = [
   {
-    quote: "AI is the new electricity.",
-    author: "Andrew Ng",
-  },
-  {
-    quote: "The pace of progress in artificial intelligence is incredibly fast... it is growing at a pace close to exponential.",
-    author: "Elon Musk",
-  },
-  {
-    quote: "Generative AI is the most important technology of our lifetime.",
+    quote: "AI is not just a technology; it's a new method of invention. It will be the most powerful engine for progress that humanity has ever created.",
     author: "Jensen Huang, NVIDIA",
   },
   {
-    quote: "AI will be the most transformative technology of our lifetimes. It has the potential to solve some of the world's biggest challenges.",
-    author: "Sundar Pichai, Google",
+    quote: "Every industry will be transformed by AI. Businesses that don't adapt won't just be left behind; they'll become obsolete.",
+    author: "Marc Benioff, Salesforce",
   },
   {
-    quote: "AI is a fundamental risk to the existence of human civilization.",
-    author: "Elon Musk",
+    quote: "The B2B world is about to be completely reshaped by generative AI. The ability to create personalized content at scale is the new competitive advantage.",
+    author: "Paul Roetzer, Marketing AI Institute",
   },
   {
-    quote: "AI will probably most likely lead to the end of the world, but in the meantime, there'll be great companies.",
+    quote: "AI will automate the mundane, freeing humans to focus on the strategic, the creative, and the interpersonal. It's the ultimate productivity tool.",
+    author: "Satya Nadella, Microsoft",
+  },
+  {
+    quote: "Companies that embrace AI to augment their workforce will see exponential gains in efficiency and innovation.",
+    author: "Ginni Rometty, former CEO of IBM",
+  },
+  {
+    quote: "The role of the marketer in an AI world is not to create 10 pieces of content, but to create the one brilliant prompt that allows the AI to generate 10,000.",
     author: "Sam Altman, OpenAI",
   },
    {
-    quote: "We are moving from a mobile-first to an AI-first world.",
+    quote: "We are moving from a mobile-first to an AI-first world. The businesses built on this principle will be the giants of tomorrow.",
     author: "Sundar Pichai, Google",
   },
   {
-    quote: "The development of full artificial intelligence could spell the end of the human race.",
-    author: "Stephen Hawking",
+    quote: "Data is the new oil, and AI is the refinery. Without both, you're just sitting on an untapped asset.",
+    author: "Peter Sondergaard, Gartner",
   },
 ];
 
@@ -43,10 +43,10 @@ export function Quotes() {
       <div className="container mx-auto flex max-w-container flex-col items-center gap-16 text-center">
         <div className="flex flex-col items-center gap-8 px-4">
             <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
-                Perspectives from Tech Leaders
+                Perspectives from Industry Leaders
             </ScrollTriggeredText>
             <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
-                Insights on the AI revolution from the minds shaping our future.
+                Insights on the AI revolution from the minds shaping the future of business.
             </ScrollTriggeredText>
         </div>
 
