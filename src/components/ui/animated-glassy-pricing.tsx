@@ -3,6 +3,8 @@
 import React, { useRef, useEffect, useState, ReactNode } from 'react';
 import { RippleButton } from "@/components/ui/multi-type-ripple-buttons";
 import { BorderBeam } from './border-beam';
+import Link from 'next/link';
+
 // --- Internal Helper Components (Not exported) --- //
 
 const CheckIcon = ({ className }: { className?: string }) => (
@@ -160,6 +162,7 @@ export interface PricingCardProps {
   price: string;
   features: string[];
   buttonText: string;
+  href?: string;
   isPopular?: boolean;
   buttonVariant?: 'primary' | 'secondary';
 }
@@ -168,7 +171,7 @@ export interface PricingCardProps {
  * We export the PricingCard component itself in case you want to use it elsewhere.
  */
 export const PricingCard = ({
-  planName, description, price, features, buttonText, isPopular = false, buttonVariant = 'primary'
+  planName, description, price, features, buttonText, isPopular = false, buttonVariant = 'primary', href
 }: PricingCardProps) => {
   const cardClasses = `
     relative backdrop-blur-[14px] bg-gradient-to-br rounded-2xl shadow-xl flex-1 max-w-xs px-7 py-8 flex flex-col transition-all duration-300
@@ -183,6 +186,8 @@ export const PricingCard = ({
       : 'bg-black/10 hover:bg-black/20 text-foreground border border-black/20 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white dark:border-white/20'
     }
   `;
+
+  const ButtonComponent = <RippleButton className={buttonClasses.trim()}>{buttonText}</RippleButton>;
 
   return (
     <div className={cardClasses.trim()}>
@@ -208,7 +213,7 @@ export const PricingCard = ({
           </li>
         ))}
       </ul>
-      <RippleButton className={buttonClasses.trim()}>{buttonText}</RippleButton>
+      {href ? <Link href={href}>{ButtonComponent}</Link> : ButtonComponent}
     </div>
   );
 };

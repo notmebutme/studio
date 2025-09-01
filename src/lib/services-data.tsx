@@ -251,6 +251,7 @@ export const servicesData: Service[] = [
         price: '99', 
         features: ['500 Minutes/Month', 'Basic Call Flows', 'Standard Voice', 'Email Support'], 
         buttonText: 'Get Started', 
+        href: "/#booking",
         buttonVariant: 'secondary'
       },
       { 
@@ -259,6 +260,7 @@ export const servicesData: Service[] = [
         price: '299', 
         features: ['2,500 Minutes/Month', 'Advanced Call Flows', 'CRM Integration', 'Priority Support'], 
         buttonText: 'Choose Growth', 
+        href: "/#booking",
         isPopular: true, 
         buttonVariant: 'primary' 
       },
@@ -268,6 +270,7 @@ export const servicesData: Service[] = [
         price: 'Custom', 
         features: ['Unlimited Minutes', 'Custom Integrations', 'Dedicated Account Manager', '24/7 Support'], 
         buttonText: 'Contact Us', 
+        href: "/#booking",
         buttonVariant: 'primary' 
       },
     ]
@@ -317,7 +320,8 @@ export const servicesData: Service[] = [
         description: 'For sites with moderate traffic and basic needs.', 
         price: '49', 
         features: ['1,000 Chats/Month', 'Basic Customization', 'Lead Capture', 'Email Support'], 
-        buttonText: 'Get Started', 
+        buttonText: 'Get Started',
+        href: "/#booking",
         buttonVariant: 'secondary'
       },
       { 
@@ -326,6 +330,7 @@ export const servicesData: Service[] = [
         price: '149', 
         features: ['5,000 Chats/Month', 'Advanced Customization', 'CRM Integration', 'Priority Support'], 
         buttonText: 'Choose Growth', 
+        href: "/#booking",
         isPopular: true, 
         buttonVariant: 'primary' 
       },
@@ -335,6 +340,7 @@ export const servicesData: Service[] = [
         price: 'Custom', 
         features: ['Unlimited Chats', 'Full Branding Control', 'Dedicated Bot Manager', 'API Access'], 
         buttonText: 'Contact Us', 
+        href: "/#booking",
         buttonVariant: 'primary' 
       },
     ]
