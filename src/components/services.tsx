@@ -2,20 +2,12 @@
 "use client"
 
 import Link from "next/link";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
-import { ChevronDown } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import React from "react";
 
 export function Services() {
-  const [showAll, setShowAll] = useState(false);
-
-  // This is the correct pattern: derive the list to render from state.
-  const displayedServices = showAll ? servicesData : servicesData.slice(0, 4);
-
   return (
     <section>
       <div className="container mx-auto px-4 md:px-6 py-20 md:py-32">
@@ -28,22 +20,10 @@ export function Services() {
           </ScrollTriggeredText>
         </div>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
-            {displayedServices.map((service) => (
+            {servicesData.map((service) => (
               <ServiceCard key={service.slug} {...service} />
             ))}
         </ul>
-        {!showAll && servicesData.length > 4 && (
-          <div className="mt-12 text-center">
-            <Button
-              onClick={() => setShowAll(true)}
-              variant="outline"
-              size="lg"
-              className="glow-shadow font-bold border-2 border-primary/50"
-            >
-              View More Services <ChevronDown className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        )}
       </div>
     </section>
   );
