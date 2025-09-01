@@ -138,7 +138,7 @@ interface ParticleTextEffectProps {
   words?: string[]
 }
 
-const DEFAULT_WORDS = ["WELCOME", "TO", "INTRIX AI"]
+const DEFAULT_WORDS = ["INTRIX AI"]
 
 export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -285,13 +285,7 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
     }
     
     frameCountRef.current++
-    let changeTime;
-    switch(wordIndexRef.current) {
-        case 0: changeTime = 240; break; // WELCOME: 4 seconds
-        case 1: changeTime = 120; break; // TO: 2 seconds
-        case 2: changeTime = 240; break; // INTRIX AI: 4 seconds
-        default: changeTime = 240;
-    }
+    let changeTime = 240;
 
 
     if (frameCountRef.current % changeTime === 0 && wordIndexRef.current < words.length -1) {
