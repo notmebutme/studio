@@ -74,7 +74,7 @@ export function BookingForm() {
         fullPhoneNumber: `${values.countryCode}${values.phoneNumber}`
     });
     toast({
-        title: "Appointment Booked!",
+        title: "Appointment booked",
         description: "We have sent you a confirmation email and our person will contact you shortly in 24 hours.",
     })
     form.reset();
