@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -108,7 +109,12 @@ export default {
         'fade-in-zoom': {
             '0%': { opacity: '0', transform: 'scale(1.05)' },
             '100%': { opacity: '1', transform: 'scale(1)' },
-        }
+        },
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -117,6 +123,7 @@ export default {
         rainbow: "rainbow var(--speed, 2s) infinite linear",
         'fade-in': 'fade-in 1s ease-in-out',
         'fade-in-zoom': 'fade-in-zoom 0.7s ease-out',
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
       },
     },
   },
