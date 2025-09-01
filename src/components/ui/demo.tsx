@@ -1,7 +1,9 @@
 "use client";
 
-import FluidCursorEffect from "@/components/ui/smokey-cursor-effect";
+import { SplashCursor } from "@/components/ui/splash-cursor";
 
 export default function DemoOne() {
-  return <FluidCursorEffect />;
+  return (
+      <SplashCursor />
+  )
 }
