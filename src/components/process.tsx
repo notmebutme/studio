@@ -1,28 +1,22 @@
-import { Card3DList } from "@/components/ui/animated-3d-card";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { Calendar, WandSparkles, Upload } from "lucide-react";
+import { GlowCard } from "./ui/spotlight-card";
 
 const processSteps = [
   {
-    id: "step-1",
     title: "1. Book Appointment",
     description: "Choose a time that works for you. We'll discuss your goals and how Intrix can help.",
     icon: <Calendar />,
-    theme: "primary" as const,
   },
   {
-    id: "step-2",
     title: "2. We Create Your Content",
     description: "Our team, powered by cutting-edge AI, gets to work crafting your custom content.",
     icon: <WandSparkles />,
-    theme: "secondary" as const,
   },
   {
-    id: "step-3",
     title: "3. Upload & Review Results",
     description: "Receive your content instantly. Review, request revisions, and deploy with ease.",
     icon: <Upload />,
-    theme: "accent" as const,
   },
 ];
 
@@ -38,8 +32,16 @@ export function Process() {
             From booking to delivery, our process is designed for speed and efficiency.
           </ScrollTriggeredText>
         </div>
-        <div className="mt-12">
-            <Card3DList cards={processSteps} columns={3} size="md" variant="premium" />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {processSteps.map((step, index) => (
+                <GlowCard key={index} glowColor="blue" className="p-6 flex flex-col items-center text-center">
+                    <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-4 mb-4 text-primary">
+                        {step.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold font-headline text-foreground mb-2">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                </GlowCard>
+            ))}
         </div>
       </div>
     </section>
