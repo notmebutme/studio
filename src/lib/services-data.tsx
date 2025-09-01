@@ -1,5 +1,5 @@
 
-import { Bot, Clapperboard, MonitorSmartphone, Voicemail, MessageCircle, Film, Sparkles, Target, Palette, Scale, Users, BrainCircuit, Repeat, Clock, Database, LineChart } from "lucide-react";
+import { Bot, Clapperboard, MonitorSmartphone, Film, Sparkles, Target, Palette, Scale, Users, BrainCircuit, Repeat, Clock, Database, LineChart } from "lucide-react";
 import { ReactNode } from "react";
 import { ComparisonData } from "@/components/comparison-table";
 
@@ -14,59 +14,6 @@ interface PricingPlan {
   href: string;
   isPopular: boolean;
 }
-
-const defaultPricingPlans: PricingPlan[] = [
-    {
-        name: "STARTER",
-        price: "50",
-        yearlyPrice: "40",
-        period: "per month",
-        features: [
-            "Up to 1,000 interactions/mo",
-            "Basic conversation flows",
-            "Website widget integration",
-            "48-hour support response time",
-        ],
-        description: "Perfect for individuals and small projects",
-        buttonText: "Start Free Trial",
-        href: "/#booking",
-        isPopular: false,
-    },
-    {
-        name: "PROFESSIONAL",
-        price: "99",
-        yearlyPrice: "79",
-        period: "per month",
-        features: [
-            "Up to 5,000 interactions/mo",
-            "Advanced conversation flows with conditional logic",
-            "CRM & multi-platform integration",
-            "Priority support",
-            "Basic analytics dashboard"
-        ],
-        description: "Ideal for growing teams and businesses",
-        buttonText: "Get Started",
-        href: "/#booking",
-        isPopular: true,
-    },
-    {
-        name: "ENTERPRISE",
-        price: "299",
-        yearlyPrice: "239",
-        period: "per month",
-        features: [
-            "Unlimited interactions",
-            "Custom-built conversation flows",
-            "Dedicated account manager",
-            "1-hour support response time & SLAs",
-            "Advanced security & compliance",
-        ],
-        description: "For large organizations with specific needs",
-        buttonText: "Contact Sales",
-        href: "/#booking",
-        isPopular: false,
-    },
-];
 
 export interface Service {
     slug: string;
@@ -255,87 +202,5 @@ export const servicesData: Service[] = [
         traditionalHint: "film set",
         aiHint: "alien planet"
     }
-  },
-  {
-    slug: "ai-voice-agent",
-    icon: <Voicemail className="h-6 w-6 md:h-8 md:w-8" />,
-    title: "AI Voice Agent",
-    description: "A human-like AI voice agent to handle calls 24/7. It provides support, answers queries, and even closes sales.",
-    detailedDescription: "Elevate your customer service with a sophisticated, human-like AI voice agent. Our agents handle calls 24/7, providing world-class support with natural, conversational language.",
-    useCases: [
-        "24/7 customer support and helpdesk.",
-        "Automated appointment scheduling.",
-        "Outbound sales and lead qualification.",
-        "Order status and information lookup."
-    ],
-    keyFeatures: [
-        { icon: <Users className="h-6 w-6 md:h-8 md:w-8" />, title: "Human-like Conversation", description: "Our agents understand context, handle interruptions, and use natural intonation." },
-        { icon: <BrainCircuit className="h-6 w-6 md:h-8 md:w-8" />, title: "Complex Task Handling", description: "Integrates with your systems to perform tasks like booking, ordering, and account management." },
-        { icon: <Database className="h-6 w-6 md:h-8 md:w-8" />, title: "CRM Integration", description: "Automatically logs call details, transcripts, and outcomes into your existing CRM." },
-        { icon: <Repeat className="h-6 w-6 md:h-8 md:w-8" />, title: "Continuous Learning", description: "The agent improves over time by learning from every single interaction." },
-    ],
-    howItWorks: [
-        { title: "Define Tasks", description: "We work with you to define goals and conversation flows." },
-        { title: "Integration", description: "We connect the agent to your phone systems and backend APIs." },
-        { title: "Train & Deploy", description: "The agent is trained on your specific data and deployed to handle live calls." },
-    ],
-    comparison: {
-        headers: ["Feature", "Human Call Center", "Intrix AI Voice Agent"],
-        rows: [
-            { feature: "Availability", traditional: "Business Hours", intrix: "24/7/365" },
-            { feature: "Cost per Call", traditional: "$5 - $15", intrix: "Pennies per minute" },
-            { feature: "Scalability", traditional: "Limited by hiring", intrix: "Instantly scalable" },
-            { feature: "Consistency", traditional: "Variable", intrix: "100% consistent quality" },
-        ]
-    },
-    demo: {
-        title: "AI Voice Agent Interaction",
-        traditionalImg: "https://picsum.photos/seed/tradcall/800/600",
-        aiImg: "https://picsum.photos/seed/aicall/800/600",
-        traditionalHint: "call center",
-        aiHint: "sound wave"
-    },
-    pricingPlans: defaultPricingPlans,
-  },
-  {
-    slug: "ai-chatbot",
-    icon: <MessageCircle className="h-6 w-6 md:h-8 md:w-8" />,
-    title: "AI Chatbot",
-    description: "An intelligent chatbot to engage visitors, answer questions, and capture leads, with seamless hand-off to your human team.",
-    detailedDescription: "Deploy an intelligent chatbot on your website, Slack, or Discord. Our bots provide instant, accurate answers and can seamlessly hand off complex inquiries to your team.",
-    useCases: [
-        "Instant website lead capture.",
-        "First-line customer support.",
-        "Onboarding new users or employees.",
-        "Internal knowledge base for teams."
-    ],
-    keyFeatures: [
-        { icon: <BrainCircuit className="h-6 w-6 md:h-8 md:w-8" />, title: "Knowledge Base Integration", description: "Train your chatbot on your own documents and websites for accurate answers." },
-        { icon: <Users className="h-6 w-6 md:h-8 md:w-8" />, title: "Seamless Handoff", description: "Intelligently routes conversations to the correct human agent when needed." },
-        { icon: <Sparkles className="h-6 w-6 md:h-8 md:w-8" />, title: "Proactive Engagement", description: "Initiates conversations with website visitors based on their behavior to increase leads." },
-        { icon: <LineChart className="h-6 w-6 md:h-8 md:w-8" />, title: "Analytics Dashboard", description: "Track conversation metrics, user satisfaction, and common queries to improve support." },
-    ],
-    howItWorks: [
-        { title: "Connect Data", description: "Provide your knowledge base for the chatbot to learn." },
-        { title: "Customize Behavior", description: "Define the chatbot's personality, goals, and handoff rules." },
-        { title: "Deploy Anywhere", description: "Embed the chatbot on your website or add to Slack/Discord." },
-    ],
-    comparison: {
-        headers: ["Feature", "Basic Chatbot", "Intrix AI Chatbot"],
-        rows: [
-            { feature: "Context Awareness", traditional: "Follows rigid script", intrix: "Understands conversation" },
-            { feature: "Knowledge Source", traditional: "Pre-programmed", intrix: "Learns from your documents" },
-            { feature: "Integration", traditional: "Limited or none", intrix: "Deep CRM/API integration" },
-            { feature: "Lead Quality", traditional: "Low, unverified", intrix: "High, qualified leads" },
-        ]
-    },
-    demo: {
-        title: "AI Chatbot Conversation",
-        traditionalImg: "https://picsum.photos/seed/tradchat/800/600",
-        aiImg: "https://picsum.photos/seed/aichat/800/600",
-        traditionalHint: "customer service",
-        aiHint: "chat bubbles"
-    },
-    pricingPlans: defaultPricingPlans,
   }
 ];
