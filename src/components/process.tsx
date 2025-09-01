@@ -1,3 +1,4 @@
+
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { Calendar, WandSparkles, Upload } from "lucide-react";
 import { GlowCard } from "./ui/spotlight-card";
@@ -32,7 +33,7 @@ export function Process() {
             From booking to delivery, our process is designed for speed and efficiency.
           </ScrollTriggeredText>
         </div>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {processSteps.map((step, index) => (
                 <GlowCard key={index} glowColor="blue" className="p-6 flex flex-col items-center text-center">
                     <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-4 mb-4 text-primary">
