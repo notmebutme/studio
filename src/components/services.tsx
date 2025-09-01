@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from "next/link";
@@ -12,6 +13,7 @@ import React from "react";
 export function Services() {
   const [showAll, setShowAll] = useState(false);
 
+  // This is the correct pattern: derive the list to render from state.
   const displayedServices = showAll ? servicesData : servicesData.slice(0, 4);
 
   return (

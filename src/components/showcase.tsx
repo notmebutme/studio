@@ -1,7 +1,7 @@
+
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 
 export function Showcase() {
@@ -63,7 +63,7 @@ interface ShowcaseItemProps {
   aiHint: string;
 }
 
-function ShowcaseItem({ title, traditionalImg, aiImg, traditionalHint, aiHint }: ShowcaseItemProps) {
+export function ShowcaseItem({ title, traditionalImg, aiImg, traditionalHint, aiHint }: ShowcaseItemProps) {
   return (
     <Card className="mt-6 border-2 border-primary/20 bg-card/80 glow-shadow">
       <CardContent className="p-4 md:p-6">

@@ -12,6 +12,7 @@ import { Pricing } from "./blocks/pricing";
 import { RainbowButton } from "./ui/rainbow-button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { Badge } from "@/components/ui/badge";
+import { ShowcaseItem } from "./showcase";
 
 const pricingPlans = [
     {
@@ -83,8 +84,26 @@ export function ServiceDetails({ service }: { service: Service }) {
                         </ScrollTriggeredText>
                     </div>
                 </section>
-                
+
                 <section className="w-full py-20 md:py-24">
+                    <div className="container mx-auto px-4 md:px-6">
+                        <div className="text-center max-w-3xl mx-auto mb-12">
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary text-glow">See It In Action</h2>
+                             <p className="mt-4 text-muted-foreground md:text-xl/relaxed">A preview of the results you can expect.</p>
+                        </div>
+                        <div className="max-w-5xl mx-auto">
+                            <ShowcaseItem
+                                title={service.demo.title}
+                                traditionalHint={service.demo.traditionalHint}
+                                aiHint={service.demo.aiHint}
+                                traditionalImg={service.demo.traditionalImg}
+                                aiImg={service.demo.aiImg}
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                <section className="w-full py-20 md:py-24 bg-secondary/20">
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="grid md:grid-cols-2 gap-12 items-center">
                             <div>
@@ -118,7 +137,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
 
-                <section className="w-full py-20 md:py-24 bg-secondary/20">
+                <section className="w-full py-20 md:py-24">
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="text-center max-w-3xl mx-auto mb-12">
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary text-glow">Key Features</h2>
@@ -138,7 +157,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
 
-                <section className="w-full py-20 md:py-24">
+                <section className="w-full py-20 md:py-24 bg-secondary/20">
                      <div className="container mx-auto px-4 md:px-6">
                         <div className="text-center max-w-3xl mx-auto mb-12">
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary text-glow">Comparison</h2>
@@ -149,7 +168,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                 </section>
                 
                 {showPricing && (
-                    <section id="pricing" className="w-full py-20 md:py-24 bg-secondary/20">
+                    <section id="pricing" className="w-full py-20 md:py-24">
                         <Pricing 
                             plans={pricingPlans} 
                             title="Find the Perfect Plan"
