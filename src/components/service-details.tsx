@@ -12,9 +12,11 @@ import { Pricing } from "./blocks/pricing";
 import { RainbowButton } from "./ui/rainbow-button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { Badge } from "@/components/ui/badge";
+import { ModernPricingPage } from "./ui/animated-glassy-pricing";
 
 export function ServiceDetails({ service }: { service: Service }) {
     const showPricing = service.pricingPlans && service.pricingPlans.length > 0;
+    const showGlassyPricing = ["ai-voice-agent", "ai-chatbot"].includes(service.slug) && service.pricingPlans;
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
@@ -95,7 +97,14 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
                 
-                {showPricing && (
+                {showGlassyPricing ? (
+                    <ModernPricingPage
+                        title={<>Find the <span className="text-cyan-400">Perfect Plan</span> for Your Business</>}
+                        subtitle="Start for free, then grow with us. Flexible plans for projects of all sizes."
+                        plans={service.pricingPlans!}
+                        showAnimatedBackground={true}
+                    />
+                ) : showPricing && (
                     <section id="pricing" className="w-full py-20 md:py-24">
                         <Pricing 
                             plans={service.pricingPlans!} 
@@ -104,6 +113,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                         />
                     </section>
                 )}
+
 
                  <section className="w-full py-20 md:py-32 text-center">
                     <div className="container mx-auto px-4 md:px-6">

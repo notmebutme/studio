@@ -1,7 +1,9 @@
 
-import { Bot, Clapperboard, MonitorSmartphone, Film, Sparkles, Target, Palette, Scale, Users, BrainCircuit, Repeat, Clock, Database, LineChart } from "lucide-react";
+
+import { Bot, Clapperboard, MonitorSmartphone, Film, Sparkles, Target, Palette, Scale, Users, BrainCircuit, Repeat, Clock, Database, LineChart, PhoneCall, MessagesSquare } from "lucide-react";
 import { ReactNode } from "react";
 import { ComparisonData } from "@/components/comparison-table";
+import { PricingCardProps } from "@/components/ui/animated-glassy-pricing";
 
 interface PricingPlan {
   name: string;
@@ -39,7 +41,7 @@ export interface Service {
       traditionalHint: string;
       aiHint: string;
     };
-    pricingPlans?: PricingPlan[];
+    pricingPlans?: PricingPlan[] | PricingCardProps[];
 }
 
 export const servicesData: Service[] = [
@@ -202,5 +204,139 @@ export const servicesData: Service[] = [
         traditionalHint: "film set",
         aiHint: "alien planet"
     }
+  },
+  {
+    slug: "ai-voice-agent",
+    icon: <PhoneCall className="h-6 w-6 md:h-8 md:w-8" />,
+    title: "AI Voice Agent",
+    description: "Automate customer support with a 24/7 AI voice agent that understands and responds with natural, human-like conversation.",
+    detailedDescription: "Revolutionize your customer service with an intelligent AI voice agent. Handle calls 24/7, answer queries, book appointments, and escalate complex issues, all with a natural, conversational tone.",
+    useCases: [
+        "24/7 inbound and outbound customer support.",
+        "Automated appointment scheduling and reminders.",
+        "Lead qualification and follow-up calls.",
+        "Surveys and customer feedback collection."
+    ],
+    keyFeatures: [
+        { icon: <Sparkles className="h-6 w-6 md:h-8 md:w-8" />, title: "Natural Conversation", description: "Engages customers with fluid, human-like dialogue, not robotic menus." },
+        { icon: <BrainCircuit className="h-6 w-6 md:h-8 md:w-8" />, title: "Intelligent Call Routing", description: "Seamlessly transfers calls to human agents when necessary, with full context." },
+        { icon: <Database className="h-6 w-6 md:h-8 md:w-8" />, title: "CRM Integration", description: "Logs call details and outcomes directly into your existing CRM system." },
+        { icon: <LineChart className="h-6 w-6 md:h-8 md:w-8" />, title: "Real-time Analytics", description: "Monitor call volume, resolution rates, and customer satisfaction in real-time." },
+    ],
+    howItWorks: [
+        { title: "Define Your Goals", description: "We work with you to define call flows and agent objectives." },
+        { title: "Train The Agent", description: "We train the AI on your product documentation and common queries." },
+        { title: "Deploy & Monitor", description: "Go live and watch your AI agent handle calls from day one." },
+    ],
+    comparison: {
+        headers: ["Feature", "Human Call Center", "Intrix AI Voice Agent"],
+        rows: [
+            { feature: "Availability", traditional: "Business Hours", intrix: "24/7/365" },
+            { feature: "Cost per Call", traditional: "$5 - $15", intrix: "Pennies per call" },
+            { feature: "Scalability", traditional: "Limited by hiring", intrix: "Instantly scalable" },
+            { feature: "Consistency", traditional: "Variable", intrix: "100% Consistent" },
+        ]
+    },
+    demo: {
+        title: "AI Voice Agent",
+        traditionalImg: "https://picsum.photos/seed/tradvoice/800/600",
+        aiImg: "https://picsum.photos/seed/aivoice/800/600",
+        traditionalHint: "call center",
+        aiHint: "sound wave"
+    },
+    pricingPlans: [
+      { 
+        planName: 'Basic', 
+        description: 'Perfect for personal projects and hobbyists.', 
+        price: '0', 
+        features: ['1 User', '1GB Storage', 'Community Forum'], 
+        buttonText: 'Get Started', 
+        buttonVariant: 'secondary'
+      },
+      { 
+        planName: 'Team', 
+        description: 'Collaborate with your team on multiple projects.', 
+        price: '49', 
+        features: ['10 Users', '100GB Storage', 'Email Support', 'Shared Workspaces'], 
+        buttonText: 'Choose Team Plan', 
+        isPopular: true, 
+        buttonVariant: 'primary' 
+      },
+      { 
+        planName: 'Agency', 
+        description: 'Manage all your clients under one roof.', 
+        price: '149', 
+        features: ['Unlimited Users', '1TB Storage', 'Dedicated Support', 'Client Invoicing'], 
+        buttonText: 'Contact Us', 
+        buttonVariant: 'primary' 
+      },
+    ]
+  },
+  {
+    slug: "ai-chatbot",
+    icon: <MessagesSquare className="h-6 w-6 md:h-8 md:w-8" />,
+    title: "AI Chatbot",
+    description: "Deploy an intelligent chatbot on your website to answer questions, capture leads, and guide users 24/7.",
+    detailedDescription: "Transform your website into a lead-generation machine with an AI chatbot that provides instant answers, qualifies visitors, and books meetings around the clock.",
+    useCases: [
+        "Instant website support and FAQ answers.",
+        "24/7 lead capture and qualification.",
+        "Interactive product recommendations.",
+        "User onboarding and guidance."
+    ],
+    keyFeatures: [
+        { icon: <Sparkles className="h-6 w-6 md:h-8 md:w-8" />, title: "Custom Knowledge Base", description: "Train your chatbot on your own website content, docs, and FAQs for accurate answers." },
+        { icon: <BrainCircuit className="h-6 w-6 md:h-8 md:w-8" />, title: "Proactive Engagement", description: "Initiates conversations with visitors based on their behavior to increase engagement." },
+        { icon: <Users className="h-6 w-6 md:h-8 md:w-8" />, title: "Lead Capture Forms", description: "Seamlessly collect user information within the chat conversation." },
+        { icon: <Clock className="h-6 w-6 md:h-8 md:w-8" />, title: "Appointment Booking", description: "Integrates with your calendar to book meetings and demos directly in the chat." },
+    ],
+    howItWorks: [
+        { title: "Connect Data", description: "We connect the chatbot to your website and other data sources." },
+        { title: "Customize Behavior", description: "Define the chatbot's personality, goals, and conversation starters." },
+        { title: "Embed On-Site", description: "Add one line of code to your website to deploy the chatbot." },
+    ],
+    comparison: {
+        headers: ["Feature", "Live Chat (Human)", "Intrix AI Chatbot"],
+        rows: [
+            { feature: "Response Time", traditional: "Minutes to Hours", intrix: "Instant" },
+            { feature: "Availability", traditional: "Limited by staffing", intrix: "24/7" },
+            { feature: "Cost", traditional: "Per agent, per month", intrix: "Flat monthly fee" },
+            { feature: "Lead Capture", traditional: "Manual", intrix: "Automated, 24/7" },
+        ]
+    },
+    demo: {
+        title: "AI Chatbot",
+        traditionalImg: "https://picsum.photos/seed/tradchat/800/600",
+        aiImg: "https://picsum.photos/seed/aichat/800/600",
+        traditionalHint: "customer support",
+        aiHint: "chat bubbles"
+    },
+    pricingPlans: [
+      { 
+        planName: 'Basic', 
+        description: 'Perfect for personal projects and hobbyists.', 
+        price: '0', 
+        features: ['1 User', '1GB Storage', 'Community Forum'], 
+        buttonText: 'Get Started', 
+        buttonVariant: 'secondary'
+      },
+      { 
+        planName: 'Team', 
+        description: 'Collaborate with your team on multiple projects.', 
+        price: '49', 
+        features: ['10 Users', '100GB Storage', 'Email Support', 'Shared Workspaces'], 
+        buttonText: 'Choose Team Plan', 
+        isPopular: true, 
+        buttonVariant: 'primary' 
+      },
+      { 
+        planName: 'Agency', 
+        description: 'Manage all your clients under one roof.', 
+        price: '149', 
+        features: ['Unlimited Users', '1TB Storage', 'Dedicated Support', 'Client Invoicing'], 
+        buttonText: 'Contact Us', 
+        buttonVariant: 'primary' 
+      },
+    ]
   }
 ];

@@ -34,6 +34,7 @@
     --color-3: 210 100% 63%;
     --color-4: 195 100% 63%;
     --color-5: 90 100% 63%;
+    --button-ripple-color: oklch(0.985 0 0 / 0.5);
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -60,6 +61,7 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --button-ripple-color: oklch(0.145 0 0 / 0.3);
   }
 }
 
