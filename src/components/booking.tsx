@@ -4,7 +4,7 @@ import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 
 export function Booking() {
   return (
-    <section id="booking" className="w-full py-20 md:py-32 bg-background">
+    <section id="booking" className="w-full py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center">
             <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
