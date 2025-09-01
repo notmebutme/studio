@@ -246,27 +246,27 @@ export const servicesData: Service[] = [
     },
     pricingPlans: [
       { 
-        planName: 'Basic', 
-        description: 'Perfect for personal projects and hobbyists.', 
-        price: '0', 
-        features: ['1 User', '1GB Storage', 'Community Forum'], 
+        planName: 'Starter', 
+        description: 'Ideal for small businesses and startups testing the waters.', 
+        price: '99', 
+        features: ['500 Minutes/Month', 'Basic Call Flows', 'Standard Voice', 'Email Support'], 
         buttonText: 'Get Started', 
         buttonVariant: 'secondary'
       },
       { 
-        planName: 'Team', 
-        description: 'Collaborate with your team on multiple projects.', 
-        price: '49', 
-        features: ['10 Users', '100GB Storage', 'Email Support', 'Shared Workspaces'], 
-        buttonText: 'Choose Team Plan', 
+        planName: 'Growth', 
+        description: 'For growing businesses scaling their customer interactions.', 
+        price: '299', 
+        features: ['2,500 Minutes/Month', 'Advanced Call Flows', 'CRM Integration', 'Priority Support'], 
+        buttonText: 'Choose Growth', 
         isPopular: true, 
         buttonVariant: 'primary' 
       },
       { 
-        planName: 'Agency', 
-        description: 'Manage all your clients under one roof.', 
-        price: '149', 
-        features: ['Unlimited Users', '1TB Storage', 'Dedicated Support', 'Client Invoicing'], 
+        planName: 'Enterprise', 
+        description: 'Custom solutions for large-scale operations.', 
+        price: 'Custom', 
+        features: ['Unlimited Minutes', 'Custom Integrations', 'Dedicated Account Manager', '24/7 Support'], 
         buttonText: 'Contact Us', 
         buttonVariant: 'primary' 
       },
@@ -313,27 +313,27 @@ export const servicesData: Service[] = [
     },
     pricingPlans: [
       { 
-        planName: 'Basic', 
-        description: 'Perfect for personal projects and hobbyists.', 
-        price: '0', 
-        features: ['1 User', '1GB Storage', 'Community Forum'], 
+        planName: 'Starter', 
+        description: 'For sites with moderate traffic and basic needs.', 
+        price: '49', 
+        features: ['1,000 Chats/Month', 'Basic Customization', 'Lead Capture', 'Email Support'], 
         buttonText: 'Get Started', 
         buttonVariant: 'secondary'
       },
       { 
-        planName: 'Team', 
-        description: 'Collaborate with your team on multiple projects.', 
-        price: '49', 
-        features: ['10 Users', '100GB Storage', 'Email Support', 'Shared Workspaces'], 
-        buttonText: 'Choose Team Plan', 
+        planName: 'Growth', 
+        description: 'For businesses looking to scale their online engagement.', 
+        price: '149', 
+        features: ['5,000 Chats/Month', 'Advanced Customization', 'CRM Integration', 'Priority Support'], 
+        buttonText: 'Choose Growth', 
         isPopular: true, 
         buttonVariant: 'primary' 
       },
       { 
-        planName: 'Agency', 
-        description: 'Manage all your clients under one roof.', 
-        price: '149', 
-        features: ['Unlimited Users', '1TB Storage', 'Dedicated Support', 'Client Invoicing'], 
+        planName: 'Enterprise', 
+        description: 'Tailored chatbot solutions for high-traffic websites.', 
+        price: 'Custom', 
+        features: ['Unlimited Chats', 'Full Branding Control', 'Dedicated Bot Manager', 'API Access'], 
         buttonText: 'Contact Us', 
         buttonVariant: 'primary' 
       },

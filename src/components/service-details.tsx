@@ -33,6 +33,23 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
 
+                {showGlassyPricing ? (
+                    <ModernPricingPage
+                        title={<>Find the <span className="text-cyan-400">Perfect Plan</span> for Your Business</>}
+                        subtitle="Start for free, then grow with us. Flexible plans for projects of all sizes."
+                        plans={service.pricingPlans!}
+                        showAnimatedBackground={false}
+                    />
+                ) : showPricing && (
+                    <section id="pricing" className="w-full py-20 md:py-24">
+                        <Pricing 
+                            plans={service.pricingPlans!} 
+                            title="Find the Perfect Plan"
+                            description={`Choose the right tier for your needs. All our ${service.title} plans are backed by our dedicated support team.`}
+                        />
+                    </section>
+                )}
+
                 <section className="w-full py-20 md:py-24 bg-secondary/20">
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -96,24 +113,6 @@ export function ServiceDetails({ service }: { service: Service }) {
                         <ComparisonTable data={service.comparison} />
                     </div>
                 </section>
-                
-                {showGlassyPricing ? (
-                    <ModernPricingPage
-                        title={<>Find the <span className="text-cyan-400">Perfect Plan</span> for Your Business</>}
-                        subtitle="Start for free, then grow with us. Flexible plans for projects of all sizes."
-                        plans={service.pricingPlans!}
-                        showAnimatedBackground={true}
-                    />
-                ) : showPricing && (
-                    <section id="pricing" className="w-full py-20 md:py-24">
-                        <Pricing 
-                            plans={service.pricingPlans!} 
-                            title="Find the Perfect Plan"
-                            description={`Choose the right tier for your needs. All our ${service.title} plans are backed by our dedicated support team.`}
-                        />
-                    </section>
-                )}
-
 
                  <section className="w-full py-20 md:py-32 text-center">
                     <div className="container mx-auto px-4 md:px-6">
