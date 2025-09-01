@@ -25,67 +25,14 @@ interface PricingPlan {
   isPopular: boolean;
 }
 
-const defaultPlans: PricingPlan[] = [
-    {
-        name: "STARTER",
-        price: "50",
-        yearlyPrice: "40",
-        period: "per month",
-        features: [
-            "Up to 1,000 interactions/mo",
-            "Basic conversation flows",
-            "Website widget integration",
-            "48-hour support response time",
-        ],
-        description: "Perfect for individuals and small projects",
-        buttonText: "Start Free Trial",
-        href: "/#booking",
-        isPopular: false,
-    },
-    {
-        name: "PROFESSIONAL",
-        price: "99",
-        yearlyPrice: "79",
-        period: "per month",
-        features: [
-            "Up to 5,000 interactions/mo",
-            "Advanced conversation flows with conditional logic",
-            "CRM & multi-platform integration",
-            "Priority support",
-            "Basic analytics dashboard"
-        ],
-        description: "Ideal for growing teams and businesses",
-        buttonText: "Get Started",
-        href: "/#booking",
-        isPopular: true,
-    },
-    {
-        name: "ENTERPRISE",
-        price: "299",
-        yearlyPrice: "239",
-        period: "per month",
-        features: [
-            "Unlimited interactions",
-            "Custom-built conversation flows",
-            "Dedicated account manager",
-            "1-hour support response time & SLAs",
-            "Advanced security & compliance",
-        ],
-        description: "For large organizations with specific needs",
-        buttonText: "Contact Sales",
-        href: "/#booking",
-        isPopular: false,
-    },
-];
-
 interface PricingProps {
-  plans?: PricingPlan[];
+  plans: PricingPlan[];
   title?: string;
   description?: string;
 }
 
 export function Pricing({
-  plans = defaultPlans,
+  plans,
   title = "Simple, Transparent Pricing",
   description = "Choose the plan that works for you. All plans include access to our platform, lead generation tools, and dedicated support.",
 }: PricingProps) {
