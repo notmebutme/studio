@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData, Service } from "@/lib/services-data";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { GlowCard } from "./ui/spotlight-card";
 import React from "react";
 
 export function Services() {
@@ -19,7 +19,7 @@ export function Services() {
             Cutting-edge AI solutions tailored to supercharge your brand's content strategy. Click a service to learn more.
           </ScrollTriggeredText>
         </div>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {servicesData.map((service) => (
               <ServiceCard key={service.slug} {...service} />
             ))}
@@ -33,30 +33,13 @@ function ServiceCard(service: Service) {
     return (
         <li className="list-none h-full">
             <Link href={`/services/${service.slug}`} className="group block h-full">
-                <div className="relative h-full rounded-[1rem] border-[0.75px] border-border p-2">
-                    <GlowingEffect
-                        glow={true}
-                        disabled={false}
-                        proximity={64}
-                        inactiveZone={0.01}
-                        borderWidth={3}
-                    />
-                    <div className="relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-lg border-[0.75px] bg-background p-4 md:p-6 shadow-sm">
-                        <div className="relative flex flex-1 flex-col justify-between gap-3">
-                            <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2 md:p-3">
-                                {service.icon}
-                            </div>
-                            <div className="space-y-2">
-                                <h3 className="text-base md:text-xl font-semibold font-sans text-foreground">
-                                    {service.title}
-                                </h3>
-                                <p className="text-sm text-muted-foreground hidden md:block">
-                                    {service.description}
-                                </p>
-                            </div>
-                        </div>
+                <GlowCard glowColor="blue" className="h-full p-6 flex flex-col items-start text-left">
+                    <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-3 mb-4 text-primary">
+                        {service.icon}
                     </div>
-                </div>
+                    <h3 className="text-xl font-semibold font-headline text-foreground mb-2">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground">{service.description}</p>
+                </GlowCard>
             </Link>
         </li>
     )
