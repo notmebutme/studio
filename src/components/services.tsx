@@ -6,7 +6,16 @@ import { servicesData } from "@/lib/services-data";
 import { BentoGrid, type BentoItem } from "./ui/bento-grid";
 
 export function Services() {
-  const serviceItems: BentoItem[] = servicesData.map(service => ({
+  const primaryServiceItems: BentoItem[] = servicesData.slice(0, 4).map(service => ({
+    title: service.title,
+    description: service.description,
+    icon: service.icon,
+    cta: "Learn More",
+    href: `/services/${service.slug}`,
+    colSpan: 1
+  }));
+
+  const additionalServiceItems: BentoItem[] = servicesData.slice(4).map(service => ({
     title: service.title,
     description: service.description,
     icon: service.icon,
@@ -27,8 +36,21 @@ export function Services() {
           </ScrollTriggeredText>
         </div>
         <div className="mt-12">
-            <BentoGrid items={serviceItems} />
+            <BentoGrid items={primaryServiceItems} />
         </div>
+        
+        {additionalServiceItems.length > 0 && (
+          <>
+            <div className="text-center max-w-3xl mx-auto mt-20">
+              <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary text-glow">
+                We also provide
+              </ScrollTriggeredText>
+            </div>
+            <div className="mt-12">
+                <BentoGrid items={additionalServiceItems} />
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
