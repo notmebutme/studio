@@ -35,7 +35,9 @@ export function ServiceDetails({ service }: { service: Service }) {
 
                 {showGlassyPricing ? (
                     <section className="relative py-20 md:py-24 overflow-hidden">
-                        <div className="absolute inset-0 bg-secondary/10 backdrop-blur-sm z-0"></div>
+                         <div className="absolute inset-0 bg-secondary/40 backdrop-blur-xl z-0"></div>
+                         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/20 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
+                        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-accent/20 rounded-full filter blur-3xl opacity-50 animate-pulse animation-delay-4000"></div>
                         <div className="relative z-10">
                             <ModernPricingPage
                                 title={<>Find the <span className="text-cyan-400">Perfect Plan</span> for Your Business</>}
