@@ -180,7 +180,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                  <section className="w-full py-20 md:py-32 text-center">
                     <div className="container mx-auto px-4 md:px-6">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline mb-6">Ready to get started?</h2>
-                        <RainbowButton asChild href="/#booking" size="lg">
+                        <RainbowButton href="/#booking" size="lg">
                            Book a Free Consultation
                         </RainbowButton>
                     </div>
