@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -37,11 +38,22 @@ import { RainbowButton } from "./ui/rainbow-button";
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email." }),
+  countryCode: z.string(),
+  phoneNumber: z.string().min(10, { message: "Phone number must be at least 10 digits." }),
   service: z.string({ required_error: "Please select a service." }),
   description: z.string().optional(),
   date: z.date({ required_error: "A date is required." }),
   time: z.string({ required_error: "Please select a time slot." }),
 });
+
+const countryCodes = [
+  { value: "+91", label: "India (+91)" },
+  { value: "+1", label: "USA (+1)" },
+  { value: "+44", label: "UK (+44)" },
+  { value: "+61", label: "Australia (+61)" },
+  { value: "+1", label: "Canada (+1)" },
+];
+
 
 export function BookingForm() {
     const { toast } = useToast()
@@ -50,15 +62,20 @@ export function BookingForm() {
     defaultValues: {
       name: "",
       email: "",
+      countryCode: "+91",
+      phoneNumber: "",
       description: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    console.log({
+        ...values,
+        fullPhoneNumber: `${values.countryCode}${values.phoneNumber}`
+    });
     toast({
         title: "Appointment Booked!",
-        description: "We've sent a confirmation and calendar invite to your email.",
+        description: "We have sent you a confirmation email and our person will contact you shortly in 24 hours.",
     })
     form.reset();
   }
@@ -93,6 +110,45 @@ export function BookingForm() {
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
                     <Input placeholder="your.email@example.com" {...field} />
+                </FormControl>
+                <FormMessage />
+                </FormItem>
+            )}
+            />
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+            <FormField
+            control={form.control}
+            name="countryCode"
+            render={({ field }) => (
+                <FormItem>
+                    <FormLabel>Country Code</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                        <SelectTrigger>
+                            <SelectValue placeholder="Code" />
+                        </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                        {countryCodes.map(country => (
+                            <SelectItem key={country.value} value={country.value}>
+                                {country.label}
+                            </SelectItem>
+                        ))}
+                        </SelectContent>
+                    </Select>
+                    <FormMessage />
+                </FormItem>
+            )}
+            />
+            <FormField
+            control={form.control}
+            name="phoneNumber"
+            render={({ field }) => (
+                <FormItem className="md:col-span-2">
+                <FormLabel>Phone Number</FormLabel>
+                <FormControl>
+                    <Input type="tel" placeholder="9876543210" {...field} />
                 </FormControl>
                 <FormMessage />
                 </FormItem>
