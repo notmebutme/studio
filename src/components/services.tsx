@@ -1,16 +1,11 @@
 
 "use client"
 
-import { useState } from "react";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { servicesData } from "@/lib/services-data";
 import { BentoGrid, type BentoItem } from "./ui/bento-grid";
-import { Button } from "./ui/button";
-import { ChevronDown } from "lucide-react";
 
 export function Services() {
-  const [showAll, setShowAll] = useState(false);
-
   const serviceItems: BentoItem[] = servicesData.map(service => ({
     title: service.title,
     description: service.description,
@@ -19,8 +14,6 @@ export function Services() {
     href: `/services/${service.slug}`,
     colSpan: 1
   }));
-  
-  const visibleItems = showAll ? serviceItems : serviceItems.slice(0, 4);
 
   return (
     <section>
@@ -34,20 +27,8 @@ export function Services() {
           </ScrollTriggeredText>
         </div>
         <div className="mt-12">
-            <BentoGrid items={visibleItems} />
+            <BentoGrid items={serviceItems} />
         </div>
-        {!showAll && (
-          <div className="mt-12 text-center">
-            <Button 
-              variant="outline"
-              onClick={() => setShowAll(true)}
-              className="group"
-            >
-              View More Services
-              <ChevronDown className="h-4 w-4 ml-2 transition-transform duration-300 group-hover:translate-y-1" />
-            </Button>
-          </div>
-        )}
       </div>
     </section>
   );
