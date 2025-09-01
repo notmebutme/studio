@@ -310,7 +310,7 @@ export const servicesData: Service[] = [
         "Internal knowledge base for teams."
     ],
     keyFeatures: [
-        { icon: <BrainCircuit className="h-6 w-6 md:h-8 md-w-8" />, title: "Knowledge Base Integration", description: "Train your chatbot on your own documents and websites for accurate answers." },
+        { icon: <BrainCircuit className="h-6 w-6 md:h-8 md:w-8" />, title: "Knowledge Base Integration", description: "Train your chatbot on your own documents and websites for accurate answers." },
         { icon: <Users className="h-6 w-6 md:h-8 md:w-8" />, title: "Seamless Handoff", description: "Intelligently routes conversations to the correct human agent when needed." },
         { icon: <Sparkles className="h-6 w-6 md:h-8 md:w-8" />, title: "Proactive Engagement", description: "Initiates conversations with website visitors based on their behavior to increase leads." },
         { icon: <LineChart className="h-6 w-6 md:h-8 md:w-8" />, title: "Analytics Dashboard", description: "Track conversation metrics, user satisfaction, and common queries to improve support." },
