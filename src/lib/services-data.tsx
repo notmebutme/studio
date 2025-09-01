@@ -3,6 +3,18 @@ import { Bot, Clapperboard, MonitorSmartphone, Voicemail, MessageCircle, Film, S
 import { ReactNode } from "react";
 import { ComparisonData } from "@/components/comparison-table";
 
+interface PricingPlan {
+  name: string;
+  price: string;
+  yearlyPrice: string;
+  period: string;
+  features: string[];
+  description: string;
+  buttonText: string;
+  href: string;
+  isPopular: boolean;
+}
+
 export interface Service {
     slug: string;
     icon: ReactNode;
@@ -27,7 +39,61 @@ export interface Service {
       traditionalHint: string;
       aiHint: string;
     };
+    pricingPlans?: PricingPlan[];
 }
+
+const defaultPricingPlans: PricingPlan[] = [
+    {
+        name: "STARTER",
+        price: "50",
+        yearlyPrice: "40",
+        period: "per month",
+        features: [
+            "Up to 1,000 interactions/mo",
+            "Basic conversation flows",
+            "Website widget integration",
+            "48-hour support response time",
+        ],
+        description: "Perfect for individuals and small projects",
+        buttonText: "Start Free Trial",
+        href: "/#booking",
+        isPopular: false,
+    },
+    {
+        name: "PROFESSIONAL",
+        price: "99",
+        yearlyPrice: "79",
+        period: "per month",
+        features: [
+            "Up to 5,000 interactions/mo",
+            "Advanced conversation flows with conditional logic",
+            "CRM & multi-platform integration",
+            "Priority support",
+            "Basic analytics dashboard"
+        ],
+        description: "Ideal for growing teams and businesses",
+        buttonText: "Get Started",
+        href: "/#booking",
+        isPopular: true,
+    },
+    {
+        name: "ENTERPRISE",
+        price: "299",
+        yearlyPrice: "239",
+        period: "per month",
+        features: [
+            "Unlimited interactions",
+            "Custom-built conversation flows",
+            "Dedicated account manager",
+            "1-hour support response time & SLAs",
+            "Advanced security & compliance",
+        ],
+        description: "For large organizations with specific needs",
+        buttonText: "Contact Sales",
+        href: "/#booking",
+        isPopular: false,
+    },
+];
 
 export const servicesData: Service[] = [
   {
@@ -228,7 +294,8 @@ export const servicesData: Service[] = [
         aiImg: "https://picsum.photos/seed/aicall/800/600",
         traditionalHint: "call center",
         aiHint: "sound wave"
-    }
+    },
+    pricingPlans: defaultPricingPlans,
   },
   {
     slug: "ai-chatbot",
@@ -268,6 +335,7 @@ export const servicesData: Service[] = [
         aiImg: "https://picsum.photos/seed/aichat/800/600",
         traditionalHint: "customer service",
         aiHint: "chat bubbles"
-    }
+    },
+    pricingPlans: defaultPricingPlans,
   }
 ];
