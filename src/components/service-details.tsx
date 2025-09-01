@@ -15,7 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { ShowcaseItem } from "./showcase";
 
 export function ServiceDetails({ service }: { service: Service }) {
-    const showPricing = !!service.pricingPlans;
+    const showPricing = !!service.pricingPlans && service.pricingPlans.length > 0;
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
@@ -114,7 +114,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                     </div>
                 </section>
                 
-                {showPricing && service.pricingPlans && (
+                {showPricing && (
                     <section id="pricing" className="w-full py-20 md:py-24">
                         <Pricing 
                             plans={service.pricingPlans} 
