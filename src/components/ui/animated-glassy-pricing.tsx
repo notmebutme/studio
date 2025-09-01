@@ -2,6 +2,7 @@
 "use client"
 import React, { useRef, useEffect, useState, ReactNode } from 'react';
 import { RippleButton } from "@/components/ui/multi-type-ripple-buttons";
+import { BorderBeam } from './border-beam';
 // --- Internal Helper Components (Not exported) --- //
 
 const CheckIcon = ({ className }: { className?: string }) => (
@@ -142,7 +143,7 @@ const ShaderCanvas = () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [backgroundColor]);
+  }, []);
 
   return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full block z-0 bg-background" />;
 };
@@ -170,10 +171,10 @@ export const PricingCard = ({
   planName, description, price, features, buttonText, isPopular = false, buttonVariant = 'primary'
 }: PricingCardProps) => {
   const cardClasses = `
-    backdrop-blur-[14px] bg-gradient-to-br rounded-2xl shadow-xl flex-1 max-w-xs px-7 py-8 flex flex-col transition-all duration-300
+    relative backdrop-blur-[14px] bg-gradient-to-br rounded-2xl shadow-xl flex-1 max-w-xs px-7 py-8 flex flex-col transition-all duration-300
     from-black/5 to-black/0 border border-black/10
     dark:from-white/10 dark:to-white/5 dark:border-white/10 dark:backdrop-brightness-[0.91]
-    ${isPopular ? 'scale-105 relative ring-2 ring-cyan-400/20 dark:from-white/20 dark:to-white/10 dark:border-cyan-400/30 shadow-2xl' : ''}
+    ${isPopular ? 'scale-105 ring-2 ring-cyan-400/20 dark:from-white/20 dark:to-white/10 dark:border-cyan-400/30 shadow-2xl' : ''}
   `;
   const buttonClasses = `
     mt-auto w-full py-2.5 rounded-xl font-semibold text-[14px] transition font-sans
@@ -185,6 +186,7 @@ export const PricingCard = ({
 
   return (
     <div className={cardClasses.trim()}>
+      <BorderBeam colorFrom="hsl(var(--primary))" colorTo="hsl(var(--accent))" />
       {isPopular && (
         <div className="absolute -top-4 right-4 px-3 py-1 text-[12px] font-semibold rounded-full bg-cyan-400 text-foreground dark:text-black">
           Most Popular

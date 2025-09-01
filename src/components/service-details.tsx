@@ -13,7 +13,6 @@ import { RainbowButton } from "./ui/rainbow-button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { Badge } from "@/components/ui/badge";
 import { ModernPricingPage } from "./ui/animated-glassy-pricing";
-import { BorderBeam } from "./ui/border-beam";
 
 export function ServiceDetails({ service }: { service: Service }) {
     const showPricing = service.pricingPlans && service.pricingPlans.length > 0;
@@ -35,7 +34,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                 </section>
 
                 {showGlassyPricing ? (
-                    <section className="relative py-20 md:py-24 overflow-hidden rounded-lg">
+                    <section className="relative py-20 md:py-24 overflow-hidden">
                          <div className="absolute inset-0 bg-secondary/40 backdrop-blur-3xl z-0"></div>
                          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/20 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
                         <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-accent/20 rounded-full filter blur-3xl opacity-50 animate-pulse animation-delay-4000"></div>
@@ -47,7 +46,6 @@ export function ServiceDetails({ service }: { service: Service }) {
                                 showAnimatedBackground={false}
                             />
                         </div>
-                        <BorderBeam colorFrom="hsl(var(--primary))" colorTo="hsl(var(--accent))" />
                     </section>
                 ) : showPricing && (
                     <section id="pricing" className="w-full py-20 md:py-24">
