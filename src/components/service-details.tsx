@@ -25,10 +25,10 @@ export function ServiceDetails({ service }: { service: Service }) {
             <main className="flex-1">
                 <section className="w-full py-20 md:py-32 bg-secondary/20">
                     <div className="container mx-auto px-4 md:px-6 text-center">
-                        <ScrollTriggeredText as="h1" per="word" preset="slide" className="text-4xl font-bold tracking-tighter sm:text-6xl font-headline text-primary text-glow">
+                        <ScrollTriggeredText as="h1" per="word" preset="slide" className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary text-glow">
                             {service.title}
                         </ScrollTriggeredText>
-                        <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-xl/relaxed">
+                        <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 max-w-3xl mx-auto text-muted-foreground text-base sm:text-lg md:text-xl/relaxed">
                             {service.detailedDescription}
                         </ScrollTriggeredText>
                     </div>
@@ -76,7 +76,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                             <div>
                                 <Card className="bg-card/80 border-2 border-primary/10 glow-shadow">
                                     <CardHeader>
-                                        <CardTitle className="font-headline text-2xl">How It Works</CardTitle>
+                                        <CardTitle className="font-headline text-xl md:text-2xl">How It Works</CardTitle>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
                                         {service.howItWorks.map((step, index) => (
@@ -124,7 +124,7 @@ export function ServiceDetails({ service }: { service: Service }) {
 
                 <section className="w-full py-20 md:py-32 text-center">
                     <div className="container mx-auto px-4 md:px-6">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline mb-6">Ready to get started?</h2>
+                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl font-headline mb-6">Ready to get started?</h2>
                         <RainbowButton href="/#booking" size="lg">
                         Book a Free Consultation
                         </RainbowButton>

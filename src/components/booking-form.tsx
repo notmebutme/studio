@@ -87,8 +87,8 @@ export function BookingForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="grid md:grid-cols-2 gap-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 md:space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <FormField
             control={form.control}
             name="name"
@@ -116,13 +116,13 @@ export function BookingForm() {
             )}
             />
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-3 gap-4 md:gap-8">
             <FormField
             control={form.control}
             name="countryCode"
             render={({ field }) => (
-                <FormItem className="md:col-span-1">
-                    <FormLabel>Country Code</FormLabel>
+                <FormItem className="col-span-1">
+                    <FormLabel>Code</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                         <SelectTrigger>
@@ -145,7 +145,7 @@ export function BookingForm() {
             control={form.control}
             name="phoneNumber"
             render={({ field }) => (
-                <FormItem className="md:col-span-2">
+                <FormItem className="col-span-2">
                 <FormLabel>Phone Number</FormLabel>
                 <FormControl>
                     <Input type="tel" placeholder="9876543210" {...field} />
@@ -180,7 +180,7 @@ export function BookingForm() {
             </FormItem>
           )}
         />
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <FormField
             control={form.control}
             name="date"

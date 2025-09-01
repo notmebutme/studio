@@ -23,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <title>Intrix AI</title>
         <meta name="description" content="Create your content faster, smarter, and at a fraction of the cost." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

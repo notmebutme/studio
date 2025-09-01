@@ -20,7 +20,7 @@ export function Comparison() {
             While you're manually creating content, your competition is already launching, learning, and iterating with AI. Don't get left behind.
           </ScrollTriggeredText>
         </div>
-        <div className="max-w-2xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-4xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
             {advantages.map((advantage, index) => (
                 <div key={index} className="flex items-start gap-4">
                     <CheckCircle2 className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
