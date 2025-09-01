@@ -30,13 +30,13 @@ export function Hero() {
           <div className="flex flex-col justify-center space-y-8 text-left">
             <div className="space-y-4">
               <h1 className="text-6xl font-bold tracking-tighter md:text-7xl lg:text-8xl font-headline text-white">
-                Stop wasting hours. <br /> Let AI build content in minutes.
+                What if AI could create your content faster, smarter, and at a fraction of the cost?
               </h1>
               <p className="max-w-[600px] text-lg text-white/80 md:text-xl">
-                Stop wasting time and money on content that doesn't deliver. Intrix AI generates high-performing ads, social media posts, product mockups, and more in minutes.
+                Intrix AI helps you scale ads, content, and product visuals with cutting-edge AI tools.
               </p>
             </div>
-            <div className="flex justify-start">
+            <div className="flex justify-start gap-4">
               <RainbowButton asChild href="#booking">
                 Book an Appointment
               </RainbowButton>
