@@ -1,6 +1,5 @@
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
-import { Showcase } from "@/components/showcase";
 import { Process } from "@/components/process";
 import { Services } from "@/components/services";
 import { Comparison } from "@/components/comparison";
@@ -20,7 +19,6 @@ export default function Home() {
         <Comparison />
         <Founder />
         <Quotes />
-        <Showcase />
         <Booking />
       </main>
       <Footer />
