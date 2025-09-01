@@ -12,7 +12,7 @@ export function Services() {
     icon: service.icon,
     cta: "Learn More",
     href: `/services/${service.slug}`,
-    colSpan: 1
+    colSpan: 2
   }));
 
   const additionalServiceItems: BentoItem[] = servicesData.slice(4).map(service => ({
@@ -21,7 +21,7 @@ export function Services() {
     icon: service.icon,
     cta: "Learn More",
     href: `/services/${service.slug}`,
-    colSpan: 1
+    colSpan: 2
   }));
 
   return (
