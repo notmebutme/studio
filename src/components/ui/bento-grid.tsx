@@ -28,11 +28,11 @@ function BentoGrid({ items }: BentoGridProps) {
     return (
         <div className="grid grid-cols-2 gap-4 max-w-7xl mx-auto">
             {items.map((item, index) => (
-                 <GlowCard key={index} className={cn("p-0", `col-span-2`)} glowColor="purple" customSize={true}>
+                 <GlowCard key={index} className={cn("p-0", `col-span-1`)} glowColor="purple" customSize={true}>
                     <Link
                         href={item.href || '#'}
                         className={cn(
-                            "group relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl p-4 shadow-sm md:p-6",
+                            "group relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl p-2 md:p-6 shadow-sm",
                             "hover:-translate-y-0.5 will-change-transform transition-transform duration-300",
                             {
                                 "shadow-[0_2px_12px_rgba(0,0,0,0.03)] -translate-y-0.5":
@@ -42,7 +42,7 @@ function BentoGrid({ items }: BentoGridProps) {
                             }
                         )}
                     >
-                            <div className="relative flex flex-1 flex-col justify-between gap-3">
+                            <div className="relative flex flex-1 flex-col items-center justify-center text-center gap-3">
                             <div className="flex items-center justify-between">
                                 <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2 text-primary">
                                     {item.icon}
@@ -57,15 +57,15 @@ function BentoGrid({ items }: BentoGridProps) {
                                     {item.status}
                                 </span>}
                             </div>
-                            <div className="space-y-2">
-                                <h3 className="pt-0.5 text-lg font-semibold font-sans tracking-tight md:text-xl text-balance text-foreground">
+                            <div className="space-y-1">
+                                <h3 className="pt-0.5 text-sm md:text-xl font-semibold font-sans tracking-tight text-balance text-foreground">
                                     {item.title}
                                 </h3>
                                 <p className="hidden md:block font-sans text-sm leading-normal text-muted-foreground">
                                     {item.description}
                                 </p>
                             </div>
-                                <div className="flex items-center justify-between mt-auto">
+                                <div className="hidden md:flex items-center justify-between mt-auto">
                                 <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
                                     {item.tags?.map((tag, i) => (
                                         <span
