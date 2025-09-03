@@ -52,8 +52,8 @@ export function Audience() {
         </div>
         <div className="max-w-7xl mx-auto mt-12 flex flex-wrap justify-center gap-6 md:gap-8">
             {targetAudiences.map((audience, index) => (
-              <Card key={index} className="text-center bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow p-4 md:p-6 flex flex-col items-center justify-start rounded-2xl basis-full sm:basis-[calc(50%-1rem)] md:basis-[calc(33.33%-1.5rem)] lg:basis-[calc(20%-1.5rem)] max-w-sm">
-                <CardHeader className="p-2 flex flex-col items-center">
+              <Card key={index} className="text-center bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow p-4 flex flex-col items-center justify-start rounded-2xl basis-full sm:basis-[calc(50%-1rem)] md:basis-[calc(33.33%-1.5rem)] lg:basis-[calc(20%-1.5rem)] max-w-sm">
+                <CardHeader className="p-2 flex items-center">
                   <div className="w-16 h-16 flex items-center justify-center rounded-full border-[0.75px] border-border bg-muted p-4 mb-4">
                     {audience.icon}
                   </div>
