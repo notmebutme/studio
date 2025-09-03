@@ -4,43 +4,27 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { servicesData } from "@/lib/services-data";
-import { ModernPricingPage } from "@/components/ui/animated-glassy-pricing";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { ScrollTriggeredText } from "@/components/ui/scroll-triggered-text";
+import type { PricingPlan } from "@/lib/services-data";
+import { PricingCard } from "@/components/ui/animated-glassy-pricing";
 
 export default function PricingPage() {
   const [isYearly, setIsYearly] = useState(false);
 
-  // Safely map over services and their pricing plans
-  const allServicePlans = servicesData
-    .filter(service => service.pricingPlans && Array.isArray(service.pricingPlans) && service.pricingPlans.length > 0)
-    .flatMap(service => 
-        (service.pricingPlans || []).map(plan => {
-            const monthlyPrice = plan.price;
-            // Ensure yearlyPrice exists and is valid, otherwise calculate it
-            const yearlyPrice = (plan as any).yearlyPrice || (Number.isNaN(parseFloat(monthlyPrice)) ? monthlyPrice : (parseFloat(monthlyPrice) * 12 * 0.8).toFixed(0));
+  const servicesWithPricing = servicesData.filter(
+    service => service.pricingPlans && Array.isArray(service.pricingPlans) && service.pricingPlans.length > 0
+  );
 
-            return {
-                ...plan,
-                planName: `${plan.name || (plan as any).planName} (${service.title})`,
-                price: isYearly ? yearlyPrice : monthlyPrice,
-            };
-        })
-    );
-
-  const plansForDisplay = allServicePlans.map(plan => ({
-    ...plan,
-    buttonVariant: plan.isPopular ? 'primary' : 'secondary',
-  }));
-  
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
+      <main className="flex-1">
         <section className="w-full py-16 md:py-24 bg-secondary/20">
           <div className="container mx-auto px-4 md:px-6 text-center">
-             <ScrollTriggeredText as="h1" per="word" preset="slide" className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary text-glow">
+            <ScrollTriggeredText as="h1" per="word" preset="slide" className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary text-glow">
               Our Pricing
             </ScrollTriggeredText>
             <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 max-w-3xl mx-auto text-muted-foreground text-base sm:text-lg md:text-xl/relaxed">
@@ -48,25 +32,44 @@ export default function PricingPage() {
             </ScrollTriggeredText>
           </div>
         </section>
+
         <div className="flex justify-center my-10 items-center gap-4">
-            <Label htmlFor="billing-switch">Monthly</Label>
-            <Switch
-              id="billing-switch"
-              checked={isYearly}
-              onCheckedChange={setIsYearly}
-              aria-label="Toggle between monthly and yearly billing"
-            />
-            <Label htmlFor="billing-switch" className="flex items-center">
-                Yearly <span className="ml-2 text-primary font-semibold">(Save 20%)</span>
-            </Label>
+          <Label htmlFor="billing-switch">Monthly</Label>
+          <Switch
+            id="billing-switch"
+            checked={isYearly}
+            onCheckedChange={setIsYearly}
+            aria-label="Toggle between monthly and yearly billing"
+          />
+          <Label htmlFor="billing-switch" className="flex items-center">
+            Yearly <span className="ml-2 text-primary font-semibold">(Save 20%)</span>
+          </Label>
         </div>
 
-       <ModernPricingPage
-            title={<>Find the <span className="text-cyan-400">Perfect Plan</span> for Your Business</>}
-            subtitle="Start for free, then grow with us. Flexible plans for projects of all sizes."
-            plans={plansForDisplay}
-            showAnimatedBackground={true}
-        />
+        <div className="container mx-auto px-4 md:px-6 py-12 space-y-16">
+          {servicesWithPricing.map(service => (
+            <div key={service.slug}>
+              <h2 className="text-3xl font-bold text-center mb-2 font-headline text-primary/90">{service.title} Pricing</h2>
+              <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">{service.detailedDescription}</p>
+              <div className="flex flex-wrap gap-8 justify-center items-center w-full">
+                {(service.pricingPlans as PricingPlan[]).map((plan) => {
+                  const monthlyPrice = plan.price;
+                  const yearlyPrice = plan.yearlyPrice || (Number.isNaN(parseFloat(monthlyPrice)) ? monthlyPrice : (parseFloat(monthlyPrice) * 12 * 0.8).toFixed(0));
+
+                  const displayPlan = {
+                    ...plan,
+                    planName: plan.name || (plan as any).planName,
+                    price: isYearly ? yearlyPrice : monthlyPrice,
+                    buttonVariant: plan.isPopular ? 'primary' : 'secondary',
+                  };
+
+                  return <PricingCard key={displayPlan.planName} {...displayPlan} />;
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
       <Footer />
     </div>
   );
