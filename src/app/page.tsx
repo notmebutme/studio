@@ -10,8 +10,6 @@ import { Booking } from "@/components/booking";
 import { Footer } from "@/components/footer";
 import { OtherServices } from "@/components/other-services";
 import { Audience } from "@/components/audience";
-import { Pricing } from "@/components/blocks/pricing";
-import { pricingPlans } from "@/lib/services-data";
 
 export default function Home() {
   return (
@@ -26,15 +24,12 @@ export default function Home() {
         <Process />
         <Audience />
         <Comparison />
-        <div id="pricing" className="scroll-mt-24">
-          <Pricing plans={pricingPlans} />
-        </div>
         <Founder />
         <Quotes />
         <div id="booking" className="scroll-mt-24">
           <Booking />
         </div>
-      </main>
+      </main>      
       <Footer />
     </div>
   );
