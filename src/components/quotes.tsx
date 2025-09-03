@@ -174,19 +174,19 @@ export function Quotes() {
 
     return (
         <section className="w-full py-16 md:py-24 bg-secondary/20">
-            <div className="container mx-auto flex max-w-4xl flex-col items-center gap-10 md:gap-12 text-center">
+            <div className="container mx-auto flex max-w-4xl flex-col items-center gap-4 md:gap-12 text-center">
                 <div className="flex flex-col items-center gap-4 px-4">
                     <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary text-glow">
                         Quote of the Day
                     </ScrollTriggeredText>
                 </div>
-                <div className="w-full flex flex-col md:flex-row gap-8 justify-center">
+                <div className="w-full flex flex-row gap-4 md:gap-8 justify-center">
                     {dailyQuotePair.map((item, index) => (
                         <Card key={index} className="flex-1 bg-card/80 border-2 border-primary/10 glow-shadow">
-                            <CardContent className="p-6 h-full flex flex-col justify-between">
-                                <blockquote className="text-base md:text-lg italic text-glow flex-grow text-left">“{item.quote}”</blockquote>
-                                <footer className="pt-4 text-right">
-                                    <p className="font-semibold text-sm md:text-base text-primary/80">- {item.author}</p>
+                            <CardContent className="p-4 md:p-6 h-full flex flex-col justify-between">
+                                <blockquote className="text-[10px] md:text-lg italic text-glow flex-grow text-left leading-tight">“{item.quote}”</blockquote>
+                                <footer className="pt-2 md:pt-4 text-right">
+                                    <p className="font-semibold text-[9px] md:text-base text-primary/80">- {item.author}</p>
                                 </footer>
                             </CardContent>
                         </Card>

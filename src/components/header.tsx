@@ -18,19 +18,19 @@ export function Header() {
 
   return (
     <header className="w-full bg-background/80 backdrop-blur-sm">
-      <div className="container flex h-16 md:h-20 items-center justify-between mx-auto px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2 md:gap-3" prefetch={false}>
+      <div className="container flex h-16 items-center justify-between mx-auto px-2 md:px-6">
+        <Link href="/" className="flex items-center gap-2" prefetch={false}>
           <Image 
             src="/logo.png" 
             alt="Intrix AI Logo" 
-            width={32} 
-            height={32}
-            className="rounded-md w-6 h-6 md:w-10 md:h-10"
+            width={28} 
+            height={28}
+            className="rounded-md w-7 h-7"
           />
-          <span className="text-base md:text-xl font-bold font-headline">Intrix AI</span>
+          <span className="text-sm font-bold font-headline">Intrix AI</span>
         </Link>
         
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <nav className="hidden sm:flex items-center gap-3 text-xs">
           <Link href="/" className="hover:text-primary transition-colors">
             Home
           </Link>
@@ -57,7 +57,7 @@ export function Header() {
           ))}
         </nav>
 
-        <RainbowButton asChild href="/#booking" className="h-9 px-4 text-xs md:h-10 md:px-6 md:text-sm">
+        <RainbowButton asChild href="/#booking" className="h-8 px-3 text-[10px] md:h-10 md:px-6 md:text-sm">
           Book a Demo
         </RainbowButton>
       </div>

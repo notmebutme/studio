@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -44,18 +45,18 @@ export function FeatureSteps({
   }, [progress, features.length, autoPlayInterval])
 
   return (
-    <div className={cn("p-8 md:p-12", className)}>
+    <div className={cn("p-4 md:p-12", className)}>
       <div className="max-w-7xl mx-auto w-full">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center">
           {title}
         </h2>
 
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-10">
-          <div className="order-2 md:order-1 space-y-8">
+        <div className="grid grid-cols-2 gap-4 md:gap-10">
+          <div className="order-2 space-y-4 md:space-y-8">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="flex items-center gap-6 md:gap-8"
+                className="flex items-center gap-2 md:gap-8"
                 initial={{ opacity: 0.3 }}
                 animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
                 transition={{ duration: 0.5 }}
@@ -69,17 +70,17 @@ export function FeatureSteps({
                   )}
                 >
                   {index <= currentFeature ? (
-                    <span className="text-lg font-bold">✓</span>
+                    <span className="text-base md:text-lg font-bold">✓</span>
                   ) : (
-                    <span className="text-lg font-semibold">{index + 1}</span>
+                    <span className="text-base md:text-lg font-semibold">{index + 1}</span>
                   )}
                 </motion.div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl md:text-2xl font-semibold">
+                  <h3 className="text-sm md:text-2xl font-semibold">
                     {feature.title || feature.step}
                   </h3>
-                  <p className="text-sm md:text-lg text-muted-foreground">
+                  <p className="text-[10px] md:text-lg text-muted-foreground leading-tight">
                     {feature.content}
                   </p>
                 </div>
@@ -89,7 +90,7 @@ export function FeatureSteps({
 
           <div
             className={cn(
-              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg"
+              "order-1 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg"
             )}
           >
             <AnimatePresence mode="wait">
