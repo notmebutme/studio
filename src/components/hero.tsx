@@ -3,7 +3,7 @@
 import { RainbowButton } from "./ui/rainbow-button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { TextEffect } from "./ui/text-effect";
 
 const questions = [
   "Tired of creative bottlenecks?",
@@ -82,19 +82,36 @@ export function Hero() {
           <AnimatePresence>
             {showFinal && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2 } }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 0.5 } }}
                 className="space-y-6 md:space-y-8 flex flex-col items-center"
               >
-                <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white font-headline tracking-tighter">
-                  The <span className="text-glow text-primary">Unfair Advantage.</span><br/> Powered by AI.
-                </h1>
-                <p className="max-w-[700px] text-base text-white/80 sm:text-lg md:text-xl">
-                  We generate high-performing ads, articles, and product visuals that help you scale faster than ever before.
-                </p>
-                <RainbowButton asChild={false} href="#services" className="h-12 px-8 text-base md:text-lg">
-                  See How It Works
-                </RainbowButton>
+                <TextEffect
+                    as="h1"
+                    per="word"
+                    preset="slide"
+                    trigger={showFinal}
+                    className="text-5xl sm:text-6xl md:text-7xl font-bold text-white font-headline tracking-tighter"
+                    delay={0}
+                >
+                    The <span className="text-glow text-primary">Unfair Advantage.</span><br/> Powered by AI.
+                </TextEffect>
+
+                <TextEffect
+                    as="p"
+                    per="word"
+                    preset="slide"
+                    trigger={showFinal}
+                    className="max-w-[700px] text-base text-white/80 sm:text-lg md:text-xl"
+                    delay={1.5}
+                >
+                    We generate high-performing ads, articles, and product visuals that help you scale faster than ever before.
+                </TextEffect>
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 3.5 } }}>
+                    <RainbowButton href="#services" className="h-12 px-8 text-base md:text-lg">
+                      See How It Works
+                    </RainbowButton>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
