@@ -12,7 +12,7 @@ import { servicesData } from "@/lib/services-data";
 
 export function Header() {
   const navItems = [
-    { name: "Pricing", href: "/#pricing" },
+    { name: "Pricing", href: "/pricing" },
     { name: "About Us", href: "/about" },
   ];
 
