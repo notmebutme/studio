@@ -25,9 +25,9 @@ export function Header() {
             alt="Intrix AI Logo" 
             width={32} 
             height={32}
-            className="rounded-md w-8 h-8 md:w-10 md:h-10"
+            className="rounded-md w-6 h-6 md:w-10 md:h-10"
           />
-          <span className="text-lg md:text-xl font-bold font-headline">Intrix AI</span>
+          <span className="text-base md:text-xl font-bold font-headline">Intrix AI</span>
         </Link>
         
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">

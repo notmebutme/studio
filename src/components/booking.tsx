@@ -10,14 +10,14 @@ export function Booking() {
             <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary text-glow">
                 Ready for a change?
             </ScrollTriggeredText>
-            <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
+            <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground text-base md:text-xl/relaxed">
                 Schedule a call to see how Intrix AI can revolutionize your content strategy. Get a calendar invite for Google Calendar or Outlook upon booking.
             </ScrollTriggeredText>
         </div>
         <div className="max-w-2xl mx-auto mt-12">
             <Card className="bg-card/80 border-2 border-primary/20 shadow-xl">
                 <CardHeader className="text-center">
-                    <CardTitle className="text-2xl">Schedule Your Demo</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl">Schedule Your Demo</CardTitle>
                     <CardDescription>Fill out the form below to book your session.</CardDescription>
                 </CardHeader>
                 <CardContent>

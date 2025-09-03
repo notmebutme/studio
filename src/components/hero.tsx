@@ -33,10 +33,9 @@ export function Hero({ onAnimationComplete }: HeroProps) {
 
   useEffect(() => {
     if (currentQuestionIndex < questions.length) {
-      // 1.5s hold + 0.5s in + 0.5s out = 2.5s total per question
       const timer = setTimeout(() => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-      }, 2500); 
+      }, 1500); 
       return () => clearTimeout(timer);
     } else {
       const finalTimer = setTimeout(() => {
@@ -80,7 +79,7 @@ export function Hero({ onAnimationComplete }: HeroProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 0.5 } }}
                 exit={{ opacity: 0, transition: { duration: 0.5 } }}
-                className="text-4xl sm:text-5xl md:text-6xl font-bold text-white font-headline"
+                className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-headline"
               >
                 {questions[currentQuestionIndex]}
               </motion.h1>
@@ -99,7 +98,7 @@ export function Hero({ onAnimationComplete }: HeroProps) {
                     per="word"
                     preset="slide"
                     trigger={showFinal}
-                    className="text-5xl sm:text-6xl md:text-7xl font-bold text-white font-headline tracking-tighter"
+                    className="text-4xl sm:text-6xl md:text-7xl font-bold text-white font-headline tracking-tighter"
                     delay={0}
                 >
                     The <span className="text-glow text-primary">Unfair Advantage.</span><br/> Powered by AI.
@@ -110,13 +109,13 @@ export function Hero({ onAnimationComplete }: HeroProps) {
                     per="word"
                     preset="slide"
                     trigger={showFinal}
-                    className="max-w-[700px] text-base text-white/80 sm:text-lg md:text-xl"
+                    className="max-w-[700px] text-sm text-white/80 sm:text-lg md:text-xl"
                     delay={1.5}
                 >
                     We generate high-performing ads, articles, and product visuals that help you scale faster than ever before.
                 </TextEffect>
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 3.5 } }}>
-                    <RainbowButton href="#services" className="h-12 px-8 text-base md:text-lg">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 3.5 } }}>
+                    <RainbowButton href="#services" className="h-10 px-6 text-sm md:h-12 md:px-8 md:text-lg">
                       See How It Works
                     </RainbowButton>
                 </motion.div>

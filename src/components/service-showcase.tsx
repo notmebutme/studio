@@ -41,7 +41,7 @@ export function ServiceShowcase() {
           <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary text-glow">
             Our Services
           </ScrollTriggeredText>
-          <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
+          <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground text-base md:text-xl/relaxed">
             Cutting-edge AI solutions tailored to supercharge your brand's content strategy. See what we can create for you.
           </ScrollTriggeredText>
         </div>
@@ -52,7 +52,7 @@ export function ServiceShowcase() {
               <GlowCard customSize={true} className={`p-6 rounded-2xl ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
                 <div className="space-y-4">
                   <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-glow">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.description}</p>
+                  <p className="text-muted-foreground text-sm md:text-base">{service.description}</p>
                   <Button asChild variant="outline" className="group">
                     <Link href={`/services/${service.slug}`}>
                       Learn More <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />

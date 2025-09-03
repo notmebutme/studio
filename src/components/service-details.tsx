@@ -87,7 +87,7 @@ export function ServiceDetails({ service }: { service: Service }) {
                         <div className="grid md:grid-cols-2 gap-12 items-center">
                             <div>
                                 <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2 text-primary text-glow">Use Cases</h2>
-                                <p className="text-muted-foreground mb-6">How our clients leverage this technology.</p>
+                                <p className="text-muted-foreground mb-6 text-sm md:text-base">How our clients leverage this technology.</p>
                                 <div className="space-y-4">
                                     {service.useCases.map((useCase, index) => (
                                         <div key={index} className="flex items-start gap-3">

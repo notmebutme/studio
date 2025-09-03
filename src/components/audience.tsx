@@ -46,7 +46,7 @@ export function Audience() {
                     <span className="text-primary text-glow">Right Place.</span>
                 </span>
             </h2>
-          <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
+          <p className="mt-4 text-muted-foreground text-base md:text-xl/relaxed">
             We partner with winners. Whether you're a local hero or a global leader, our AI is your unfair advantage.
           </p>
         </div>
@@ -57,10 +57,10 @@ export function Audience() {
                   <div className="w-16 h-16 flex items-center justify-center rounded-full border-[0.75px] border-border bg-muted p-4 mb-4">
                     {audience.icon}
                   </div>
-                  <CardTitle className="text-xl font-bold font-headline">{audience.title}</CardTitle>
+                  <CardTitle className="text-lg md:text-xl font-bold font-headline">{audience.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-2">
-                  <p className="text-muted-foreground">{audience.description}</p>
+                  <p className="text-muted-foreground text-sm md:text-base">{audience.description}</p>
                 </CardContent>
               </Card>
             ))}

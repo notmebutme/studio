@@ -176,7 +176,7 @@ export function FAQ() {
             <div className="flex justify-center mb-8">
                 <TabsList className="w-full justify-center h-auto p-1 max-w-md border rounded-xl bg-secondary/30">
                     <TabsTrigger value="services">Services</TabsTrigger>
-                    <TabsTrigger value="process">Process & Pricing</TabsTrigger>
+                    <TabsTrigger value="process">Process</TabsTrigger>
                     <TabsTrigger value="technical">Technical</TabsTrigger>
                 </TabsList>
             </div>

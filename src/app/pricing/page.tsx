@@ -124,26 +124,26 @@ export default function PricingPage() {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="w-[25%] font-bold text-lg">Feature</TableHead>
+                                <TableHead className="w-[25%] font-bold text-base md:text-lg">Feature</TableHead>
                                 <TableHead className="text-center w-[25%]">
-                                    <h3 className="text-xl font-bold">Starter</h3>
-                                    <p className="font-normal text-muted-foreground">₹19,999 / month</p>
+                                    <h3 className="text-lg md:text-xl font-bold">Starter</h3>
+                                    <p className="font-normal text-muted-foreground text-sm md:text-base">₹19,999 / month</p>
                                 </TableHead>
                                 <TableHead className="text-center w-[25%] border-x-2 border-primary/20">
-                                    <h3 className="text-xl font-bold text-primary flex items-center justify-center gap-2">
+                                    <h3 className="text-lg md:text-xl font-bold text-primary flex items-center justify-center gap-2">
                                         <Star className="w-5 h-5 text-primary" /> Growth
                                     </h3>
-                                    <p className="font-normal text-muted-foreground">₹49,999 / month</p>
+                                    <p className="font-normal text-muted-foreground text-sm md:text-base">₹49,999 / month</p>
                                 </TableHead>
                                 <TableHead className="text-center w-[25%]">
-                                    <h3 className="text-xl font-bold">Scale</h3>
-                                    <p className="font-normal text-muted-foreground">₹99,999 / month</p>
+                                    <h3 className="text-lg md:text-xl font-bold">Scale</h3>
+                                    <p className="font-normal text-muted-foreground text-sm md:text-base">₹99,999 / month</p>
                                 </TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
                             {corePackages.map((item, index) => (
-                                <TableRow key={index}>
+                                <TableRow key={index} className="text-sm md:text-base">
                                     <TableCell className="font-medium">{item.feature}</TableCell>
                                     <TableCell className="text-center text-muted-foreground">{item.starter}</TableCell>
                                     <TableCell className="text-center text-foreground font-medium border-x-2 border-primary/20">{item.growth}</TableCell>
@@ -152,9 +152,9 @@ export default function PricingPage() {
                             ))}
                             <TableRow>
                                 <TableCell></TableCell>
-                                <TableCell className="text-center"><Button asChild variant="outline"><Link href="/#booking">Choose Starter</Link></Button></TableCell>
-                                <TableCell className="text-center border-x-2 border-primary/20"><RainbowButton asChild href="/#booking">Choose Growth</RainbowButton></TableCell>
-                                <TableCell className="text-center"><Button asChild variant="outline"><Link href="/#booking">Choose Scale</Link></Button></TableCell>
+                                <TableCell className="text-center"><Button asChild variant="outline" size="sm" className="md:size-auto"><Link href="/#booking">Choose Starter</Link></Button></TableCell>
+                                <TableCell className="text-center border-x-2 border-primary/20"><RainbowButton asChild href="/#booking" className="text-sm px-4 h-9 md:px-6 md:h-10">Choose Growth</RainbowButton></TableCell>
+                                <TableCell className="text-center"><Button asChild variant="outline" size="sm" className="md:size-auto"><Link href="/#booking">Choose Scale</Link></Button></TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
@@ -172,7 +172,7 @@ export default function PricingPage() {
                 <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     <Card className="p-6 text-center flex flex-col glow-shadow">
                         <h3 className="text-2xl font-bold font-headline mb-4">AI Product Mockups</h3>
-                        <div className="space-y-4 flex-grow">
+                        <div className="space-y-4 flex-grow text-sm sm:text-base">
                             <p><span className="font-semibold">Starter Pack:</span> 10 High-Res Mockups - <span className="text-primary">₹8,000</span></p>
                             <p><span className="font-semibold">Booster Pack:</span> 50 High-Res Mockups - <span className="text-primary">₹35,000</span></p>
                             <p><span className="font-semibold">Bulk Pack:</span> 100+ High-Res Mockups - Contact for Custom Quote</p>
@@ -181,9 +181,9 @@ export default function PricingPage() {
                     </Card>
                     <Card className="p-6 text-center flex flex-col glow-shadow">
                         <h3 className="text-2xl font-bold font-headline mb-4">AI CGI Video Ads</h3>
-                        <div className="space-y-4 flex-grow">
+                        <div className="space-y-4 flex-grow text-sm sm:text-base">
                            <p>Because every CGI project is unique, we provide a custom quote based on your vision.</p>
-                           <p className="text-sm">1. 15-Min Discovery Call <br/> 2. Concept & Storyboard <br/> 3. Custom Quote</p>
+                           <p className="text-xs sm:text-sm">1. 15-Min Discovery Call <br/> 2. Concept & Storyboard <br/> 3. Custom Quote</p>
                            <p className="font-semibold">Pricing starts from <span className="text-primary">₹75,000</span> for a 15-second ad.</p>
                         </div>
                         <Button asChild className="mt-6"><Link href="/#booking">Get a Free CGI Quote</Link></Button>
@@ -199,9 +199,9 @@ export default function PricingPage() {
                  <p className="mt-2 text-muted-foreground md:text-lg/relaxed">For businesses ready to revolutionize their customer experience and internal workflows.</p>
                  <Card className="p-6 mt-8 text-center glow-shadow">
                     <h3 className="text-2xl font-bold font-headline mb-4">AI Voice Agents & Website Chatbots</h3>
-                    <p className="text-muted-foreground">Our AI agents are tailored to your business needs, from handling customer queries in Gujarati to capturing leads 24/7.</p>
-                    <p className="mt-4"><span className="font-semibold">One-Time Setup Fee:</span> Starts at <span className="text-primary">₹50,000</span> (Includes consultation, AI training, and integration)</p>
-                    <p><span className="font-semibold">Monthly Retainer:</span> Starts at <span className="text-primary">₹15,000</span> (Includes hosting, updates, and support)</p>
+                    <p className="text-muted-foreground text-sm sm:text-base">Our AI agents are tailored to your business needs, from handling customer queries in Gujarati to capturing leads 24/7.</p>
+                    <p className="mt-4 text-sm sm:text-base"><span className="font-semibold">One-Time Setup Fee:</span> Starts at <span className="text-primary">₹50,000</span> (Includes consultation, AI training, and integration)</p>
+                    <p className="text-sm sm:text-base"><span className="font-semibold">Monthly Retainer:</span> Starts at <span className="text-primary">₹15,000</span> (Includes hosting, updates, and support)</p>
                     <Button asChild className="mt-6"><Link href="/#booking">Book a Free Automation Audit</Link></Button>
                  </Card>
             </div>
@@ -216,8 +216,8 @@ export default function PricingPage() {
                 <Accordion type="single" collapsible className="w-full">
                     {faqItems.map((item, index) => (
                         <AccordionItem value={`item-${index}`} key={index}>
-                            <AccordionTrigger className="text-lg text-left">{item.question}</AccordionTrigger>
-                            <AccordionContent className="text-base text-muted-foreground">
+                            <AccordionTrigger className="text-base md:text-lg text-left">{item.question}</AccordionTrigger>
+                            <AccordionContent className="text-sm md:text-base text-muted-foreground">
                                 {item.answer}
                             </AccordionContent>
                         </AccordionItem>

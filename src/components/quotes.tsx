@@ -184,8 +184,8 @@ export function Quotes() {
                     {dailyQuotePair.map((item, index) => (
                         <Card key={index} className="flex-1 bg-card/80 border-2 border-primary/10 glow-shadow">
                             <CardContent className="p-6 h-full flex flex-col justify-between">
-                                <blockquote className="text-base md:text-lg italic text-glow flex-grow">“{item.quote}”</blockquote>
-                                <footer className="p-4 pt-4 text-right">
+                                <blockquote className="text-base md:text-lg italic text-glow flex-grow text-left">“{item.quote}”</blockquote>
+                                <footer className="pt-4 text-right">
                                     <p className="font-semibold text-sm md:text-base text-primary/80">- {item.author}</p>
                                 </footer>
                             </CardContent>
