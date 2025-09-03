@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -149,26 +150,15 @@
   border: none;
   cursor: pointer;
   padding: 0.75em 1em;
-}
-.menu__item::before {
-  content: "";
-  position: absolute;
-  bottom: 0.35em;
-  left: 50%;
-  width: var(--lineWidth);
-  height: 0.2em;
-  background: var(--component-active-color);
   border-radius: 999px;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
 .menu__item.active {
-  color: var(--component-active-color);
+  background-color: white;
+  color: #222222;
 }
-.menu__item.active::before {
-  opacity: 1;
-}
+
 .menu__icon {
   position: relative;
   display: flex;
@@ -181,7 +171,7 @@
   transition: color 0.3s ease-in-out;
 }
 .menu__item.active .menu__icon {
-  color: var(--component-active-color);
+  color: inherit;
   animation: iconBounce 0.6s ease-in-out;
 }
 .menu__text {
@@ -192,5 +182,5 @@
   text-transform: capitalize;
 }
 .menu__item.active .menu__text {
-  color: var(--component-active-color);
+  color: inherit;
 }
