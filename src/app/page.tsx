@@ -7,6 +7,7 @@ import { Founder } from "@/components/founder";
 import { Quotes } from "@/components/quotes";
 import { Booking } from "@/components/booking";
 import { Footer } from "@/components/footer";
+import { OtherServices } from "@/components/other-services";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <ServiceShowcase />
+        <OtherServices />
         <Process />
         <Comparison />
         <Founder />

@@ -8,6 +8,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export function ServiceShowcase() {
+  const showcaseServices = servicesData.slice(0, 4);
+
   return (
     <section id="services" className="w-full py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
@@ -21,7 +23,7 @@ export function ServiceShowcase() {
         </div>
 
         <div className="mt-12 md:mt-20 space-y-16 md:space-y-24">
-          {servicesData.map((service, index) => (
+          {showcaseServices.map((service, index) => (
             <div key={service.slug} className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className={`space-y-4 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
                 <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-glow">{service.title}</h3>
