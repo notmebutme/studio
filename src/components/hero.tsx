@@ -23,23 +23,31 @@ const videoSources = [
   "https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
 ];
 
-export function Hero() {
+interface HeroProps {
+  onAnimationComplete?: () => void;
+}
+
+export function Hero({ onAnimationComplete }: HeroProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showFinal, setShowFinal] = useState(false);
 
   useEffect(() => {
     if (currentQuestionIndex < questions.length) {
+      // 1.5s hold + 0.5s in + 0.5s out = 2.5s total per question
       const timer = setTimeout(() => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-      }, currentQuestionIndex === 2 ? 4000 : 3500); // 3s hold + 0.5s in + 0.5s out for last question
+      }, 2500); 
       return () => clearTimeout(timer);
     } else {
       const finalTimer = setTimeout(() => {
         setShowFinal(true);
+        if (onAnimationComplete) {
+          onAnimationComplete();
+        }
       }, 500); // After the last question fades out
       return () => clearTimeout(finalTimer);
     }
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, onAnimationComplete]);
 
   return (
     <section 
