@@ -36,7 +36,7 @@ export function Demos() {
            <Card className="border-2 border-primary/10 glow-shadow mt-8 w-full">
              <CardContent className="p-4 md:p-6">
                 <h3 className="text-lg md:text-xl font-semibold mb-4 text-center font-headline">{activeService.demo.title}</h3>
-                <Carousel className="w-full max-w-3xl mx-auto">
+                <Carousel opts={{ loop: true }} className="w-full max-w-3xl mx-auto">
                   <CarouselContent>
                     {(activeService.demo.videos || []).map((videoSrc, index) => (
                       <CarouselItem key={index}>
