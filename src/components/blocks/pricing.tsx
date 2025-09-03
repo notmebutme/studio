@@ -69,6 +69,11 @@ export function Pricing({
     }
   };
 
+  // Defensive check to prevent crash if plans are not provided
+  if (!plans || plans.length === 0) {
+    return null;
+  }
+
   return (
     <div className="container py-20">
       <div className="text-center space-y-4 mb-12">

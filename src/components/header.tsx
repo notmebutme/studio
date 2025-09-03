@@ -12,7 +12,6 @@ import { servicesData } from "@/lib/services-data";
 
 export function Header() {
   const navItems = [
-    { name: "Our Work", href: "/our-work" },
     { name: "Pricing", href: "/#pricing" },
     { name: "About Us", href: "/about" },
   ];
@@ -32,6 +31,9 @@ export function Header() {
         </Link>
         
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          <Link href="/" className="hover:text-primary transition-colors">
+            Home
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 hover:text-primary transition-colors focus:outline-none">
               Services
@@ -39,7 +41,7 @@ export function Header() {
             <DropdownMenuContent>
               {servicesData.map((service) => (
                 <DropdownMenuItem key={service.slug} asChild>
-                  <Link href={`/services/${service.slug}`}>
+                  <Link href={`/services/${service.slug}`} className="gap-2">
                     {service.icon}
                     <span>{service.title}</span>
                   </Link>
