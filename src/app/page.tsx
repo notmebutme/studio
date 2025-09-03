@@ -27,10 +27,10 @@ export default function Home() {
         <Comparison />
         <Founder />
         <Quotes />
+        <FAQ />
         <div id="booking" className="scroll-mt-24">
           <Booking />
         </div>
-        <FAQ />
       </main>      
       <Footer />
     </div>

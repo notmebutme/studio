@@ -96,7 +96,7 @@ export default {
         },
         marquee: {
           from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(calc(-50% - var(--gap)/2))' }
+          to: { transform: 'translateX(calc(-100% - var(--gap, 1rem)))' }
         },
         rainbow: {
           "0%": { "background-position": "0%" },
