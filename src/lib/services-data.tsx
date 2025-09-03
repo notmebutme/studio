@@ -271,7 +271,7 @@ export const servicesData: Service[] = [
         features: ['Unlimited Minutes', 'Custom Integrations', 'Dedicated Account Manager', '24/7 Support'], 
         buttonText: 'Contact Us', 
         href: "/#booking",
-        buttonVariant: 'primary' 
+        buttonVariant: 'secondary' 
       },
     ]
   },
@@ -341,7 +341,7 @@ export const servicesData: Service[] = [
         features: ['Unlimited Chats', 'Full Branding Control', 'Dedicated Bot Manager', 'API Access'], 
         buttonText: 'Contact Us', 
         href: "/#booking",
-        buttonVariant: 'primary' 
+        buttonVariant: 'secondary' 
       },
     ]
   }
