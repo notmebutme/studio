@@ -3,7 +3,7 @@
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { pricingPlans, Service, servicesData } from "@/lib/services-data";
+import { servicesData } from "@/lib/services-data";
 import { ModernPricingPage } from "@/components/ui/animated-glassy-pricing";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
@@ -13,14 +13,21 @@ import { ScrollTriggeredText } from "@/components/ui/scroll-triggered-text";
 export default function PricingPage() {
   const [isYearly, setIsYearly] = useState(false);
 
+  // Safely map over services and their pricing plans
   const allServicePlans = servicesData
-    .filter(service => service.pricingPlans && service.pricingPlans.length > 0)
+    .filter(service => service.pricingPlans && Array.isArray(service.pricingPlans) && service.pricingPlans.length > 0)
     .flatMap(service => 
-        (service.pricingPlans || []).map(plan => ({
-            ...plan,
-            planName: `${plan.name || (plan as any).planName} (${service.title})`,
-            price: isYearly ? (plan as any).yearlyPrice || plan.price : plan.price,
-        }))
+        (service.pricingPlans || []).map(plan => {
+            const monthlyPrice = plan.price;
+            // Ensure yearlyPrice exists and is valid, otherwise calculate it
+            const yearlyPrice = (plan as any).yearlyPrice || (Number.isNaN(parseFloat(monthlyPrice)) ? monthlyPrice : (parseFloat(monthlyPrice) * 12 * 0.8).toFixed(0));
+
+            return {
+                ...plan,
+                planName: `${plan.name || (plan as any).planName} (${service.title})`,
+                price: isYearly ? yearlyPrice : monthlyPrice,
+            };
+        })
     );
 
   const plansForDisplay = allServicePlans.map(plan => ({
