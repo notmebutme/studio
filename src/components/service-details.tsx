@@ -4,20 +4,19 @@
 import type { Service } from "@/lib/services-data";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ArrowRight, Check } from "lucide-react";
-import Link from "next/link";
+import { Check } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ComparisonTable } from "./comparison-table";
 import { Pricing } from "./blocks/pricing";
 import { RainbowButton } from "./ui/rainbow-button";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
-import { Badge } from "@/components/ui/badge";
 import { ModernPricingPage } from "./ui/animated-glassy-pricing";
 import { BorderBeam } from "./ui/border-beam";
 
 export function ServiceDetails({ service }: { service: Service }) {
     const showPricing = service.pricingPlans && service.pricingPlans.length > 0;
     const showGlassyPricing = ["ai-voice-agent", "ai-chatbot"].includes(service.slug) && service.pricingPlans;
+    const showDemo = service.demo && service.demo.videos.length > 0;
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
@@ -33,6 +32,31 @@ export function ServiceDetails({ service }: { service: Service }) {
                         </ScrollTriggeredText>
                     </div>
                 </section>
+
+                {showDemo && (
+                     <section className="w-full py-16 md:py-24">
+                        <div className="container mx-auto px-4 md:px-6">
+                            <div className="text-center max-w-3xl mx-auto mb-12">
+                                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary text-glow">See It In Action</h2>
+                                <p className="mt-4 text-muted-foreground md:text-xl/relaxed">A glimpse of what Intrix AI can create for {service.title}.</p>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {service.demo.videos.map((videoSrc, index) => (
+                                    <div key={index} className="aspect-video rounded-xl overflow-hidden glow-shadow">
+                                        <video
+                                            src={videoSrc}
+                                            className="w-full h-full object-cover"
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                )}
 
                 {showGlassyPricing ? (
                     <section className="relative py-16 md:py-20 overflow-hidden bg-secondary/40 backdrop-blur-3xl">

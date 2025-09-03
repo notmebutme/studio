@@ -5,10 +5,34 @@ import { servicesData } from "@/lib/services-data";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Play, Pause } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { GlowCard } from "./ui/spotlight-card";
 
 export function ServiceShowcase() {
   const showcaseServices = servicesData.slice(0, 4);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [playingVideo, setPlayingVideo] = useState<number | null>(0);
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+        if (video) {
+            if (index === playingVideo) {
+                video.play().catch(error => console.log("Autoplay prevented:", error));
+            } else {
+                video.pause();
+            }
+        }
+    });
+  }, [playingVideo]);
+
+  const togglePlay = (index: number) => {
+    if (playingVideo === index) {
+      setPlayingVideo(null);
+    } else {
+      setPlayingVideo(index);
+    }
+  };
 
   return (
     <section id="services" className="w-full py-16 md:py-24 bg-background">
@@ -34,15 +58,24 @@ export function ServiceShowcase() {
                   </Link>
                 </Button>
               </div>
-              <div className={`aspect-video rounded-xl overflow-hidden glow-shadow ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
-                <video
-                    src={service.demo.videos[0]}
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                />
+              <div className={`relative aspect-video rounded-xl overflow-hidden ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+                <GlowCard customSize={true} className="p-0 rounded-xl">
+                    <video
+                        ref={el => videoRefs.current[index] = el}
+                        src={service.demo.videos[0]}
+                        className="w-full h-full object-cover"
+                        loop
+                        muted
+                        playsInline
+                        onClick={() => togglePlay(index)}
+                    />
+                    <button 
+                        onClick={() => togglePlay(index)}
+                        className="absolute inset-0 w-full h-full flex items-center justify-center bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300"
+                    >
+                        {playingVideo === index ? <Pause className="w-16 h-16 text-white/80" /> : <Play className="w-16 h-16 text-white/80" />}
+                    </button>
+                </GlowCard>
               </div>
             </div>
           ))}
