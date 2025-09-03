@@ -31,7 +31,7 @@ export function Hero() {
     if (currentQuestionIndex < questions.length) {
       const timer = setTimeout(() => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-      }, 3500); // 2.5s hold + 0.5s fade in + 0.5s fade out
+      }, currentQuestionIndex === 2 ? 4000 : 3500); // 3s hold + 0.5s in + 0.5s out for last question
       return () => clearTimeout(timer);
     } else {
       const finalTimer = setTimeout(() => {
