@@ -46,15 +46,15 @@ export function Audience() {
                     <span className="text-primary text-glow">Right Place.</span>
                 </span>
             </h2>
-          <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.5} className="mt-4 text-muted-foreground md:text-xl/relaxed">
+          <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
             We partner with winners. Whether you're a local hero or a global leader, our AI is your unfair advantage.
-          </ScrollTriggeredText>
+          </p>
         </div>
-        <div className="max-w-7xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8">
+        <div className="max-w-7xl mx-auto mt-12 flex flex-wrap justify-center gap-6 md:gap-8">
             {targetAudiences.map((audience, index) => (
-              <Card key={index} className="text-center bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow p-4 md:p-6 flex flex-col items-center justify-start rounded-2xl">
-                <CardHeader className="p-2">
-                  <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-4 mb-4">
+              <Card key={index} className="text-center bg-card/80 border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 glow-shadow p-4 md:p-6 flex flex-col items-center justify-start rounded-2xl basis-full sm:basis-[calc(50%-1rem)] md:basis-[calc(33.33%-1.5rem)] lg:basis-[calc(20%-1.5rem)] max-w-sm">
+                <CardHeader className="p-2 flex flex-col items-center">
+                  <div className="w-16 h-16 flex items-center justify-center rounded-full border-[0.75px] border-border bg-muted p-4 mb-4">
                     {audience.icon}
                   </div>
                   <CardTitle className="text-xl font-bold font-headline">{audience.title}</CardTitle>
