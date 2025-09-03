@@ -12,14 +12,27 @@ import { GlowCard } from "./ui/spotlight-card";
 export function ServiceShowcase() {
   const showcaseServices = servicesData.slice(0, 4);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [isPlaying, setIsPlaying] = useState<boolean[]>(showcaseServices.map(() => true));
 
   useEffect(() => {
-    videoRefs.current.forEach(video => {
+    videoRefs.current.forEach((video, index) => {
       if (video) {
-        video.play().catch(error => console.log("Autoplay prevented:", error));
+        if (isPlaying[index]) {
+          video.play().catch(error => console.log("Autoplay prevented:", error));
+        } else {
+          video.pause();
+        }
       }
     });
-  }, []);
+  }, [isPlaying]);
+
+  const togglePlay = (index: number) => {
+    setIsPlaying(prev => {
+        const newIsPlaying = [...prev];
+        newIsPlaying[index] = !newIsPlaying[index];
+        return newIsPlaying;
+    });
+  };
 
   return (
     <section id="services" className="w-full py-16 md:py-24 bg-background">
@@ -47,7 +60,7 @@ export function ServiceShowcase() {
                   </Button>
                 </div>
               </GlowCard>
-              <div className={`relative aspect-video rounded-xl overflow-hidden ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+              <div className={`relative group aspect-video rounded-xl overflow-hidden ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
                   <video
                       ref={el => videoRefs.current[index] = el}
                       src={service.demo.videos[0]}
@@ -57,6 +70,16 @@ export function ServiceShowcase() {
                       playsInline
                       autoPlay
                   />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-14 w-14 rounded-full bg-white/20 hover:bg-white/30 text-white"
+                        onClick={() => togglePlay(index)}
+                    >
+                        {isPlaying[index] ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8" />}
+                    </Button>
+                  </div>
               </div>
             </div>
           ))}
