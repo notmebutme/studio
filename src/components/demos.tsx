@@ -1,11 +1,25 @@
 
-import Image from "next/image";
+"use client"
+import { useState } from "react";
 import { servicesData } from "@/lib/services-data";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { InteractiveMenu, type InteractiveMenuItem } from "./ui/modern-mobile-menu";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export function Demos() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeService = servicesData[activeIndex];
+
+  const menuItems: InteractiveMenuItem[] = servicesData.map(service => ({
+    label: service.title,
+    icon: service.icon // Assuming icon is a valid component
+  }));
+
+  const handleMenuItemChange = (index: number) => {
+    setActiveIndex(index);
+  };
+
   return (
     <section className="w-full py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
@@ -17,33 +31,33 @@ export function Demos() {
             Explore examples of how Intrix AI transforms ideas into stunning, effective assets. Select a service to see it in action.
           </ScrollTriggeredText>
         </div>
-        <div className="mt-12 max-w-5xl mx-auto">
-           <Tabs defaultValue={servicesData[0].slug} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6 h-auto">
-                {servicesData.map((service) => (
-                    <TabsTrigger key={service.slug} value={service.slug} className="text-xs md:text-sm">{service.title}</TabsTrigger>
-                ))}
-            </TabsList>
-            {servicesData.map((service) => (
-                <TabsContent key={service.slug} value={service.slug}>
-                    <Card className="border-2 border-primary/10 glow-shadow mt-4">
-                      <CardContent className="p-4 md:p-6">
-                        <h3 className="text-lg md:text-xl font-semibold mb-4 text-center font-headline">{service.demo.title}</h3>
-                        <div className="flex justify-center">
-                            <Image
-                              src={service.demo.aiImg}
-                              alt={`AI example for ${service.title}`}
-                              width={800}
-                              height={600}
-                              className="rounded-lg aspect-video object-cover"
-                              data-ai-hint={service.demo.aiHint}
+        <div className="mt-12 max-w-5xl mx-auto flex flex-col items-center">
+           <InteractiveMenu items={menuItems} onActiveChange={handleMenuItemChange} />
+           <Card className="border-2 border-primary/10 glow-shadow mt-8 w-full">
+             <CardContent className="p-4 md:p-6">
+                <h3 className="text-lg md:text-xl font-semibold mb-4 text-center font-headline">{activeService.demo.title}</h3>
+                <Carousel className="w-full max-w-3xl mx-auto">
+                  <CarouselContent>
+                    {(activeService.demo.videos || []).map((videoSrc, index) => (
+                      <CarouselItem key={index}>
+                         <div className="aspect-video">
+                            <video
+                                src={videoSrc}
+                                className="w-full h-full object-cover rounded-lg"
+                                controls
+                                loop
+                                autoPlay
+                                muted
                             />
-                        </div>
-                      </CardContent>
-                    </Card>
-                </TabsContent>
-            ))}
-           </Tabs>
+                         </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+             </CardContent>
+           </Card>
         </div>
       </div>
     </section>

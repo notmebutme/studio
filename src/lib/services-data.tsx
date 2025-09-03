@@ -36,19 +36,38 @@ export interface Service {
     comparison: ComparisonData;
     demo: {
       title: string;
-      traditionalImg: string;
-      aiImg: string;
-      traditionalHint: string;
-      aiHint: string;
+      videos: string[];
     };
     pricingPlans?: PricingPlan[] | PricingCardProps[];
 }
 
+export const processSteps = [
+  {
+    title: "1. Book Appointment",
+    description: "Choose a time that works for you. We'll discuss your goals and how Intrix can help.",
+    icon: <Calendar className="h-6 w-6" />,
+    image: "https://picsum.photos/seed/step1/800/600",
+  },
+  {
+    title: "2. We Create Your Content",
+    description: "Our team, powered by cutting-edge AI, gets to work crafting your custom content.",
+    icon: <WandSparkles className="h-6 w-6" />,
+    image: "https://picsum.photos/seed/step2/800/600",
+  },
+  {
+    title: "3. Upload & Review Results",
+    description: "Receive your content instantly. Review, request revisions, and deploy with ease.",
+    icon: <Upload className="h-6 w-6" />,
+    image: "https://picsum.photos/seed/step3/800/600",
+  },
+];
+
+
 export const servicesData: Service[] = [
   {
     slug: "ai-generated-content",
-    icon: <Bot className="h-6 w-6 md:h-8 md:w-8" />,
-    title: "AI-Generated Content",
+    icon: <Bot className="h-4 w-4 md:h-5 md:w-5" />,
+    title: "Content",
     description: "High-quality, SEO-optimized articles, social media updates, and website copy that establishes you as an industry leader.",
     detailedDescription: "Scale your content engine without scaling your team. Our AI produces premium, SEO-optimized content that resonates with your audience and builds brand authority.",
     useCases: [
@@ -79,16 +98,16 @@ export const servicesData: Service[] = [
     },
     demo: {
         title: "Content & Copy Generation",
-        traditionalImg: "https://picsum.photos/seed/tradcontent/800/600",
-        aiImg: "https://picsum.photos/seed/aicontent/800/600",
-        traditionalHint: "person writing",
-        aiHint: "glowing text"
+        videos: [
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+        ]
     }
   },
   {
     slug: "ai-generated-ads",
-    icon: <Clapperboard className="h-6 w-6 md:h-8 md:w-8" />,
-    title: "AI-Generated Ads",
+    icon: <Clapperboard className="h-4 w-4 md:h-5 md:w-5" />,
+    title: "Ads",
     description: "Stop the guesswork. We analyze market trends to create hundreds of high-performing ad creatives that are guaranteed to convert.",
     detailedDescription: "Launch campaigns in hours, not months. Our AI generates and tests hundreds of ad variations to find the perfect message that converts, maximizing your ROI.",
     useCases: [
@@ -119,16 +138,16 @@ export const servicesData: Service[] = [
     },
     demo: {
         title: "AI-Generated Ad Creatives",
-        traditionalImg: "https://picsum.photos/seed/tradad/800/600",
-        aiImg: "https://picsum.photos/seed/aiad/800/600",
-        traditionalHint: "billboard city",
-        aiHint: "futuristic ad"
+        videos: [
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        ]
     }
   },
   {
     slug: "ai-product-mockups",
-    icon: <MonitorSmartphone className="h-6 w-6 md:h-8 md:w-8" />,
-    title: "AI Product Mockups",
+    icon: <MonitorSmartphone className="h-4 w-4 md:h-5 md:w-5" />,
+    title: "Mockups",
     description: "Forget expensive photoshoots. We place your product in any environment imaginable, creating stunning, realistic lifestyle images.",
     detailedDescription: "Generate a massive library of stunning, realistic lifestyle images and professional mockups without a single photoshoot. Place your product in any context to drive sales.",
     useCases: [
@@ -159,16 +178,16 @@ export const servicesData: Service[] = [
     },
     demo: {
         title: "AI-Enhanced Product Mockups",
-        traditionalImg: "https://picsum.photos/seed/tradmockup/800/600",
-        aiImg: "https://picsum.photos/seed/aimockup/800/600",
-        traditionalHint: "product studio",
-        aiHint: "product lifestyle"
+        videos: [
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        ]
     }
   },
   {
     slug: "ai-cgi-ads",
-    icon: <Film className="h-6 w-6 md:h-8 md:w-8" />,
-    title: "AI CGI Ads",
+    icon: <Film className="h-4 w-4 md:h-5 md:w-5" />,
+    title: "CGI Ads",
     description: "Create photorealistic CGI video ads. From fantastical worlds to impossible product demos, our AI removes the constraints of reality.",
     detailedDescription: "Unleash limitless creativity with photorealistic CGI video ads. Our AI-powered workflow builds unforgettable brand narratives without the high cost of traditional production.",
     useCases: [
@@ -199,16 +218,16 @@ export const servicesData: Service[] = [
     },
     demo: {
         title: "AI-Generated CGI Scenes",
-        traditionalImg: "https://picsum.photos/seed/tradcgi/800/600",
-        aiImg: "https://picsum.photos/seed/aicgi/800/600",
-        traditionalHint: "film set",
-        aiHint: "alien planet"
+        videos: [
+            "https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+            "https://storage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+        ]
     }
   },
   {
     slug: "ai-voice-agent",
-    icon: <PhoneCall className="h-6 w-6 md:h-8 md:w-8" />,
-    title: "AI Voice Agent",
+    icon: <PhoneCall className="h-4 w-4 md:h-5 md:w-5" />,
+    title: "Voice",
     description: "Automate customer support with a 24/7 AI voice agent that understands and responds with natural, human-like conversation.",
     detailedDescription: "Revolutionize your customer service with an intelligent AI voice agent. Handle calls 24/7, answer queries, book appointments, and escalate complex issues, all with a natural, conversational tone.",
     useCases: [
@@ -239,10 +258,10 @@ export const servicesData: Service[] = [
     },
     demo: {
         title: "AI Voice Agent",
-        traditionalImg: "https://picsum.photos/seed/tradvoice/800/600",
-        aiImg: "https://picsum.photos/seed/aivoice/800/600",
-        traditionalHint: "call center",
-        aiHint: "sound wave"
+        videos: [
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+        ]
     },
     pricingPlans: [
       { 
@@ -277,8 +296,8 @@ export const servicesData: Service[] = [
   },
   {
     slug: "ai-chatbot",
-    icon: <MessagesSquare className="h-6 w-6 md:h-8 md:w-8" />,
-    title: "AI Chatbot",
+    icon: <MessagesSquare className="h-4 w-4 md:h-5 md:w-5" />,
+    title: "Chatbot",
     description: "Deploy an intelligent chatbot on your website to answer questions, capture leads, and guide users 24/7.",
     detailedDescription: "Transform your website into a lead-generation machine with an AI chatbot that provides instant answers, qualifies visitors, and books meetings around the clock.",
     useCases: [
@@ -309,10 +328,10 @@ export const servicesData: Service[] = [
     },
     demo: {
         title: "AI Chatbot",
-        traditionalImg: "https://picsum.photos/seed/tradchat/800/600",
-        aiImg: "https://picsum.photos/seed/aichat/800/600",
-        traditionalHint: "customer support",
-        aiHint: "chat bubbles"
+        videos: [
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+          "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        ]
     },
     pricingPlans: [
       { 
