@@ -12,27 +12,14 @@ import { GlowCard } from "./ui/spotlight-card";
 export function ServiceShowcase() {
   const showcaseServices = servicesData.slice(0, 4);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const [playingVideo, setPlayingVideo] = useState<number | null>(0);
 
   useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-        if (video) {
-            if (index === playingVideo) {
-                video.play().catch(error => console.log("Autoplay prevented:", error));
-            } else {
-                video.pause();
-            }
-        }
+    videoRefs.current.forEach(video => {
+      if (video) {
+        video.play().catch(error => console.log("Autoplay prevented:", error));
+      }
     });
-  }, [playingVideo]);
-
-  const togglePlay = (index: number) => {
-    if (playingVideo === index) {
-      setPlayingVideo(null);
-    } else {
-      setPlayingVideo(index);
-    }
-  };
+  }, []);
 
   return (
     <section id="services" className="w-full py-16 md:py-24 bg-background">
@@ -49,33 +36,27 @@ export function ServiceShowcase() {
         <div className="mt-12 md:mt-20 space-y-16 md:space-y-24">
           {showcaseServices.map((service, index) => (
             <div key={service.slug} className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              <div className={`space-y-4 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
-                <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-glow">{service.title}</h3>
-                <p className="text-muted-foreground">{service.description}</p>
-                <Button asChild variant="outline" className="group">
-                  <Link href={`/services/${service.slug}`}>
-                    Learn More <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-              </div>
+              <GlowCard customSize={true} className={`p-6 rounded-2xl ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
+                <div className="space-y-4">
+                  <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-glow">{service.title}</h3>
+                  <p className="text-muted-foreground">{service.description}</p>
+                  <Button asChild variant="outline" className="group">
+                    <Link href={`/services/${service.slug}`}>
+                      Learn More <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                </div>
+              </GlowCard>
               <div className={`relative aspect-video rounded-xl overflow-hidden ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
-                <GlowCard customSize={true} className="p-0 rounded-xl">
-                    <video
-                        ref={el => videoRefs.current[index] = el}
-                        src={service.demo.videos[0]}
-                        className="w-full h-full object-cover"
-                        loop
-                        muted
-                        playsInline
-                        onClick={() => togglePlay(index)}
-                    />
-                    <button 
-                        onClick={() => togglePlay(index)}
-                        className="absolute inset-0 w-full h-full flex items-center justify-center bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300"
-                    >
-                        {playingVideo === index ? <Pause className="w-16 h-16 text-white/80" /> : <Play className="w-16 h-16 text-white/80" />}
-                    </button>
-                </GlowCard>
+                  <video
+                      ref={el => videoRefs.current[index] = el}
+                      src={service.demo.videos[0]}
+                      className="w-full h-full object-cover"
+                      loop
+                      muted
+                      playsInline
+                      autoPlay
+                  />
               </div>
             </div>
           ))}
