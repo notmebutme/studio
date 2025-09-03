@@ -12,6 +12,7 @@ export interface InteractiveMenuItem {
 export interface InteractiveMenuProps {
   items?: InteractiveMenuItem[];
   accentColor?: string;
+  activeIndex?: number;
   onActiveChange?: (index: number) => void;
 }
 
@@ -25,7 +26,7 @@ const defaultItems: InteractiveMenuItem[] = [
 
 const defaultAccentColor = 'var(--component-active-color-default)';
 
-const InteractiveMenu: React.FC<InteractiveMenuProps> = ({ items, accentColor, onActiveChange }) => {
+const InteractiveMenu: React.FC<InteractiveMenuProps> = ({ items, accentColor, activeIndex: activeIndexProp = 0, onActiveChange }) => {
 
   const finalItems = useMemo(() => {
      const isValid = items && Array.isArray(items) && items.length >= 2 && items.length <= 6;
@@ -35,7 +36,11 @@ const InteractiveMenu: React.FC<InteractiveMenuProps> = ({ items, accentColor, o
      return items;
   }, [items]);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(activeIndexProp);
+
+  useEffect(() => {
+    setActiveIndex(activeIndexProp);
+  }, [activeIndexProp]);
 
   useEffect(() => {
       if (activeIndex >= finalItems.length) {
@@ -57,12 +62,10 @@ const InteractiveMenu: React.FC<InteractiveMenuProps> = ({ items, accentColor, o
       }
     };
 
-    setLineWidth();
-
-    window.addEventListener('resize', setLineWidth);
-    return () => {
-      window.removeEventListener('resize', setLineWidth);
-    };
+    // Set initial width
+    if (itemRefs.current[activeIndex]) {
+        setLineWidth();
+    }
   }, [activeIndex, finalItems]);
 
   const handleItemClick = (index: number) => {

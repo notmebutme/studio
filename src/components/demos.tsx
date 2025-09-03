@@ -13,7 +13,7 @@ export function Demos() {
 
   const menuItems: InteractiveMenuItem[] = servicesData.map(service => ({
     label: service.title,
-    icon: service.icon // Assuming icon is a valid component
+    icon: service.icon 
   }));
 
   const handleMenuItemChange = (index: number) => {
@@ -32,7 +32,7 @@ export function Demos() {
           </ScrollTriggeredText>
         </div>
         <div className="mt-12 max-w-5xl mx-auto flex flex-col items-center">
-           <InteractiveMenu items={menuItems} onActiveChange={handleMenuItemChange} />
+           <InteractiveMenu items={menuItems} activeIndex={activeIndex} onActiveChange={handleMenuItemChange} />
            <Card className="border-2 border-primary/10 glow-shadow mt-8 w-full">
              <CardContent className="p-4 md:p-6">
                 <h3 className="text-lg md:text-xl font-semibold mb-4 text-center font-headline">{activeService.demo.title}</h3>
