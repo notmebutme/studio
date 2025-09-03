@@ -1,15 +1,65 @@
 
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { servicesData } from "@/lib/services-data";
 import { ScrollTriggeredText } from "./ui/scroll-triggered-text";
 import { Card, CardContent } from "@/components/ui/card";
 import { InteractiveMenu, type InteractiveMenuItem } from "./ui/modern-mobile-menu";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
+import React from "react";
 
 export function Demos() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
   const activeService = servicesData[activeIndex];
+  const videoRefs = React.useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCurrent(api.selectedScrollSnap());
+
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  useEffect(() => {
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+
+    if (api) {
+        api.scrollTo(0, true);
+        setCurrent(0);
+    }
+  }, [activeIndex, api]);
+
+
+  useEffect(() => {
+     videoRefs.current.forEach((video, index) => {
+        if(video) {
+            if (index === current) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+     });
+  }, [current, api]);
+
 
   const menuItems: InteractiveMenuItem[] = servicesData.map(service => ({
     label: service.title,
@@ -36,18 +86,19 @@ export function Demos() {
            <Card className="border-2 border-primary/10 glow-shadow mt-8 w-full">
              <CardContent className="p-4 md:p-6">
                 <h3 className="text-lg md:text-xl font-semibold mb-4 text-center font-headline">{activeService.demo.title}</h3>
-                <Carousel opts={{ loop: true }} className="w-full max-w-3xl mx-auto">
+                <Carousel setApi={setApi} opts={{ loop: true }} className="w-full max-w-3xl mx-auto">
                   <CarouselContent>
                     {(activeService.demo.videos || []).map((videoSrc, index) => (
-                      <CarouselItem key={index}>
+                      <CarouselItem key={`${activeIndex}-${index}`}>
                          <div className="aspect-video">
                             <video
+                                ref={el => videoRefs.current[index] = el}
                                 src={videoSrc}
                                 className="w-full h-full object-cover rounded-lg"
                                 controls
                                 loop
-                                autoPlay
                                 muted
+                                playsInline
                             />
                          </div>
                       </CarouselItem>
