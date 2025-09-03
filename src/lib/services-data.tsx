@@ -154,7 +154,41 @@ export const servicesData: Service[] = [
           "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
         ]
     },
-    pricingPlans: []
+    pricingPlans: [
+      {
+        name: "Basic Content",
+        price: "15000",
+        yearlyPrice: "150000",
+        period: "month",
+        features: ["5 AI-generated articles (up to 1,000 words)", "Basic SEO optimization", "Standard support"],
+        description: "Ideal for personal blogs or small projects.",
+        buttonText: "Get Started",
+        href: "/#booking",
+        isPopular: false,
+      },
+      {
+        name: "Pro Content",
+        price: "40000",
+        yearlyPrice: "400000",
+        period: "month",
+        features: ["20 AI-generated articles (up to 2,000 words)", "Advanced SEO & brand voice", "Content calendar", "Priority support"],
+        description: "For serious content marketers and businesses.",
+        buttonText: "Go Pro",
+        href: "/#booking",
+        isPopular: true,
+      },
+      {
+        name: "Agency Content",
+        price: "90000",
+        yearlyPrice: "900000",
+        period: "month",
+        features: ["50+ AI-generated articles", "Full SEO suite integration", "Dedicated content strategist", "Team access"],
+        description: "For agencies managing multiple clients.",
+        buttonText: "Contact Us",
+        href: "/#booking",
+        isPopular: false,
+      }
+    ]
   },
   {
     slug: "ai-generated-ads",
@@ -195,7 +229,41 @@ export const servicesData: Service[] = [
           "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
         ]
     },
-    pricingPlans: []
+    pricingPlans: [
+      {
+        name: "Ad Starter",
+        price: "20000",
+        yearlyPrice: "200000",
+        period: "month",
+        features: ["50 Ad Creatives (Image/Text)", "2 Ad Platforms", "Basic performance analytics", "Standard support"],
+        description: "Great for single-product businesses or new campaigns.",
+        buttonText: "Get Started",
+        href: "/#booking",
+        isPopular: false,
+      },
+      {
+        name: "Ad Growth",
+        price: "50000",
+        yearlyPrice: "500000",
+        period: "month",
+        features: ["200 Ad Creatives", "5 Ad Platforms", "Advanced analytics & A/B testing", "Priority support"],
+        description: "Perfect for e-commerce stores and lead-gen businesses.",
+        buttonText: "Go Pro",
+        href: "/#booking",
+        isPopular: true,
+      },
+      {
+        name: "Ad Scale",
+        price: "120000",
+        yearlyPrice: "1200000",
+        period: "month",
+        features: ["Unlimited Ad Creatives", "All Platforms", "Predictive performance modeling", "Dedicated Ad Strategist"],
+        description: "The ultimate solution for performance marketing agencies.",
+        buttonText: "Contact Us",
+        href: "/#booking",
+        isPopular: false,
+      }
+    ]
   },
   {
     slug: "ai-product-mockups",
@@ -236,7 +304,41 @@ export const servicesData: Service[] = [
           "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         ]
     },
-    pricingPlans: []
+    pricingPlans: [
+        {
+          name: "Mockup Essentials",
+          price: "10000",
+          yearlyPrice: "100000",
+          period: "month",
+          features: ["50 product mockups", "10 unique scenes/backgrounds", "Standard resolution downloads", "Email support"],
+          description: "Perfect for quickly creating e-commerce and social media images.",
+          buttonText: "Choose Essentials",
+          href: "/#booking",
+          isPopular: false,
+        },
+        {
+          name: "Mockup Pro",
+          price: "25000",
+          yearlyPrice: "250000",
+          period: "month",
+          features: ["200 product mockups", "50 unique scenes/backgrounds", "High-resolution downloads", "Priority support"],
+          description: "Ideal for brands that need a high volume of diverse visuals.",
+          buttonText: "Choose Pro",
+          href: "/#booking",
+          isPopular: true,
+        },
+        {
+          name: "Mockup Unlimited",
+          price: "50000",
+          yearlyPrice: "500000",
+          period: "month",
+          features: ["Unlimited mockups", "Unlimited scenes", "AI model integration", "Dedicated support"],
+          description: "For businesses that require a constant stream of fresh product visuals.",
+          buttonText: "Go Unlimited",
+          href: "/#booking",
+          isPopular: false,
+        }
+    ]
   },
   {
     slug: "ai-cgi-ads",
@@ -277,7 +379,41 @@ export const servicesData: Service[] = [
             "https://storage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
         ]
     },
-    pricingPlans: []
+    pricingPlans: [
+        {
+          name: "CGI Short",
+          price: "75000",
+          yearlyPrice: "N/A",
+          period: "per 15s video",
+          features: ["Up to 15 seconds runtime", "1 core product/concept", "2 revision rounds", "Social media formats"],
+          description: "Perfect for viral social media clips and high-impact ads.",
+          buttonText: "Start Project",
+          href: "/#booking",
+          isPopular: false,
+        },
+        {
+          name: "CGI Standard",
+          price: "200000",
+          yearlyPrice: "N/A",
+          period: "per 30s video",
+          features: ["Up to 30 seconds runtime", "Complex scenes & multiple assets", "4 revision rounds", "Broadcast quality"],
+          description: "The most popular choice for brand stories and product features.",
+          buttonText: "Start Project",
+          href: "/#booking",
+          isPopular: true,
+        },
+        {
+          name: "CGI Feature",
+          price: "Contact Us",
+          yearlyPrice: "N/A",
+          period: "project-based",
+          features: ["60+ seconds runtime", "Full narrative development", "Unlimited revisions", "Dedicated producer"],
+          description: "For ambitious projects and brand-defining campaigns.",
+          buttonText: "Contact Us",
+          href: "/#booking",
+          isPopular: false,
+        }
+    ]
   },
   {
     slug: "ai-voice-agent",
@@ -323,6 +459,7 @@ export const servicesData: Service[] = [
         planName: 'Starter', 
         description: 'Ideal for small businesses and startups testing the waters.', 
         price: '99', 
+        yearlyPrice: '999',
         features: ['500 Minutes/Month', 'Basic Call Flows', 'Standard Voice', 'Email Support'], 
         buttonText: 'Get Started', 
         href: "/#booking",
@@ -332,6 +469,7 @@ export const servicesData: Service[] = [
         planName: 'Growth', 
         description: 'For growing businesses scaling their customer interactions.', 
         price: '299', 
+        yearlyPrice: '2999',
         features: ['2,500 Minutes/Month', 'Advanced Call Flows', 'CRM Integration', 'Priority Support'], 
         buttonText: 'Choose Growth', 
         href: "/#booking",
@@ -342,6 +480,7 @@ export const servicesData: Service[] = [
         planName: 'Enterprise', 
         description: 'Custom solutions for large-scale operations.', 
         price: 'Custom', 
+        yearlyPrice: 'Custom',
         features: ['Unlimited Minutes', 'Custom Integrations', 'Dedicated Account Manager', '24/7 Support'], 
         buttonText: 'Contact Us', 
         href: "/#booking",
@@ -393,6 +532,7 @@ export const servicesData: Service[] = [
         planName: 'Starter', 
         description: 'For sites with moderate traffic and basic needs.', 
         price: '49', 
+        yearlyPrice: '499',
         features: ['1,000 Chats/Month', 'Basic Customization', 'Lead Capture', 'Email Support'], 
         buttonText: 'Get Started',
         href: "/#booking",
@@ -402,6 +542,7 @@ export const servicesData: Service[] = [
         planName: 'Growth', 
         description: 'For businesses looking to scale their online engagement.', 
         price: '149', 
+        yearlyPrice: '1499',
         features: ['5,000 Chats/Month', 'Advanced Customization', 'CRM Integration', 'Priority Support'], 
         buttonText: 'Choose Growth', 
         href: "/#booking",
@@ -412,6 +553,7 @@ export const servicesData: Service[] = [
         planName: 'Enterprise', 
         description: 'Tailored chatbot solutions for high-traffic websites.', 
         price: 'Custom', 
+        yearlyPrice: 'Custom',
         features: ['Unlimited Chats', 'Full Branding Control', 'Dedicated Bot Manager', 'API Access'], 
         buttonText: 'Contact Us', 
         href: "/#booking",

@@ -1,7 +1,6 @@
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { Founder } from "@/components/founder";
 import { ScrollTriggeredText } from "@/components/ui/scroll-triggered-text";
 import Image from "next/image";
 
@@ -48,8 +47,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        <Founder />
       </main>
       <Footer />
     </div>

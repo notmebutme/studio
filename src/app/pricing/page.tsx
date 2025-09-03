@@ -3,13 +3,13 @@
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { servicesData } from "@/lib/services-data";
+import { servicesData, pricingPlans } from "@/lib/services-data";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { ScrollTriggeredText } from "@/components/ui/scroll-triggered-text";
 import type { PricingPlan } from "@/lib/services-data";
-import { PricingCard } from "@/components/ui/animated-glassy-pricing";
+import { Pricing } from "@/components/blocks/pricing";
 
 export default function PricingPage() {
   const [isYearly, setIsYearly] = useState(false);
@@ -17,6 +17,23 @@ export default function PricingPage() {
   const servicesWithPricing = servicesData.filter(
     service => service.pricingPlans && Array.isArray(service.pricingPlans) && service.pricingPlans.length > 0
   );
+
+  const combinedPlans = [...pricingPlans];
+  servicesWithPricing.forEach(service => {
+      if (service.pricingPlans) {
+          combinedPlans.push(...(service.pricingPlans as PricingPlan[]));
+      }
+  });
+  
+  const plansForDisplay = combinedPlans.map(plan => {
+      const monthlyPrice = plan.price;
+      const yearlyPrice = plan.yearlyPrice || (Number.isNaN(parseFloat(monthlyPrice as string)) ? monthlyPrice : (parseFloat(monthlyPrice as string) * 12 * 0.8).toFixed(0));
+      return {
+          ...plan,
+          price: isYearly ? yearlyPrice : monthlyPrice,
+      } as PricingPlan
+  });
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -51,21 +68,17 @@ export default function PricingPage() {
             <div key={service.slug}>
               <h2 className="text-3xl font-bold text-center mb-2 font-headline text-primary/90">{service.title} Pricing</h2>
               <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">{service.detailedDescription}</p>
-              <div className="flex flex-wrap gap-8 justify-center items-center w-full">
-                {(service.pricingPlans as PricingPlan[]).map((plan) => {
+              <Pricing 
+                plans={(service.pricingPlans as PricingPlan[]).map(plan => {
                   const monthlyPrice = plan.price;
-                  const yearlyPrice = plan.yearlyPrice || (Number.isNaN(parseFloat(monthlyPrice)) ? monthlyPrice : (parseFloat(monthlyPrice) * 12 * 0.8).toFixed(0));
-
-                  const displayPlan = {
-                    ...plan,
-                    planName: plan.name || (plan as any).planName,
-                    price: isYearly ? yearlyPrice : monthlyPrice,
-                    buttonVariant: plan.isPopular ? 'primary' : 'secondary',
-                  };
-
-                  return <PricingCard key={displayPlan.planName} {...displayPlan} />;
-                })}
-              </div>
+                  const yearlyPrice = plan.yearlyPrice || (Number.isNaN(parseFloat(monthlyPrice as string)) ? monthlyPrice : (parseFloat(monthlyPrice as string) * 12 * 0.8).toFixed(0));
+                  return {
+                      ...plan,
+                      price: isYearly ? String(yearlyPrice) : String(monthlyPrice),
+                      yearlyPrice: String(yearlyPrice),
+                  }
+                })} 
+              />
             </div>
           ))}
         </div>
