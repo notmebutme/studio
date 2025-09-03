@@ -156,7 +156,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => (
         <AccordionTrigger className="text-left hover:no-underline text-base md:text-lg">
           {faq.question}
         </AccordionTrigger>
-        <AccordionContent className="text-muted-foreground text-sm md:text-base">{faq.answer}</AccordionContent>
+        <AccordionContent className="text-muted-foreground text-sm md:text-base italic">{faq.answer}</AccordionContent>
       </AccordionItem>
     ))}
   </Accordion>
