@@ -8,6 +8,9 @@ import { Quotes } from "@/components/quotes";
 import { Booking } from "@/components/booking";
 import { Footer } from "@/components/footer";
 import { OtherServices } from "@/components/other-services";
+import { Audience } from "@/components/audience";
+import { Pricing } from "@/components/blocks/pricing";
+import { pricingPlans } from "@/lib/services-data";
 
 export default function Home() {
   return (
@@ -18,7 +21,9 @@ export default function Home() {
         <ServiceShowcase />
         <OtherServices />
         <Process />
+        <Audience />
         <Comparison />
+        <Pricing plans={pricingPlans} />
         <Founder />
         <Quotes />
         <Booking />

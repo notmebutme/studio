@@ -1,11 +1,9 @@
-
-
 import { Bot, Clapperboard, MonitorSmartphone, Film, Sparkles, Target, Palette, Scale, Users, BrainCircuit, Repeat, Clock, Database, LineChart, PhoneCall, MessagesSquare, Calendar, WandSparkles, Upload } from "lucide-react";
 import { ReactNode } from "react";
 import { ComparisonData } from "@/components/comparison-table";
 import { PricingCardProps } from "@/components/ui/animated-glassy-pricing";
 
-interface PricingPlan {
+export interface PricingPlan {
   name: string;
   price: string;
   yearlyPrice: string;
@@ -60,6 +58,59 @@ export const processSteps = [
     icon: <Upload className="h-6 w-6" />,
     image: "https://picsum.photos/seed/step3/800/600",
   },
+];
+
+export const pricingPlans: PricingPlan[] = [
+    {
+      name: "Starter",
+      price: "25000",
+      yearlyPrice: "240000",
+      period: "month",
+      features: [
+        "10 AI-generated articles (up to 1,500 words each)",
+        "20 AI-generated ad creatives (image-based)",
+        "Basic brand voice alignment",
+        "Email support",
+      ],
+      description: "Perfect for startups and small businesses testing the waters of AI content.",
+      buttonText: "Choose Starter",
+      href: "/#booking",
+      isPopular: false,
+    },
+    {
+      name: "Growth",
+      price: "60000",
+      yearlyPrice: "600000",
+      period: "month",
+      features: [
+        "30 AI-generated articles",
+        "100 AI-generated ad creatives (image & text)",
+        "5 AI Product Mockups/month",
+        "Advanced brand voice & SEO optimization",
+        "Priority support",
+      ],
+      description: "For growing businesses looking to scale their content and advertising efforts aggressively.",
+      buttonText: "Choose Growth",
+      href: "/#booking",
+      isPopular: true,
+    },
+    {
+      name: "Scale",
+      price: "150000",
+      yearlyPrice: "1500000",
+      period: "month",
+      features: [
+        "Unlimited articles & ad creatives",
+        "20 AI Product Mockups/month",
+        "1 AI CGI Ad (up to 30s) per quarter",
+        "Dedicated Account Manager",
+        "Weekly strategy calls",
+      ],
+      description: "The ultimate package for market leaders who want to dominate with AI-powered creative.",
+      buttonText: "Choose Scale",
+      href: "/#booking",
+      isPopular: false,
+    },
 ];
 
 

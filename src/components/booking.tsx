@@ -8,7 +8,7 @@ export function Booking() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center">
             <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary text-glow">
-                Book an Appointment
+                Ready for a change?
             </ScrollTriggeredText>
             <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
                 Schedule a call to see how Intrix AI can revolutionize your content strategy. Get a calendar invite for Google Calendar or Outlook upon booking.
