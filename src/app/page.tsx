@@ -18,15 +18,21 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <ServiceShowcase />
+        <div id="services">
+          <ServiceShowcase />
+        </div>
         <OtherServices />
         <Process />
         <Audience />
         <Comparison />
-        <Pricing plans={pricingPlans} />
+        <div id="pricing">
+          <Pricing plans={pricingPlans} />
+        </div>
         <Founder />
         <Quotes />
-        <Booking />
+        <div id="booking">
+          <Booking />
+        </div>
       </main>
       <Footer />
     </div>
