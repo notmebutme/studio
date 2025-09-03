@@ -1,3 +1,4 @@
+
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Process } from "@/components/process";
@@ -18,19 +19,19 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <div id="services">
+        <div id="services" className="scroll-mt-24">
           <ServiceShowcase />
         </div>
         <OtherServices />
         <Process />
         <Audience />
         <Comparison />
-        <div id="pricing">
+        <div id="pricing" className="scroll-mt-24">
           <Pricing plans={pricingPlans} />
         </div>
         <Founder />
         <Quotes />
-        <div id="booking">
+        <div id="booking" className="scroll-mt-24">
           <Booking />
         </div>
       </main>

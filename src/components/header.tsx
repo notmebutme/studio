@@ -8,9 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
 import { servicesData } from "@/lib/services-data";
-import { Button } from "./ui/button";
 
 export function Header() {
   const navItems = [
@@ -36,7 +34,7 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 hover:text-primary transition-colors focus:outline-none">
-              Services <ChevronDown className="h-4 w-4" />
+              Services
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               {servicesData.map((service) => (
