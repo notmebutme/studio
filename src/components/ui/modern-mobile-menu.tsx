@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Home, Briefcase, Calendar, Shield, Settings, LucideProps } from 'lucide-react';
 import { cn } from '@/lib/utils';
