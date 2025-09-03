@@ -52,6 +52,7 @@ export function Demos() {
      videoRefs.current.forEach((video, index) => {
         if(video) {
             if (index === current) {
+                video.currentTime = 0; // Restart video
                 video.play();
             } else {
                 video.pause();
