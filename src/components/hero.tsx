@@ -92,8 +92,8 @@ export function Hero() {
                 <p className="max-w-[700px] text-base text-white/80 sm:text-lg md:text-xl">
                   We generate high-performing ads, articles, and product visuals that help you scale faster than ever before.
                 </p>
-                <RainbowButton asChild href="#services" className="h-12 px-8 text-base md:text-lg">
-                  <Link href="#services">See How It Works</Link>
+                <RainbowButton asChild={false} href="#services" className="h-12 px-8 text-base md:text-lg">
+                  See How It Works
                 </RainbowButton>
               </motion.div>
             )}
