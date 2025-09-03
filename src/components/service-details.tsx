@@ -15,7 +15,7 @@ import { BorderBeam } from "./ui/border-beam";
 
 export function ServiceDetails({ service }: { service: Service }) {
     const showPricing = service.pricingPlans && service.pricingPlans.length > 0;
-    const showGlassyPricing = ["ai-voice-agent", "ai-chatbot"].includes(service.slug) && service.pricingPlans;
+    const showGlassyPricing = ["ai-voice-agent", "ai-chatbot"].includes(service.slug) && showPricing;
     const showDemo = service.demo && service.demo.videos.length > 0;
 
     return (
