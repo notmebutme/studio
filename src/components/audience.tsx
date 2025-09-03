@@ -35,10 +35,15 @@ export function Audience() {
     <section className="w-full py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto">
-          <ScrollTriggeredText as="h2" per="word" preset="slide" className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary text-glow">
-            If You're Ambitious, You're in the Right Place.
-          </ScrollTriggeredText>
-          <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.3} className="mt-4 text-muted-foreground md:text-xl/relaxed">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline text-primary text-glow">
+            <ScrollTriggeredText as="span" per="word" preset="slide" className="block">
+                If You're Ambitious,
+            </ScrollTriggeredText>
+            <ScrollTriggeredText as="span" per="word" preset="slide" delay={0.2} className="block">
+                You're in the Right Place.
+            </ScrollTriggeredText>
+          </h2>
+          <ScrollTriggeredText as="p" per="word" preset="slide" delay={0.5} className="mt-4 text-muted-foreground md:text-xl/relaxed">
             We partner with winners. Whether you're a local hero or a global leader, our AI is your unfair advantage.
           </ScrollTriggeredText>
         </div>
