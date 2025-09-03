@@ -24,10 +24,7 @@ export function ServiceShowcase() {
           {servicesData.map((service, index) => (
             <div key={service.slug} className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className={`space-y-4 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
-                <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium text-primary">
-                  {service.title}
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold font-headline">{service.detailedDescription.split('.')[0]}.</h3>
+                <h3 className="text-2xl md:text-3xl font-bold font-headline">{service.title}</h3>
                 <p className="text-muted-foreground">{service.description}</p>
                 <Button asChild variant="outline" className="group">
                   <Link href={`/services/${service.slug}`}>
