@@ -1,6 +1,6 @@
 
 
-import { Bot, Clapperboard, MonitorSmartphone, Film, Sparkles, Target, Palette, Scale, Users, BrainCircuit, Repeat, Clock, Database, LineChart, PhoneCall, MessagesSquare } from "lucide-react";
+import { Bot, Clapperboard, MonitorSmartphone, Film, Sparkles, Target, Palette, Scale, Users, BrainCircuit, Repeat, Clock, Database, LineChart, PhoneCall, MessagesSquare, Calendar, WandSparkles, Upload } from "lucide-react";
 import { ReactNode } from "react";
 import { ComparisonData } from "@/components/comparison-table";
 import { PricingCardProps } from "@/components/ui/animated-glassy-pricing";
