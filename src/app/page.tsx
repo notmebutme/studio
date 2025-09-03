@@ -10,6 +10,7 @@ import { Booking } from "@/components/booking";
 import { Footer } from "@/components/footer";
 import { OtherServices } from "@/components/other-services";
 import { Audience } from "@/components/audience";
+import { FAQ } from "@/components/faq";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <Comparison />
         <Founder />
         <Quotes />
+        <FAQ />
         <div id="booking" className="scroll-mt-24">
           <Booking />
         </div>
